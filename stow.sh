@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-mkdir -p .config/nvim
-mkdir -p .config/cmus
-mkdir -p .config/ncspot
-mkdir -p .config/mpv
+mkdir -p $HOME/.config/nvim
+mkdir -p $HOME/.config/cmus
+mkdir -p $HOME/.config/ncspot
+mkdir -p $HOME/.config/mpv
 
 cp -r nvim $HOME/.config
 cp cmus/rc $HOME/.config/cmus/rc
 cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
-cp .tmux.conf ../.tmux.conf
+cp .tmux.conf $HOME/.tmux.conf
 
 # bashrc
-filename="../.bashrc"
+filename="$HOME/.bashrc"
 arr=("$HOME/.dot_files/.aliasrc"
      "/usr/share/doc/fzf/examples/completion.bash"
      "/usr/share/doc/fzf/examples/key-bindings.bash"
