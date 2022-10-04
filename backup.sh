@@ -15,6 +15,12 @@ cp $HOME/.config/mpv/*.conf $HOME/.dot_files/mpv/
 # ncspot
 cp $HOME/.config/ncspot/config.toml $HOME/.dot_files/ncspot/config.toml
 
+# tmux
+cp $HOME/.tmux.conf $HOME/.dot_files/.tmux.conf
+
+# bashrc
+cp $HOME/.aliasrc $HOME/.dot_files/.aliasrc
+
 # check git status
 gs="$(git status | grep -i "modified")"
 # echo "${gs}"
