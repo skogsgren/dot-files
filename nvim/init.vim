@@ -29,6 +29,12 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 
+" Split shortcuts
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " Remember sessions
 augroup remember_folds
     autocmd!
