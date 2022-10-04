@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-./jcs_gnome_term.sh
-
 mkdir -p .config/nvim
 mkdir -p .config/cmus
 mkdir -p .config/ncspot
