@@ -9,6 +9,7 @@ cp -r nvim $HOME/.config
 cp cmus/rc $HOME/.config/cmus/rc
 cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
+cp .tmux.conf ../.tmux.conf
 
 # bashrc
 filename="../.bashrc"
