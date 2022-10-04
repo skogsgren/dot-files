@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # nvim
 cp $HOME/.config/nvim/init.vim $HOME/.dot_files/nvim/init.vim
 cp -r $HOME/.config/nvim/ftplugin/ $HOME/.dot_files/nvim/
@@ -24,4 +26,4 @@ fi
 
 git add -u;
 git commit -m "`date +'%Y-%m-%d %H:%M:%S'`";
-git push origin master
+git push origin main
