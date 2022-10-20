@@ -44,9 +44,7 @@ augroup END
 
 " Default to no color column
 au FileType * setlocal colorcolumn=0
-
-" Source code gets wrapped at <80 and auto-indented
-au FileType arduino,asm,c,cpp,go,java,javascript,php,html,make,objc,perl,python setlocal tw=79 autoindent colorcolumn=81
+au FileType c,cpp,go,java,javascript,php,make,python,markdown setlocal tw=79 autoindent colorcolumn=81
 
 " Spell check
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
