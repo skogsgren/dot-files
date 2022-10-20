@@ -20,8 +20,8 @@ cp $HOME/.config/ncspot/config.toml $HOME/.dot_files/ncspot/config.toml
 # tmux
 cp $HOME/.tmux.conf $HOME/.dot_files/.tmux.conf
 
-# bashrc
-cp $HOME/.aliasrc $HOME/.dot_files/.aliasrc
+# latexmk
+cp $HOME/.latexmkrc $HOME/.dot_files/.latexmkrc
 
 # check git status
 gs="$(git status | grep -i "modified")"

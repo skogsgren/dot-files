@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd ~/.dot_files
+
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.config/cmus
 mkdir -p $HOME/.config/ncspot
@@ -10,6 +12,7 @@ cp cmus/rc $HOME/.config/cmus/rc
 cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
+cp .latexmkrc $HOME/.latexmkrc
 
 # bashrc
 filename="$HOME/.bashrc"
