@@ -29,12 +29,6 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 
-" Split shortcuts
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
 " Remember sessions
 augroup remember_folds
     autocmd!
@@ -42,7 +36,7 @@ augroup remember_folds
     autocmd BufWinEnter * silent! loadview
 augroup END
 
-" Default to no color column
+" Colorcolumn, indentation & textwidth for certain filetypes
 au FileType * setlocal colorcolumn=0
 au FileType c,cpp,go,java,javascript,php,make,python,markdown setlocal tw=79 autoindent colorcolumn=81
 
@@ -96,8 +90,11 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
+
 Plug 'nvie/vim-flake8'
+
 Plug 'csexton/trailertrash.vim'
+
 Plug 'tpope/vim-vinegar'
     nnoremap <C-t> :Lexplore<CR>
     let g:netrw_winsize = 28
