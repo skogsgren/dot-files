@@ -38,7 +38,7 @@ augroup END
 
 " Colorcolumn, indentation & textwidth for certain filetypes
 au FileType * setlocal colorcolumn=0
-au FileType c,cpp,go,java,javascript,php,make,python,markdown setlocal tw=79 autoindent colorcolumn=81
+au FileType c,cpp,go,java,javascript,php,make,python,markdown,tex setlocal tw=79 autoindent colorcolumn=81
 
 " Spell check
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -47,7 +47,6 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 cabbr W w
 cabbr Q q
 
-" LaTeX
 Plug 'lervag/vimtex', { 'for': 'tex' }
     let g:vimtex_syntax_conceal_disable=1
     let g:vimtex_quickfix_mode=0
@@ -65,28 +64,6 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
         au User VimtexEventQuit call vimtex#compiler#clean(0)
     augroup END
 
-Plug 'junegunn/goyo.vim'
-    nnoremap <C-g> :Goyo 70%<bar> highlight StatusLineNC ctermfg=white <CR>
-    function! s:goyo_enter()
-      let b:quitting = 0
-      let b:quitting_bang = 0
-      autocmd QuitPre <buffer> let b:quitting = 1
-      cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-    endfunction
-    function! s:goyo_leave()
-      " Quit Vim if this is the only remaining buffer 
-      if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        if b:quitting_bang
-          qa!
-        else
-          qa
-        endif
-      endif
-    endfunction
-
-autocmd User GoyoEnter call <SID>goyo_enter()
-autocmd User GoyoLeave call <SID>goyo_leave()
-
 Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
@@ -97,7 +74,7 @@ Plug 'csexton/trailertrash.vim'
 
 Plug 'tpope/vim-vinegar'
     nnoremap <C-t> :Lexplore<CR>
-    let g:netrw_winsize = 28
+    let g:netrw_winsize = 24
     let g:netrw_keepdir = 0
 
 call plug#end()
