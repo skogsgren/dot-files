@@ -13,6 +13,8 @@ cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
 cp .latexmkrc $HOME/.latexmkrc
+mkdir -p $HOME/.local/share/xfce4/terminal/colorschemes
+cp eink.theme $HOME/.local/share/xfce4/terminal/colorschemes/eink.theme
 
 # bashrc
 filename="$HOME/.bashrc"
@@ -22,7 +24,6 @@ arr=("$HOME/.dot_files/.aliasrc"
      "$HOME/.dot_files/tmux-autocomplete.sh")
 for i in ${arr[@]};
 do
-    echo $i
     if ! grep -q -F "source $i" "$filename"; then
         echo "source "$i >> $filename
     fi
