@@ -1,0 +1,7 @@
+# for debian 11
+# sed 's/#.*//' apt.list | xargs sudo apt install
+fzf
+neovim
+xterm
+tmux
+wget
