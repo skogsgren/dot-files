@@ -13,15 +13,16 @@ cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
 cp .latexmkrc $HOME/.latexmkrc
-mkdir -p $HOME/.local/share/xfce4/terminal/colorschemes
-cp eink.theme $HOME/.local/share/xfce4/terminal/colorschemes/eink.theme
+cp .Xresources ~/.Xresources
+xrdb -merge ~/.Xresources
 
 # bashrc
 filename="$HOME/.bashrc"
 arr=("$HOME/.dot_files/.aliasrc"
      "/usr/share/doc/fzf/examples/completion.bash"
      "/usr/share/doc/fzf/examples/key-bindings.bash"
-     "$HOME/.dot_files/tmux-autocomplete.sh")
+     "$HOME/.dot_files/tmux-autocomplete.sh"
+     "bind 'set bell-style none'")
 for i in ${arr[@]};
 do
     if ! grep -q -F "source $i" "$filename"; then

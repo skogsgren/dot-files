@@ -23,6 +23,9 @@ cp $HOME/.tmux.conf $HOME/.dot_files/.tmux.conf
 # latexmk
 cp $HOME/.latexmkrc $HOME/.dot_files/.latexmkrc
 
+# Xresources
+cp $HOME/.Xresources $HOME/.dot_files/.Xresources
+
 # check git status
 gs="$(git status | grep -i "modified")"
 # echo "${gs}"

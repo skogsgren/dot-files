@@ -1,8 +1,10 @@
-xterm*VT100.geometry: 85x30+0+23
+xterm*VT100.geometry: 90x35+0+23
 xterm*faceName: Input Mono Narrow
 xterm*faceSize: 9
 xterm*renderFont: true
 xterm*metaSendsEscape: true
+xterm*cursorBlink: true
+xterm*forceBoxChars: true
 xterm*.Translations: #override \
     Ctrl <Key> minus: smaller-vt-font() \n\
     Ctrl <Key> plus: larger-vt-font() \n\
@@ -11,6 +13,7 @@ xterm*.Translations: #override \
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
     Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
 
+/* SOLARIZED LIGHT COLORSCHEME */
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
