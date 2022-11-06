@@ -22,7 +22,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Clear search highlighting
+" Clear search highlighting shortcut
 nnoremap <CR> :noh<CR><CR>
 
 " Buffer shortcuts
@@ -38,10 +38,7 @@ augroup END
 
 " Colorcolumn, indentation & textwidth for certain filetypes
 au FileType * setlocal colorcolumn=0
-au FileType c,cpp,go,java,javascript,php,make,python,markdown,tex setlocal tw=79 autoindent colorcolumn=81
-
-" Spell check
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+au FileType c,go,java,javascript,php,make,python,markdown,tex setlocal tw=79 autoindent colorcolumn=81
 
 " Make W, Q case insensitive
 cabbr W w
@@ -71,6 +68,7 @@ Plug 'tpope/vim-commentary'
 Plug 'nvie/vim-flake8'
 
 Plug 'csexton/trailertrash.vim'
+    let g:trailertrash_blacklist = ['md', 'markdown']
 
 Plug 'tpope/vim-vinegar'
     nnoremap <C-t> :Lexplore<CR>
@@ -79,4 +77,12 @@ Plug 'tpope/vim-vinegar'
 
 call plug#end()
 
+" jcs colorscheme
 colorscheme eink
+
+" For linebreak highlighting in markdown
+au FileType markdown syntax match Todo "\s$"
+au FileType markdown syntax match Error "\s\{2}$"
+au FileType markdown syntax match Visual "\s\{3,}$"
+au FileType markdown highlight MarkdownTrailingSpaces ctermbg=yellow guibg=yellow
+au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"

@@ -10,6 +10,7 @@ xterm*.Translations: #override \
     Ctrl <Key> plus: larger-vt-font() \n\
     Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+    Shift Alt <Key>V: insert-selection(PRIMARY) \n\
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
     Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
 
