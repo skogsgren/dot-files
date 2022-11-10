@@ -47,9 +47,9 @@ cabbr Q q
 Plug 'lervag/vimtex', { 'for': 'tex' }
     let g:vimtex_syntax_conceal_disable=1
     let g:vimtex_quickfix_mode=0
-    let g:vimtex_compiler_latexmk = { 
+    let g:vimtex_compiler_latexmk = {
         \ 'executable' : 'latexmk',
-        \ 'options' : [ 
+        \ 'options' : [
         \   '-xelatex',
         \   '-file-line-error',
         \   '-synctex=0',
@@ -81,8 +81,6 @@ call plug#end()
 colorscheme eink
 
 " For linebreak highlighting in markdown
-au FileType markdown syntax match Todo "\s$"
 au FileType markdown syntax match Error "\s\{2}$"
-au FileType markdown syntax match Visual "\s\{3,}$"
-au FileType markdown highlight MarkdownTrailingSpaces ctermbg=yellow guibg=yellow
+au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
 au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"

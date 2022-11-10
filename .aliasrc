@@ -2,6 +2,7 @@ alias lofi-radio="mpv --no-video --no-resume-playback https://www.youtube.com/wa
 alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove && flatpak update"
 alias egrep="egrep --color"
 alias vimff='vim "$(fzf)"'
+alias vim='nvim'
 alias temp="while true; do clear && sensors | egrep '(Package id 0)|(fan1)'; sleep 1; done"
 alias catc="pygmentize -g -O style=solarized-light"
 alias brown-noise="play -n synth brownnoise band -n 1600 1500 tremolo .1 30"

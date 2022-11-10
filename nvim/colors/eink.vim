@@ -5,16 +5,16 @@
 
 set background=light
 
-" hi clear
-" if exists("syntax_on")
-" 	syntax reset
-" endif
+hi clear
+if exists("syntax_on")
+	syntax reset
+endif
 
 let colors_name = "jcs"
 
 hi Comment		cterm=NONE		ctermfg=242
 hi Constant		cterm=underline		ctermfg=NONE
-hi CursorLineNr		cterm=bold		ctermfg=244
+hi CursorLineNr		cterm=bold		ctermfg=248
 hi DiffAdd		cterm=bold		ctermfg=NONE
 hi DiffChange		cterm=bold		ctermfg=NONE
 hi DiffDelete		cterm=bold		ctermfg=NONE
