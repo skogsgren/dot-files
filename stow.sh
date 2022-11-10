@@ -35,3 +35,11 @@ a='PS1="\[$(tput bold)\]\[\033[38;5;234m\]\u\[$(tput sgr0)\]@\h\[$(tput sgr0)\]:
 if ! grep -q -F "$a" "$filename"; then
     echo "export "$a >> $filename
 fi
+
+# tmux
+t="if tmux has-session 2>/dev/null; then"
+if ! grep -q -F "@b" "$filename"; then
+    echo $a >> $filename
+    echo "    tmux ls" >> $filename
+    echo "fi" >> $filename
+fi
