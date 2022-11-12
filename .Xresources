@@ -3,7 +3,6 @@ xterm*faceName: Go Mono
 xterm*faceSize: 9
 xterm*renderFont: true
 xterm*metaSendsEscape: true
-xterm*cursorBlink: true
 xterm*forceBoxChars: true
 xterm*.Translations: #override \
     Ctrl <Key> minus: smaller-vt-font() \n\

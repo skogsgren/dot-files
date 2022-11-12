@@ -75,6 +75,8 @@ Plug 'tpope/vim-vinegar'
     let g:netrw_winsize = 24
     let g:netrw_keepdir = 0
 
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 " jcs colorscheme
