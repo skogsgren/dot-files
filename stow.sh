@@ -20,8 +20,7 @@ filename="$HOME/.bashrc"
 arr=("$HOME/.dot_files/.aliasrc"
      "/usr/share/doc/fzf/examples/completion.bash"
      "/usr/share/doc/fzf/examples/key-bindings.bash"
-     "$HOME/.dot_files/tmux-autocomplete.sh"
-     "bind 'set bell-style none'")
+     "$HOME/.dot_files/tmux-autocomplete.sh")
 for i in ${arr[@]};
 do
     if ! grep -q -F "source $i" "$filename"; then
