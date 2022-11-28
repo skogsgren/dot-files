@@ -14,7 +14,6 @@ cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
 cp .latexmkrc $HOME/.latexmkrc
 cp .Xresources ~/.Xresources
-xrdb -merge ~/.Xresources
 
 # bashrc
 filename="$HOME/.bashrc"
@@ -36,10 +35,16 @@ if ! grep -q -F "$a" "$filename"; then
     echo "export "$a >> $filename
 fi
 
+# bell
+b="bind 'set bell-style none'"
+if ! grep -q -F "$b" "$filename"; then
+    echo $b >> $filename
+fi
+
 # tmux
 t="if tmux has-session 2>/dev/null; then"
-if ! grep -q -F "@b" "$filename"; then
-    echo $a >> $filename
+if ! grep -q -F "$t" "$filename"; then
+    echo $t >> $filename
     echo "    tmux ls" >> $filename
     echo "fi" >> $filename
 fi
