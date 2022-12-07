@@ -40,9 +40,11 @@ augroup END
 au FileType * setlocal colorcolumn=0
 au FileType c,go,java,javascript,php,make,python,markdown,tex setlocal tw=79 autoindent colorcolumn=81
 
-" Make W, Q case insensitive
+" Make W case insensitive
 cabbr W w
-cabbr Q q
+
+" Since I never use Q remap it to reformat line
+nnoremap Q gqq
 
 Plug 'lervag/vimtex', { 'for': 'tex' }
     let g:vimtex_syntax_conceal_disable=1
@@ -65,24 +67,42 @@ Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
-Plug 'nvie/vim-flake8'
-
 Plug 'csexton/trailertrash.vim'
     let g:trailertrash_blacklist = ['md', 'markdown']
-
-Plug 'tpope/vim-vinegar'
-    nnoremap <C-t> :Lexplore<CR>
-    let g:netrw_winsize = 24
-    let g:netrw_keepdir = 0
 
 Plug 'tpope/vim-surround'
 
 call plug#end()
 
-" jcs colorscheme
-colorscheme eink
+colorscheme jcs
 
-" For linebreak highlighting in markdown
+au FileType c nnoremap <F5> :!make %< <CR>
+
+au FileType python nnoremap <buffer> <F5> :!python3 %<CR>
+au FileType python nnoremap <F7> :!flake8 %<CR>
+
+au FileType markdown inoremap [ []<ESC>i
+au FileType markdown inoremap ( ()<ESC>i
+au FileType markdown inoremap <C-b> ****<ESC>hi
+au FileType markdown inoremap <C-t> **<ESC>i
+au FileType markdown nnoremap <F5> :!pandoc -i % -o %<.pdf --pdf-engine=xelatex && open %<.pdf<CR>
+au FileType markdown nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
+au FileType markdown nnoremap <F7> :setlocal spell! spelllang=sv<CR>
+au FileType markdown inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 au FileType markdown syntax match Error "\s\{2}$"
 au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
 au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
+
+au FileType tex inoremap ` `'<ESC>i
+au FileType tex inoremap ( ()<ESC>i
+au FileType tex inoremap [ []<ESC>i
+au FileType tex inoremap { {}<ESC>i
+au FileType tex inoremap $ $$<ESC>i
+au FileType tex inoremap <C-b> \textbf{}<ESC>i
+au FileType tex inoremap <C-t> \textit{}<ESC>i
+au FileType tex inoremap <C-s> \sc{}<ESC>i
+au FileType tex inoremap <C-e> \begin{enumerate}[label=(\arabic*.)]<CR><CR>\end{enumerate}<ESC>ki\item 
+au FileType tex nnoremap <C-g> :!texcount %<CR>
+au FileType tex nnoremap <F5> :VimtexCompile<CR>
+au FileType tex nnoremap <F6> :VimtexView<CR>
+au FileType tex nnoremap <F4> :VimtexCompileOutput<CR>
