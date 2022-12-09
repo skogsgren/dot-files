@@ -3,9 +3,9 @@
 cd $HOME/.dot_files
 
 # nvim
-cp $HOME/.config/nvim/init.vim $HOME/.dot_files/nvim/init.vim
-cp -r $HOME/.config/nvim/colors $HOME/.dot_files/nvim/
-cp -r $HOME/.config/nvim/after $HOME/.dot_files/nvim/
+cp $HOME/.vimrc $HOME/.dot_files/.vimrc
+cp -r $HOME/.vim/colors $HOME/.dot_files/.vim/
+cp -r $HOME/.vim/after $HOME/.dot_files/.vim/
 
 # cmus
 cp $HOME/.config/cmus/rc $HOME/.dot_files/cmus/rc
