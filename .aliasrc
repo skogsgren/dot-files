@@ -4,5 +4,10 @@ alias egrep="egrep --color"
 alias temp="while true; do clear && sensors | egrep '(Package id 0)|(fan1)'; sleep 1; done"
 alias catc="pygmentize -g -O style=solarized-light"
 
+alias tmuxs="tmux new-session -s"
+alias tmuxa="tmux attach-session -t"
+
+alias datecommit="git commit -m "`date +'%Y-%m-%d %H:%M:%S'`""
+
 alias ls="ls -aF"
 alias ll="ls -alF"
