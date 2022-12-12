@@ -28,6 +28,7 @@ hi Identifier		cterm=underline		ctermfg=NONE
 hi Ignore		cterm=bold		ctermfg=NONE
 hi IncSearch		cterm=reverse		ctermfg=NONE
 hi LineNr		cterm=NONE		ctermfg=248
+hi markdownItalic       cterm=italic              ctermfg=NONE    ctermbg=NONE
 hi MatchParen		cterm=bold		ctermfg=NONE	ctermbg=185
 hi ModeMsg		cterm=bold		ctermfg=NONE
 hi MoreMsg		cterm=bold		ctermfg=NONE
@@ -35,6 +36,7 @@ hi NonText		cterm=bold		ctermfg=NONE
 hi PreProc		cterm=underline		ctermfg=NONE
 hi Pmenu		cterm=NONE		ctermfg=NONE	ctermbg=253
 hi PmenuSel		cterm=bold		ctermfg=NONE	ctermbg=253
+hi QuickFixLine         cterm=bold              ctermfg=NONE    ctermbg=NONE
 hi Question		cterm=standout		ctermfg=NONE
 hi Search		cterm=reverse		ctermfg=NONE
 hi SignColumn		cterm=NONE		ctermfg=NONE	ctermbg=NONE
@@ -45,6 +47,7 @@ hi SpecialKey		cterm=bold		ctermfg=NONE
 hi Statement		cterm=bold		ctermfg=NONE
 hi StatusLine		cterm=bold,reverse	ctermfg=NONE
 hi StatusLineNC		cterm=reverse		ctermfg=NONE
+hi texItalStyle       cterm=italic              ctermfg=NONE    ctermbg=NONE
 hi TabLine		cterm=reverse		ctermfg=NONE	ctermbg=NONE
 hi Title		cterm=bold		ctermfg=NONE
 hi Todo			cterm=bold,standout	ctermfg=185	ctermbg=0

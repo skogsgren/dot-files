@@ -8,17 +8,16 @@ endif
 call plug#begin()
 
 " Basic
-filetype plugin indent on
 syntax on
-set timeoutlen=1
+set encoding=utf-8
 set nocompatible
+set timeoutlen=1
 set splitbelow splitright
 set number relativenumber
 set undodir=~/.vim/undodir
 set undofile
 set clipboard=unnamedplus
 set laststatus=2
-
 
 " The bells, oh the bells!
 set noerrorbells visualbell t_vb=
@@ -40,22 +39,16 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 
-" Remember sessions
-augroup remember_folds
-    autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent! loadview
-augroup END
-
-" Colorcolumn, indentation & textwidth for certain filetypes
-au FileType * setlocal colorcolumn=0
-au FileType c,go,java,javascript,php,make,python,markdown,tex setlocal tw=79 autoindent colorcolumn=81
-
-" Make W case insensitive
+" Make W & Q case insensitive
 cabbr W w
+cabbr Q q
 
-" Since I never use Q remap it to reformat line
-nnoremap Q gqq
+" Colorcolumn, indentation, textwidth & keeping sessions for certain filetypes
+au FileType * setlocal colorcolumn=0
+au FileType c,go,java,javascript,php,make,markdown,tex setlocal tw=79 autoindent colorcolumn=81
+au FileType python setlocal tw=88 autoindent colorcolumn=89
+autocmd BufWinLeave *.tex,*.md,*.py :mkview
+autocmd BufWinEnter *.tex,*.md,*.py :loadview
 
 Plug 'lervag/vimtex', { 'for': 'tex' }
     let g:vimtex_syntax_conceal_disable=1
@@ -81,14 +74,21 @@ Plug 'tpope/vim-commentary'
 Plug 'csexton/trailertrash.vim'
     let g:trailertrash_blacklist = ['md', 'markdown']
 
+" Syntax checkers for Python
+Plug 'psf/black', { 'branch': 'stable' }
+Plug 'nvie/vim-flake8'
+
 call plug#end()
 
 colorscheme jcs
 
+" Filetype specific keymaps
+
 au FileType c nnoremap <F5> :!make %< <CR>
 
 au FileType python nnoremap <buffer> <F5> :!python3 %<CR>
-au FileType python nnoremap <F7> :!flake8 %<CR>
+au FileType python nnoremap <F6> :Black<CR>
+au FileType python nnoremap <F7> :!flake8 --format="\%(row)d: \%(text)s" %<CR>
 
 au FileType markdown inoremap [ []<ESC>i
 au FileType markdown inoremap ( ()<ESC>i
@@ -97,7 +97,7 @@ au FileType markdown inoremap <C-t> **<ESC>i
 au FileType markdown nnoremap <F5> :!pandoc -i % -o %<.pdf --pdf-engine=xelatex && open %<.pdf<CR>
 au FileType markdown nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
 au FileType markdown nnoremap <F7> :setlocal spell! spelllang=sv<CR>
-au FileType markdown inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+au FileType markdown map <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 au FileType markdown syntax match Error "\s\{2}$"
 au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
 au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"

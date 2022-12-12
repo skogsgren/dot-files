@@ -7,7 +7,6 @@ alias catc="pygmentize -g -O style=solarized-light"
 alias tmuxs="tmux new-session -s"
 alias tmuxa="tmux attach-session -t"
 
-alias datecommit="git commit -m "`date +'%Y-%m-%d %H:%M:%S'`""
-
-alias ls="ls -aF"
+export LS_COLORS='di=1;31'
+alias ls="ls -aF --color --group-directories-first"
 alias ll="ls -alF"
