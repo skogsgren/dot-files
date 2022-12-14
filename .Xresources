@@ -1,5 +1,5 @@
-xterm*VT100.geometry: 90x35+0+23
-xterm*faceName: Input Mono Narrow
+xterm*VT100.geometry: 93x37+0+23
+xterm*faceName: Go Mono
 xterm*faceSize: 9
 xterm*renderFont: true
 xterm*metaSendsEscape: true

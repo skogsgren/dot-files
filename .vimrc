@@ -18,6 +18,7 @@ set undodir=~/.vim/undodir
 set undofile
 set clipboard=unnamedplus
 set laststatus=2
+set backspace=indent,eol,start
 
 " The bells, oh the bells!
 set noerrorbells visualbell t_vb=
@@ -39,9 +40,10 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 
-" Make W & Q case insensitive
+" Ignore common errors
 cabbr W w
 cabbr Q q
+nnoremap q: :q
 
 " Colorcolumn, indentation, textwidth & keeping sessions for certain filetypes
 au FileType * setlocal colorcolumn=0
@@ -73,6 +75,8 @@ Plug 'tpope/vim-commentary'
 
 Plug 'csexton/trailertrash.vim'
     let g:trailertrash_blacklist = ['md', 'markdown']
+
+Plug 'Yggdroot/indentLine'
 
 " Syntax checkers for Python
 Plug 'psf/black', { 'branch': 'stable' }
