@@ -8,6 +8,7 @@ mkdir -p $HOME/.config/ncspot
 mkdir -p $HOME/.config/mpv
 
 cp -r .vim $HOME/
+cp -r .vimrc $HOME/
 cp cmus/rc $HOME/.config/cmus/rc
 cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
