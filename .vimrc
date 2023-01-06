@@ -8,6 +8,7 @@ endif
 call plug#begin()
 
 " Basic
+Plug 'tpope/vim-sensible'
 syntax on
 set encoding=utf-8
 set nocompatible
@@ -43,16 +44,15 @@ nnoremap <C-p> :bp<CR>
 " Ignore common errors
 cabbr W w
 cabbr Q q
-nnoremap q: :q
 
 " Colorcolumn, indentation, textwidth & keeping sessions for certain filetypes
 au FileType * setlocal colorcolumn=0
 au FileType c,go,java,javascript,php,make,markdown,tex setlocal tw=79 autoindent colorcolumn=81
-au FileType python setlocal tw=88 autoindent colorcolumn=89
+au FileType python setlocal tw=88 autoindent colorcolumn=81,89
 autocmd BufWinLeave *.tex,*.md,*.py :mkview
 autocmd BufWinEnter *.tex,*.md,*.py :loadview
 
-Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'lervag/vimtex'
     let g:vimtex_syntax_conceal_disable=1
     let g:vimtex_quickfix_mode=0
     let g:vimtex_compiler_latexmk = {
@@ -69,14 +69,23 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
         au User VimtexEventQuit call vimtex#compiler#clean(0)
     augroup END
 
+Plug 'tpope/vim-vinegar'
+
+
 Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
+" Shows trailing spaces
 Plug 'csexton/trailertrash.vim'
     let g:trailertrash_blacklist = ['md', 'markdown']
 
-Plug 'Yggdroot/indentLine'
+" Indentation guides
+Plug'Yggdroot/indentLine'
+    let g:indentLine_filetype=['py', 'c']
+    let g:markdown_syntax_conceal=0
+    let g:vim_json_conceal=0
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " Syntax checkers for Python
 Plug 'psf/black', { 'branch': 'stable' }
@@ -93,6 +102,7 @@ au FileType c nnoremap <F5> :!make %< <CR>
 au FileType python nnoremap <buffer> <F5> :!python3 %<CR>
 au FileType python nnoremap <F6> :Black<CR>
 au FileType python nnoremap <F7> :!flake8 --format="\%(row)d: \%(text)s" %<CR>
+au FileType python nnoremap <C-t> :IndentLinesToggle<CR>
 
 au FileType markdown inoremap [ []<ESC>i
 au FileType markdown inoremap ( ()<ESC>i
@@ -101,10 +111,11 @@ au FileType markdown inoremap <C-t> **<ESC>i
 au FileType markdown nnoremap <F5> :!pandoc -i % -o %<.pdf --pdf-engine=xelatex && open %<.pdf<CR>
 au FileType markdown nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
 au FileType markdown nnoremap <F7> :setlocal spell! spelllang=sv<CR>
-au FileType markdown map <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+au FileType markdown inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 au FileType markdown syntax match Error "\s\{2}$"
 au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
 au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
+au FileType markdown nnoremap <C-g> :!wc %<CR>
 
 au FileType tex inoremap ` `'<ESC>i
 au FileType tex inoremap ( ()<ESC>i

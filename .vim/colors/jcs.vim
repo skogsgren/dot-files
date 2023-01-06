@@ -29,7 +29,7 @@ hi Ignore		cterm=bold		ctermfg=NONE
 hi IncSearch		cterm=reverse		ctermfg=NONE
 hi LineNr		cterm=NONE		ctermfg=248
 hi markdownItalic       cterm=italic              ctermfg=NONE    ctermbg=NONE
-hi MatchParen		cterm=bold		ctermfg=NONE	ctermbg=185
+hi MatchParen		cterm=standout		ctermfg=NONE	ctermbg=grey
 hi ModeMsg		cterm=bold		ctermfg=NONE
 hi MoreMsg		cterm=bold		ctermfg=NONE
 hi NonText		cterm=bold		ctermfg=NONE
@@ -59,7 +59,7 @@ hi VisualNOS		cterm=bold,underline	ctermfg=NONE
 hi WarningMsg		cterm=bold		ctermfg=NONE    ctermbg=NONE
 hi WildMenu		cterm=standout		ctermfg=NONE
 
-hi ColorColumn		cterm=NONE		ctermfg=NONE	ctermbg=252
+hi ColorColumn		cterm=NONE		ctermfg=NONE	ctermbg=grey
 
 " for highlighting stray spaces/tabs (requires match statements in vimrc)
 hi ExtraWhitespace	cterm=reverse		ctermfg=185	ctermbg=NONE
