@@ -71,7 +71,6 @@ Plug 'lervag/vimtex'
 
 Plug 'tpope/vim-vinegar'
 
-
 Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
