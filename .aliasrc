@@ -10,3 +10,5 @@ alias tmuxa="tmux attach-session -t"
 export LS_COLORS='di=1;31'
 alias ls="ls -aF --color --group-directories-first"
 alias ll="ls -alF"
+
+alias vw="vim -c VimwikiDiaryIndex"

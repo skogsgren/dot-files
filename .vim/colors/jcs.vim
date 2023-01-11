@@ -1,7 +1,5 @@
-" vim:sw=8:ts=8
-"
-" act like t_Co=0 but use (256) color on just a few things
-"
+" lightly edited from the original available here:
+" https://github.com/jcs/dotfiles/blob/master/.vim/colors/jcs.vim
 
 set background=light
 
@@ -27,8 +25,6 @@ hi Folded		cterm=standout		ctermfg=NONE
 hi Identifier		cterm=underline		ctermfg=NONE
 hi Ignore		cterm=bold		ctermfg=NONE
 hi IncSearch		cterm=reverse		ctermfg=NONE
-hi LineNr		cterm=NONE		ctermfg=248
-hi markdownItalic       cterm=italic              ctermfg=NONE    ctermbg=NONE
 hi MatchParen		cterm=standout		ctermfg=NONE	ctermbg=grey
 hi ModeMsg		cterm=bold		ctermfg=NONE
 hi MoreMsg		cterm=bold		ctermfg=NONE
@@ -36,7 +32,6 @@ hi NonText		cterm=bold		ctermfg=NONE
 hi PreProc		cterm=underline		ctermfg=NONE
 hi Pmenu		cterm=NONE		ctermfg=NONE	ctermbg=253
 hi PmenuSel		cterm=bold		ctermfg=NONE	ctermbg=253
-hi QuickFixLine         cterm=bold              ctermfg=NONE    ctermbg=NONE
 hi Question		cterm=standout		ctermfg=NONE
 hi Search		cterm=reverse		ctermfg=NONE
 hi SignColumn		cterm=NONE		ctermfg=NONE	ctermbg=NONE
@@ -47,7 +42,6 @@ hi SpecialKey		cterm=bold		ctermfg=NONE
 hi Statement		cterm=bold		ctermfg=NONE
 hi StatusLine		cterm=bold,reverse	ctermfg=NONE
 hi StatusLineNC		cterm=reverse		ctermfg=NONE
-hi texItalStyle       cterm=italic              ctermfg=NONE    ctermbg=NONE
 hi TabLine		cterm=reverse		ctermfg=NONE	ctermbg=NONE
 hi Title		cterm=bold		ctermfg=NONE
 hi Todo			cterm=bold,standout	ctermfg=185	ctermbg=0
@@ -61,9 +55,15 @@ hi WildMenu		cterm=standout		ctermfg=NONE
 
 hi ColorColumn		cterm=NONE		ctermfg=NONE	ctermbg=grey
 
-" for highlighting stray spaces/tabs (requires match statements in vimrc)
-hi ExtraWhitespace	cterm=reverse		ctermfg=185	ctermbg=NONE
+" enhancement: give vim that minimal newspaper vibe
+hi htmlItalic    cterm=underline        ctermfg=NONE    ctermbg=NONE
+hi texItalStyle  cterm=underline        ctermfg=NONE    ctermbg=NONE
+hi VimwikiItalic cterm=underline        ctermfg=NONE    ctermbg=NONE
+hi Identifier    cterm=NONE             ctermfg=NONE    ctermbg=NONE
+hi texStyleItal  cterm=NONE             ctermfg=NONE    ctermbg=NONE
 
-" mostly for nerdtree
-hi VertSplit		cterm=bold		ctermfg=240	ctermbg=NONE
+" enhancement: makes sense for them to have the same color as comments
+hi LineNr       cterm=NONE              ctermfg=242     ctermbg=NONE
 
+" fix: makes quickwindow readable for flake8
+hi QuickFixLine cterm=bold              ctermfg=NONE    ctermbg=NONE

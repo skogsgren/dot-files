@@ -8,7 +8,6 @@ endif
 call plug#begin()
 
 " Basic
-Plug 'tpope/vim-sensible'
 syntax on
 set encoding=utf-8
 set nocompatible
@@ -69,8 +68,9 @@ Plug 'lervag/vimtex'
         au User VimtexEventQuit call vimtex#compiler#clean(0)
     augroup END
 
+" tpope stuff, defaults, filemanager & commentary aid
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
-
 Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
@@ -79,35 +79,54 @@ Plug 'tpope/vim-commentary'
 Plug 'csexton/trailertrash.vim'
     let g:trailertrash_blacklist = ['md', 'markdown']
 
-" Indentation guides
-Plug'Yggdroot/indentLine'
-    let g:indentLine_filetype=['py', 'c']
-    let g:markdown_syntax_conceal=0
-    let g:vim_json_conceal=0
-    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " Syntax checkers for Python
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'nvie/vim-flake8'
 
+" Indentation guides
+Plug'Yggdroot/indentLine'
+    let g:markdown_syntax_conceal=0
+    let g:vim_json_conceal=0
+    let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*', '*.wiki']
+    let g:indentLine_fileTypeExclude = ['vimwiki']
+    let g:indentLine_bufTypeExclude = ['help', 'terminal', 'vimwiki']
+    let g:indentLine_filetype=['py', 'c']
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" For journaling
+Plug 'vimwiki/vimwiki'
+    let g:vimwiki_list = [{
+            \ 'path': '~/nc/doc/wiki/',
+            \ 'syntax': 'markdown',
+            \ 'ext': '.md',
+            \ 'path_html': '~/nc/doc/wiki/html',
+            \ 'custom_wiki2html': 'vimwiki_markdown'}]
+    let g:vimwiki_global_ext=0
+    let g:vimwiki_markdown_link_ext = 1
+    let g:vimwiki_conceallevel=0
+    " altgr + e (entry) / d (diary) / w (web) / h (html) respectively
+    nnoremap € :VimwikiMakeDiaryNote<CR>
+    nnoremap ð :VimwikiDiaryIndex<CR>:VimwikiDiaryGenerateLinks<CR>:%s/\.md//g<CR>
+    nnoremap ł :Vimwiki2HTMLBrowse<CR>
+    nnoremap ħ :silent VimwikiAll2HTML<CR>
+
 call plug#end()
 
-colorscheme jcs
-
 " Filetype specific keymaps
-
+" =========================
 au FileType c nnoremap <F5> :!make %< <CR>
-
+" ========================================
 au FileType python nnoremap <buffer> <F5> :!python3 %<CR>
 au FileType python nnoremap <F6> :Black<CR>
 au FileType python nnoremap <F7> :!flake8 --format="\%(row)d: \%(text)s" %<CR>
 au FileType python nnoremap <C-t> :IndentLinesToggle<CR>
-
+" ======================================================
 au FileType markdown inoremap [ []<ESC>i
 au FileType markdown inoremap ( ()<ESC>i
 au FileType markdown inoremap <C-b> ****<ESC>hi
 au FileType markdown inoremap <C-t> **<ESC>i
-au FileType markdown nnoremap <F5> :!pandoc -i % -o %<.pdf --pdf-engine=xelatex && open %<.pdf<CR>
+au FileType markdown nnoremap <F5> :!pandoc -V mainfont="Times New Roman" --pdf-engine=xelatex -i % -o %<.pdf && open %<.pdf<CR>
 au FileType markdown nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
 au FileType markdown nnoremap <F7> :setlocal spell! spelllang=sv<CR>
 au FileType markdown inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -115,7 +134,7 @@ au FileType markdown syntax match Error "\s\{2}$"
 au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
 au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
 au FileType markdown nnoremap <C-g> :!wc %<CR>
-
+" ============================================
 au FileType tex inoremap ` `'<ESC>i
 au FileType tex inoremap ( ()<ESC>i
 au FileType tex inoremap [ []<ESC>i
@@ -131,3 +150,7 @@ au FileType tex nnoremap <F6> :VimtexView<CR>
 au FileType tex nnoremap <F4> :VimtexCompileOutput<CR>
 au FileType tex nnoremap <F8> :setlocal spell! spelllang=en_us<CR>
 au FileType tex nnoremap <F9> :setlocal spell! spelllang=sv<CR>
+" =============================================================
+
+" Colorscheme
+colorscheme jcs
