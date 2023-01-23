@@ -5,6 +5,13 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" True color in TMUX
+if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+
 call plug#begin()
 
 " Basic
@@ -19,6 +26,9 @@ set undofile
 set clipboard=unnamedplus
 set laststatus=2
 set backspace=indent,eol,start
+if has("termguicolors")
+    set termguicolors
+endif
 
 " The bells, oh the bells!
 set noerrorbells visualbell t_vb=
@@ -32,6 +42,10 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+" ctags optimization
+set autochdir
+set tags=tags;
 
 " Clear search highlighting shortcut
 nnoremap <CR> :noh<CR><CR>
@@ -75,10 +89,17 @@ Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
+" Fuzzy stuff
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+    let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.75 } }
+    nnoremap <C-s> :Ag<CR>
+    nnoremap <C-f> :Files<CR>
+    nnoremap <C-g> :GFiles<CR>
+
 " Shows trailing spaces
 Plug 'csexton/trailertrash.vim'
     let g:trailertrash_blacklist = ['md', 'markdown']
-
 
 " Syntax checkers for Python
 Plug 'psf/black', { 'branch': 'stable' }
@@ -91,7 +112,6 @@ Plug'Yggdroot/indentLine'
     let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*', '*.wiki']
     let g:indentLine_fileTypeExclude = ['vimwiki']
     let g:indentLine_bufTypeExclude = ['help', 'terminal', 'vimwiki']
-    let g:indentLine_filetype=['py', 'c']
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " For journaling
@@ -111,6 +131,7 @@ Plug 'vimwiki/vimwiki'
     nnoremap ł :Vimwiki2HTMLBrowse<CR>
     nnoremap ħ :silent VimwikiAll2HTML<CR>
 
+Plug 'owickstrom/vim-colors-paramount'
 call plug#end()
 
 " Filetype specific keymaps
@@ -122,18 +143,21 @@ au FileType python nnoremap <F6> :Black<CR>
 au FileType python nnoremap <F7> :!flake8 --format="\%(row)d: \%(text)s" %<CR>
 au FileType python nnoremap <C-t> :IndentLinesToggle<CR>
 " ======================================================
+au FileType php nnoremap <F6> :!phpcbf --standard=PSR1 %<CR>
+au FileType php nnoremap <F7> :!phpcs --standard=PSR1 %<CR>
+" =========================================================
 au FileType markdown inoremap [ []<ESC>i
 au FileType markdown inoremap ( ()<ESC>i
 au FileType markdown inoremap <C-b> ****<ESC>hi
 au FileType markdown inoremap <C-t> **<ESC>i
-au FileType markdown nnoremap <F5> :!pandoc -V mainfont="Times New Roman" --pdf-engine=xelatex -i % -o %<.pdf && open %<.pdf<CR>
+au FileType markdown nnoremap <F5> :!pandoc -V mainfont="Times New Roman" -V colorlinks=true -V linkcolor=blue --pdf-engine=xelatex -i % -o %<.pdf && open %<.pdf<CR><CR>
 au FileType markdown nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
 au FileType markdown nnoremap <F7> :setlocal spell! spelllang=sv<CR>
 au FileType markdown inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+au FileType markdown nnoremap <C-g> :!wc %<CR>
 au FileType markdown syntax match Error "\s\{2}$"
 au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
 au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
-au FileType markdown nnoremap <C-g> :!wc %<CR>
 " ============================================
 au FileType tex inoremap ` `'<ESC>i
 au FileType tex inoremap ( ()<ESC>i
@@ -152,5 +176,6 @@ au FileType tex nnoremap <F8> :setlocal spell! spelllang=en_us<CR>
 au FileType tex nnoremap <F9> :setlocal spell! spelllang=sv<CR>
 " =============================================================
 
+
 " Colorscheme
-colorscheme jcs
+colorscheme paramount

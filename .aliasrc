@@ -12,3 +12,7 @@ alias ls="ls -aF --color --group-directories-first"
 alias ll="ls -alF"
 
 alias vw="vim -c VimwikiDiaryIndex"
+
+alias phps="php -S localhost:8000"
+
+DATE=$(date '+%Y-%m-%d')

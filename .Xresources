@@ -1,5 +1,5 @@
 xterm*VT100.geometry: 93x37+0+23
-xterm*faceName: Input Mono Narrow
+xterm*faceName: SF Mono
 Xft.dpi: 120
 xterm*faceSize: 10
 xterm*renderFont: true
@@ -14,42 +14,41 @@ xterm*.Translations: #override \
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
     Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
 
-! JCS colorscheme
-! https://github.com/jcs/dotfiles/blob/master/.config/kitty/kitty.conf
 
-! special
-*.foreground:   #222222
-*.background:   #f6f2de
-*.cursorColor:  #222222
+! paramount.vim/default GVim colorscheme
+
+*.foreground:   #262626
+*.background:   #FFFFFF
+*.cursorColor:  #262626
 
 ! black
-*.color0:       #222222
-*.color8:       #111111
+*.color0:       #262626
+*.color8:       #000000
 
 ! red
-*.color1:       #dc322f
-*.color9:       #cb4b16
+*.color1:       #FF0000
+*.color9:       #FF0000
 
 ! green
-*.color2:       #859900
-*.color10:      #93a1a1
+*.color2:       #2e8b57
+*.color10:      #2e8b57
 
 ! yellow
-*.color3:       #b58900
-*.color11:      #839496
+*.color3:       #fbbc04
+*.color11:      #fbbc04
 
 ! blue
-*.color4:       #268bd2
-*.color12:      #657b83
+*.color4:       #1717ff
+*.color12:      #1717ff
 
 ! magenta
-*.color5:       #d33682
-*.color13:      #6c71c4
+*.color5:       #ff27ff
+*.color13:      #ff27ff
 
 ! cyan
-*.color6:       #2aa198
-*.color14:      #586e75
+*.color6:       #00ffff
+*.color14:      #00ffff
 
 ! white
-*.color7:       #d9d7cc
-*.color15:      #e5e5e5
+*.color7:       #a8a8a8
+*.color15:      #f1f1f1

@@ -10,7 +10,7 @@ endif
 
 let colors_name = "jcs"
 
-hi Comment		cterm=NONE		ctermfg=242
+hi Comment		cterm=italic		ctermfg=242
 hi Constant		cterm=underline		ctermfg=NONE
 hi CursorLineNr		cterm=bold		ctermfg=248
 hi DiffAdd		cterm=bold		ctermfg=NONE
@@ -25,7 +25,6 @@ hi Folded		cterm=standout		ctermfg=NONE
 hi Identifier		cterm=underline		ctermfg=NONE
 hi Ignore		cterm=bold		ctermfg=NONE
 hi IncSearch		cterm=reverse		ctermfg=NONE
-hi MatchParen		cterm=standout		ctermfg=NONE	ctermbg=grey
 hi ModeMsg		cterm=bold		ctermfg=NONE
 hi MoreMsg		cterm=bold		ctermfg=NONE
 hi NonText		cterm=bold		ctermfg=NONE
@@ -54,13 +53,6 @@ hi WarningMsg		cterm=bold		ctermfg=NONE    ctermbg=NONE
 hi WildMenu		cterm=standout		ctermfg=NONE
 
 hi ColorColumn		cterm=NONE		ctermfg=NONE	ctermbg=grey
-
-" enhancement: give vim that minimal newspaper vibe
-hi htmlItalic    cterm=underline        ctermfg=NONE    ctermbg=NONE
-hi texItalStyle  cterm=underline        ctermfg=NONE    ctermbg=NONE
-hi VimwikiItalic cterm=underline        ctermfg=NONE    ctermbg=NONE
-hi Identifier    cterm=NONE             ctermfg=NONE    ctermbg=NONE
-hi texStyleItal  cterm=NONE             ctermfg=NONE    ctermbg=NONE
 
 " enhancement: makes sense for them to have the same color as comments
 hi LineNr       cterm=NONE              ctermfg=242     ctermbg=NONE

@@ -2,10 +2,11 @@
 
 cd $HOME/.dot_files
 
-# nvim
+# vim
 cp $HOME/.vimrc $HOME/.dot_files/.vimrc
 cp -r $HOME/.vim/colors $HOME/.dot_files/.vim/
 cp -r $HOME/.vim/after $HOME/.dot_files/.vim/
+cp -r $HOME/.gvimrc $HOME/.dot_files/.gvimrc
 
 # cmus
 cp $HOME/.config/cmus/rc $HOME/.dot_files/cmus/rc
