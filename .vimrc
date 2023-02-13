@@ -85,7 +85,9 @@ Plug 'lervag/vimtex'
 " tpope stuff, defaults, filemanager & commentary aid
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+    autocmd FileType php setlocal commentstring=//\ %s
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
@@ -109,27 +111,8 @@ Plug 'nvie/vim-flake8'
 Plug'Yggdroot/indentLine'
     let g:markdown_syntax_conceal=0
     let g:vim_json_conceal=0
-    let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*', '*.wiki']
-    let g:indentLine_fileTypeExclude = ['vimwiki']
-    let g:indentLine_bufTypeExclude = ['help', 'terminal', 'vimwiki']
+    let g:indentLine_bufTypeExclude = ['help', 'terminal']
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" For journaling
-Plug 'vimwiki/vimwiki'
-    let g:vimwiki_list = [{
-            \ 'path': '~/nc/doc/wiki/',
-            \ 'syntax': 'markdown',
-            \ 'ext': '.md',
-            \ 'path_html': '~/nc/doc/wiki/html',
-            \ 'custom_wiki2html': 'vimwiki_markdown'}]
-    let g:vimwiki_global_ext=0
-    let g:vimwiki_markdown_link_ext = 1
-    let g:vimwiki_conceallevel=0
-    " altgr + e (entry) / d (diary) / w (web) / h (html) respectively
-    nnoremap € :VimwikiMakeDiaryNote<CR>
-    nnoremap ð :VimwikiDiaryIndex<CR>:VimwikiDiaryGenerateLinks<CR>:%s/\.md//g<CR>
-    nnoremap ł :Vimwiki2HTMLBrowse<CR>
-    nnoremap ħ :silent VimwikiAll2HTML<CR>
 
 Plug 'owickstrom/vim-colors-paramount'
 call plug#end()
@@ -176,6 +159,4 @@ au FileType tex nnoremap <F8> :setlocal spell! spelllang=en_us<CR>
 au FileType tex nnoremap <F9> :setlocal spell! spelllang=sv<CR>
 " =============================================================
 
-
-" Colorscheme
 colorscheme paramount
