@@ -60,8 +60,9 @@ cabbr Q q
 
 " Colorcolumn, indentation, textwidth & keeping sessions for certain filetypes
 au FileType * setlocal colorcolumn=0
-au FileType c,go,java,javascript,php,make,markdown,tex setlocal tw=79 autoindent colorcolumn=81
-au FileType python setlocal tw=88 autoindent colorcolumn=81,89
+au FileType c,go,java,javascript,php,make setlocal tw=79 autoindent colorcolumn=81
+au FileType python,tex,markdown setlocal tw=88 autoindent colorcolumn=89
+au FileType txt setlocal tw=79
 autocmd BufWinLeave *.tex,*.md,*.py :mkview
 autocmd BufWinEnter *.tex,*.md,*.py :loadview
 
@@ -115,6 +116,7 @@ Plug'Yggdroot/indentLine'
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 Plug 'owickstrom/vim-colors-paramount'
+Plug 'igemnace/highlight.vim'
 call plug#end()
 
 " Filetype specific keymaps
@@ -159,4 +161,10 @@ au FileType tex nnoremap <F8> :setlocal spell! spelllang=en_us<CR>
 au FileType tex nnoremap <F9> :setlocal spell! spelllang=sv<CR>
 " =============================================================
 
-colorscheme paramount
+colorscheme minimal_paramount
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfun

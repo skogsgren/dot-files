@@ -1,5 +1,5 @@
 xterm*VT100.geometry: 93x25+0+23
-xterm*faceName: SF Mono
+xterm*faceName: DejaVu Sans Mono:style=Book
 Xft.dpi: 120
 xterm*faceSize: 10
 xterm*renderFont: true
