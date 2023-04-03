@@ -14,17 +14,11 @@ cp $HOME/.config/cmus/rc $HOME/.dot_files/cmus/rc
 # mpv
 cp $HOME/.config/mpv/*.conf $HOME/.dot_files/mpv/
 
-# ncspot
-cp $HOME/.config/ncspot/config.toml $HOME/.dot_files/ncspot/config.toml
-
 # tmux
 cp $HOME/.tmux.conf $HOME/.dot_files/.tmux.conf
 
 # latexmk
 cp $HOME/.latexmkrc $HOME/.dot_files/.latexmkrc
-
-# Xresources
-cp $HOME/.Xresources $HOME/.dot_files/.Xresources
 
 # check git status
 gs="$(git status | grep -i "modified")"

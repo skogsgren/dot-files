@@ -29,6 +29,7 @@ set backspace=indent,eol,start
 if has("termguicolors")
     set termguicolors
 endif
+set pastetoggle=<Insert>
 
 " The bells, oh the bells!
 set noerrorbells visualbell t_vb=
@@ -85,12 +86,14 @@ Plug 'lervag/vimtex'
 
 " tpope stuff, defaults, filemanager & commentary aid
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
     autocmd FileType php setlocal commentstring=//\ %s
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
+
+" file browser
+Plug 'mcchrish/nnn.vim'
+    nnoremap - :NnnPicker %:p:h<CR>
 
 " Fuzzy stuff
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -144,6 +147,7 @@ au FileType markdown syntax match Error "\s\{2}$"
 au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
 au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
 " ============================================
+au FileType tex inoremap <C-]> <C-x><C-]>
 au FileType tex inoremap ` `'<ESC>i
 au FileType tex inoremap ( ()<ESC>i
 au FileType tex inoremap [ []<ESC>i
