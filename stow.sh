@@ -11,11 +11,9 @@ cp -r .vim $HOME/
 cp -r .vimrc $HOME/
 cp -r .gvimrc $HOME/
 cp cmus/rc $HOME/.config/cmus/rc
-cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
 cp .latexmkrc $HOME/.latexmkrc
-cp .Xresources ~/.Xresources
 
 # bashrc
 filename="$HOME/.bashrc"
