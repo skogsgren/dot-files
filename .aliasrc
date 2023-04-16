@@ -1,6 +1,6 @@
 alias lofi-radio="mpv --no-video --no-resume-playback https://www.youtube.com/watch?v=jfKfPfyJRdk"
 alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"
-alias temp="while true; do clear && sensors | egrep '(Package id 0)|(fan1)'; sleep 1; done"
+alias temp="sensors | egrep '(Package id 0)|(fan1)'"
 
 alias tmuxs="tmux new-session -s"
 alias tmuxa="tmux attach-session -t"
@@ -13,3 +13,14 @@ alias egrep="egrep --color"
 DATE=$(date '+%Y-%m-%d')
 
 alias rcp="rsync -rua --progress"
+
+alias t="todo-txt -p"
+
+bind -x '"\C-n": clear && ls'
+bind -x '"\C-y": clear && t ls'
+
+# ctrl-z as toggle between suspend and resume
+if [[ $- == *i* ]]; then
+  stty susp undef
+  bind '"\C-z":" fg\015"'
+fi

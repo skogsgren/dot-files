@@ -30,6 +30,7 @@ if has("termguicolors")
     set termguicolors
 endif
 set pastetoggle=<Insert>
+set hls
 
 " The bells, oh the bells!
 set noerrorbells visualbell t_vb=
@@ -61,9 +62,9 @@ cabbr Q q
 
 " Colorcolumn, indentation, textwidth & keeping sessions for certain filetypes
 au FileType * setlocal colorcolumn=0
-au FileType c,go,java,javascript,php,make setlocal tw=79 autoindent colorcolumn=81
-au FileType python,tex,markdown setlocal tw=88 autoindent colorcolumn=89
-au FileType txt setlocal tw=79
+au FileType c,go,java,javascript,php,make,sh,markdown,tex setlocal tw=79 autoindent colorcolumn=81
+au FileType python setlocal tw=88 autoindent colorcolumn=89
+au FileType txt setlocal tw=79 colorcolumn=81
 autocmd BufWinLeave *.tex,*.md,*.py :mkview
 autocmd BufWinEnter *.tex,*.md,*.py :loadview
 
@@ -118,8 +119,6 @@ Plug'Yggdroot/indentLine'
     let g:indentLine_bufTypeExclude = ['help', 'terminal']
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'igemnace/highlight.vim'
 call plug#end()
 
 " Filetype specific keymaps
