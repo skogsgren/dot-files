@@ -60,6 +60,9 @@ nnoremap <C-p> :bp<CR>
 cabbr W w
 cabbr Q q
 
+" Remap Q to fit current paragraph with gq
+nnoremap Q movipgq`o
+
 " Colorcolumn, indentation, textwidth & keeping sessions for certain filetypes
 au FileType * setlocal colorcolumn=0
 au FileType c,go,java,javascript,php,make,sh,markdown,tex setlocal tw=79 autoindent colorcolumn=81
@@ -71,6 +74,8 @@ autocmd BufWinEnter *.tex,*.md,*.py :loadview
 Plug 'lervag/vimtex'
     let g:vimtex_syntax_conceal_disable=1
     let g:vimtex_quickfix_mode=0
+    let g:vimtex_mappings_enabled=0
+    let g:vimtex_view_method='zathura'
     let g:vimtex_compiler_latexmk = {
         \ 'executable' : 'latexmk',
         \ 'options' : [
