@@ -11,6 +11,9 @@ cp -r $HOME/.gvimrc $HOME/.dot_files/.gvimrc
 # cmus
 cp $HOME/.config/cmus/rc $HOME/.dot_files/cmus/rc
 
+# ncspot
+cp $HOME/.config/ncspot/config.toml $HOME/.dot_files/ncspot/config.toml
+
 # mpv
 cp $HOME/.config/mpv/*.conf $HOME/.dot_files/mpv/
 
