@@ -132,14 +132,7 @@ au FileType c nnoremap <F5> :!make %< <CR>
 " =========================
 
 au FileType python nnoremap <buffer> <F5> :!python3 %<CR>
-au FileType python nnoremap <F6> :Black<CR>
 au FileType python nnoremap <F7> :!flake8 --format="\%(row)d: \%(text)s" %<CR>
-au FileType python nnoremap <C-t> :IndentLinesToggle<CR>
-
-" =========================
-
-au FileType php nnoremap <F6> :!phpcbf --standard=PSR1 %<CR>
-au FileType php nnoremap <F7> :!phpcs --standard=PSR1 %<CR>
 
 " =========================
 
@@ -148,8 +141,6 @@ au FileType markdown inoremap ( ()<ESC>i
 au FileType markdown inoremap <C-b> ****<ESC>hi
 au FileType markdown inoremap <C-t> **<ESC>i
 au FileType markdown nnoremap <F5> :!pandoc -V mainfont="Times New Roman" -V colorlinks=true -V linkcolor=blue --pdf-engine=xelatex -i % -o %<.pdf && open %<.pdf<CR><CR>
-au FileType markdown nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
-au FileType markdown nnoremap <F7> :setlocal spell! spelllang=sv<CR>
 au FileType markdown nnoremap <C-g> :!wc %<CR>
 
 " =========================
@@ -163,13 +154,10 @@ au FileType tex inoremap $ $$<ESC>i
 au FileType tex inoremap <C-b> \textbf{}<ESC>i
 au FileType tex inoremap <C-t> \textit{}<ESC>i
 au FileType tex inoremap <C-s> \sc{}<ESC>i
-au FileType tex inoremap <C-e> \begin{enumerate}[label=(\arabic*.)]<CR><CR>\end{enumerate}<ESC>ki\item 
+au FileType tex inoremap <C-e> \begin{enumerate}<CR><CR>\end{enumerate}<ESC>ki\item 
 au FileType tex nnoremap <C-g> :!texcount %<CR>
 au FileType tex nnoremap <F5> :VimtexCompile<CR>
 au FileType tex nnoremap <F6> :VimtexView<CR>
-au FileType tex nnoremap <F4> :VimtexCompileOutput<CR>
-au FileType tex nnoremap <F8> :setlocal spell! spelllang=en_us<CR>
-au FileType tex nnoremap <F9> :setlocal spell! spelllang=sv<CR>
 
 " ========================
 " CUSTOM COMMANDS
