@@ -28,11 +28,15 @@ do
     fi
 done
 
-# bell
-b="bind 'set bell-style none'"
-if ! grep -q -F "$b" "$filename"; then
-    echo $b >> $filename
-fi
+# various settings
+arr=("bind 'set bell-style none'"
+     "export NO_COLOR='true'")
+for i in ${arr[@]};
+do
+    if ! grep -q -F "$i" "$filename"; then
+        echo $i >> $filename
+    fi
+done
 
 # tmux
 t="if tmux has-session 2>/dev/null; then"
