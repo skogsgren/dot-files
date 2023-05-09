@@ -15,6 +15,8 @@ cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
 cp .latexmkrc $HOME/.latexmkrc
+cp .Xresources $HOME/.Xresources
+xrdb -load $HOME/.Xresources
 
 # bashrc
 filename="$HOME/.bashrc"
