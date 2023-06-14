@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd ~/.dot_files
+cd ~/.dot-files
 
 mkdir -p $HOME/.vim
 mkdir -p $HOME/.config/cmus
@@ -20,9 +20,9 @@ xrdb -load $HOME/.Xresources
 
 # bashrc
 filename="$HOME/.bashrc"
-arr=("$HOME/.dot_files/.aliasrc"
+arr=("$HOME/.dot-files/.aliasrc"
      "/usr/share/doc/fzf/examples/key-bindings.bash"
-     "$HOME/.dot_files/tmux-autocomplete.sh")
+     "$HOME/.dot-files/tmux-autocomplete.sh")
 for i in ${arr[@]};
 do
     if ! grep -q -F "source $i" "$filename"; then
