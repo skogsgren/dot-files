@@ -11,14 +11,12 @@ cp -r .vim $HOME/
 cp -r .vimrc $HOME/
 cp -r .gvimrc $HOME/
 cp cmus/rc $HOME/.config/cmus/rc
-cp ncspot/config.toml $HOME/.config/ncspot/config.toml
 cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
 cp .latexmkrc $HOME/.latexmkrc
 cp .Xresources $HOME/.Xresources
-xrdb -load $HOME/.Xresources
 
-# bashrc
+# source external files in bashrc
 filename="$HOME/.bashrc"
 arr=("$HOME/.dot-files/.aliasrc"
      "/usr/share/doc/fzf/examples/key-bindings.bash"
@@ -30,15 +28,21 @@ do
     fi
 done
 
-# various settings
-arr=("bind 'set bell-style none'"
-     "export NO_COLOR='true'")
-for i in ${arr[@]};
-do
-    if ! grep -q -F "$i" "$filename"; then
-        echo $i >> $filename
-    fi
-done
+# disable bell
+inprc="$HOME/.inputrc"
+bell="set bell-style none"
+
+if [ ! -f "$inprc" ]; then
+    echo "$bell" > "$inprc"
+else
+    echo "$bell" >> $filename
+fi
+
+# NOCOLOR environment variable
+nocolor="export NO_COLOR='true'"
+if ! grep -q -F "$nocolor" "$filename"; then
+    echo $nocolor >> $filename
+fi
 
 # tmux
 t="if tmux has-session 2>/dev/null; then"

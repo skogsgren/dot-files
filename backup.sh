@@ -4,15 +4,11 @@ cd $HOME/.dot-files
 
 # vim
 cp $HOME/.vimrc $HOME/.dot-files/.vimrc
-cp -r $HOME/.vim/colors $HOME/.dot-files/.vim/
 cp -r $HOME/.vim/after $HOME/.dot-files/.vim/
 cp -r $HOME/.gvimrc $HOME/.dot-files/.gvimrc
 
 # cmus
 cp $HOME/.config/cmus/rc $HOME/.dot-files/cmus/rc
-
-# ncspot
-cp $HOME/.config/ncspot/config.toml $HOME/.dot-files/ncspot/config.toml
 
 # mpv
 cp $HOME/.config/mpv/*.conf $HOME/.dot-files/mpv/

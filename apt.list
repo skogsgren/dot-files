@@ -1,7 +1,9 @@
-# for debian 11
+# essential coding packages | debian bookworm:
 # sed 's/#.*//' apt.list | xargs sudo apt install
 fzf
-neovim
-xterm
+silversearcher-ag
+vim
+vim-nox
+vim-gtk3
 tmux
 wget

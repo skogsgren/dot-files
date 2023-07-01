@@ -1,12 +1,18 @@
+xterm*VT100*geometry: 87x28+0+23
+xterm*saveLines: 2000
+xterm*locale: false
+xterm*utf8: true
+xterm*termName: xterm-color
 xterm*metaSendsEscape: true
-xterm*VT100.geometry: 87x28+0+23
+xterm*forceBoxChars: true
 
-XTerm.VT100.locale: false
-XTerm.VT100.utf8: true
+Xft.dpi: 125
 xterm*VT100.font:7x14
 xterm*VT100.utf8Fonts.font:7x14
+xterm*faceName: Go Mono
+xterm*faceSize: 10
+xterm*renderFont: true
 
-xterm*forceBoxChars: true
 xterm*.Translations: #override \
     Ctrl <Key> minus: smaller-vt-font() \n\
     Ctrl <Key> plus: larger-vt-font() \n\
