@@ -5,7 +5,6 @@ alias temp="sensors | egrep '(Package id 0)|(fan1)'"
 alias tmuxs="tmux new-session -s"
 alias tmuxa="tmux attach-session -t"
 
-export LS_COLORS='di=1;31'
 alias ls="ls -aF --color --group-directories-first"
 alias less="less -Q"
 alias egrep="egrep --color"
@@ -17,6 +16,8 @@ alias rcp="rsync -rua --progress"
 alias list-bitmap-fonts="xlsfonts"
 
 alias t="todo-txt -p"
+
+alias venva="source venv/bin/activate"
 
 bind -x '"\C-n": clear && ls'
 bind -x '"\C-y": clear && t ls'
