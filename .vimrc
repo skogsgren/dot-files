@@ -1,41 +1,49 @@
-" Init plug
+" init plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" True color in TMUX
+" true color in TMUX
 if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-
 call plug#begin()
 
-" Basic
+" ===========
+" BASIC STUFF
+" ===========
+
+" leader key
+let mapleader=" "
+let maplocalleader=" "
+set timeoutlen=500
+
 syntax on
 set encoding=utf-8
 set nocompatible
-set timeoutlen=1
 set splitbelow splitright
-set number relativenumber
+set number relativenumber  " relative line numbers
+" enable undo for all files
 set undodir=~/.vim/undodir
 set undofile
-set clipboard=unnamedplus
-set laststatus=2
-set backspace=indent,eol,start
+set clipboard=unnamedplus  " unite clipboards
+set laststatus=2  " statusline
+set backspace=indent,eol,start  " proper backspace behavior
 if has("termguicolors")
     set termguicolors
 endif
-set pastetoggle=<Insert>
-set hls
+set pastetoggle=<Insert>  " sane pastetoggle keyboard shortcut
+set hls  " highlight search matches
+set hidden  " allows switching buffers without saving
 
-" The bells, oh the bells!
+" the bells, oh the bells!
 set noerrorbells visualbell t_vb=
 
-" Swe/eng keyboard
+" swe/eng keyboard
 nnoremap Ö :
 nnoremap ½ ~
 
@@ -49,30 +57,99 @@ set expandtab
 set autochdir
 set tags=tags;
 
-" Clear search highlighting shortcut
+" clear search highlighting shortcut
 nnoremap <CR> :noh<CR><CR>
 
-" Buffer shortcuts
-nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :bp<CR>
 
-" Ignore common errors
-cabbr W w
-cabbr Q q
-
-" Remap Q to fit current paragraph with gq
+" remap Q to fit current paragraph with gq
 nnoremap Q movipgq`o
 
-" Colorcolumn, indentation, textwidth & keeping sessions for certain filetypes
-au FileType * setlocal colorcolumn=0
-au FileType c,go,java,javascript,php,make,sh,markdown,tex,js setlocal tw=79 autoindent colorcolumn=81
-au FileType html,css setlocal autoindent colorcolumn=81
-au FileType python setlocal tw=88 autoindent colorcolumn=89
-au FileType txt setlocal tw=79 colorcolumn=81
-autocmd BufWinLeave *.tex,*.md,*.py :mkview
-autocmd BufWinEnter *.tex,*.md,*.py :loadview
-autocmd FileType css,html setlocal tabstop=2 shiftwidth=2
+" =================
+" PROGRAMMING STUFF
+" =================
+let s:ft = ['c', 'sh', 'python', 'javascript', 'html', 'css', 'go', 'php']
 
+" textwidth and autoindent and colorcolumn for specific filetypes
+for [i, fileType] in items(s:ft)
+    execute 'au FileType ' . fileType . ' setlocal tw=79 autoindent colorcolumn=81'
+endfor
+
+" special exceptions
+au FileType javascript,html,css setlocal shiftwidth=2 tabstop=2
+au FileType html,css setlocal tw=9000
+au FileType plain,txt,markdown,tex setlocal tw=79 colorcolumn=81
+
+" maintain sessions for certain filetypes
+autocmd BufWinLeave *.tex,*.md :mkview
+autocmd BufWinEnter *.tex,*.md :loadview
+
+Plug 'tpope/vim-sleuth'  " identify tabstop & shiftwidth
+Plug 'tpope/vim-sensible'  " sensible defaults
+Plug 'tpope/vim-commentary'  " commentary aid
+    autocmd FileType php setlocal commentstring=//\ %s
+    nnoremap <C-c> :Commentary<CR>
+    vnoremap <C-c> :Commentary<CR>
+
+" git helpers
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" fuzzy stuff
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+    let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.75 } }
+    nnoremap <leader><space> :Buffers<CR>
+    nnoremap <leader>s :Ag ../<CR>
+    nnoremap <leader>f :Files ../<CR>
+    nnoremap <leader>g :GFiles<CR>
+
+" shows trailing spaces
+Plug 'csexton/trailertrash.vim'
+    let g:trailertrash_blacklist = ['markdown']
+
+" indentation guides
+Plug 'Yggdroot/indentLine'
+    let g:markdown_syntax_conceal=0
+    let g:vim_json_conceal=0
+    let g:indentLine_bufTypeExclude = ['help', 'terminal']
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" css color code preview
+Plug 'ap/vim-css-color'
+
+" LSP via COC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    set updatetime=200
+    set signcolumn=yes
+    " automatically highlight variable occurences
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+    " custom keymaps
+	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+	                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    nmap <leader>rn <Plug>(coc-rename)
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    " disable coc for filetypes not in list
+    function! s:disable_coc_for_type()
+    	if index(s:ft, &filetype) == -1
+    	        let b:coc_enabled = 0
+    	endif
+    endfunction 
+    augroup CocGroup
+    	autocmd!
+    	autocmd BufNew,BufEnter * call s:disable_coc_for_type()
+    augroup end
+
+
+" ============
+" MISC PLUGINS
+" ============
+
+" latex plugin for auto compiling
 Plug 'lervag/vimtex'
     let g:vimtex_syntax_conceal_disable=1
     let g:vimtex_quickfix_mode=0
@@ -91,35 +168,8 @@ Plug 'lervag/vimtex'
         au User VimtexEventQuit call vimtex#compiler#clean(0)
     augroup END
 
-" tpope stuff, defaults, filemanager & commentary aid
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
-    autocmd FileType php setlocal commentstring=//\ %s
-    nnoremap <C-c> :Commentary<CR>
-    vnoremap <C-c> :Commentary<CR>
-
-" file browser
-Plug 'mcchrish/nnn.vim'
-    nnoremap - :NnnPicker %:p:h<CR>
-
-" Fuzzy stuff
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-    let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.75 } }
-    nnoremap <C-s> :Ag<CR>
-    nnoremap <C-f> :Files<CR>
-    nnoremap <C-g> :GFiles<CR>
-
-" Shows trailing spaces
-Plug 'csexton/trailertrash.vim'
-    let g:trailertrash_blacklist = ['md', 'markdown']
-
-" Indentation guides
-Plug 'Yggdroot/indentLine'
-    let g:markdown_syntax_conceal=0
-    let g:vim_json_conceal=0
-    let g:indentLine_bufTypeExclude = ['help', 'terminal']
-    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" minimal syntax colorscheme
+Plug 'dim13/gocode.vim'
 
 call plug#end()
 
@@ -132,7 +182,6 @@ au FileType c nnoremap <F5> :!make %< <CR>
 " =========================
 
 au FileType python nnoremap <buffer> <F5> :!python3 %<CR>
-au FileType python nnoremap <F7> :!flake8 --format="\%(row)d: \%(text)s" %<CR>
 
 " =========================
 
@@ -159,11 +208,17 @@ au FileType tex nnoremap <C-g> :!texcount %<CR>
 au FileType tex nnoremap <F5> :VimtexCompile<CR>
 au FileType tex nnoremap <F6> :VimtexView<CR>
 
-" ========================
+" ===============
 " CUSTOM COMMANDS
-" ========================
+" ===============
 
 command! Texo set VimtexCompileOutput
+
+function! s:readTemplate(file)
+	execute 'r ~/.vim/templates/' . a:file
+endfunction
+
+command! HtmlTemplate call s:readTemplate('boilerplate.html')
 
 " spell checker with keybinding <C-l>
 function! s:spellHelper(lang)
@@ -174,12 +229,25 @@ endfunction
 command! Svspell call s:spellHelper("sv")
 command! Enspell call s:spellHelper("en_us")
 
-" highlight two spaces at the end of markdown files and set colorscheme
+" highlight two spaces at the end of markdown files
 function! s:mdHiLineEnd()
     au FileType markdown syntax match Error "\s\{2}$"
     au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
     au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
 endfunction
-autocmd! ColorScheme minimal_paramount call s:mdHiLineEnd()
 
-colorscheme minimal_paramount
+" change colorcolumn color to gray
+function! s:grayCC()
+    hi ColorColumn guibg=gray
+endfunction
+
+autocmd! ColorScheme gocode call s:mdHiLineEnd()
+autocmd! ColorScheme gocode call s:grayCC()
+
+colorscheme gocode
+
+" ignore common errors
+cabbr W w
+cabbr Q q
+cabbr Wq wq
+cabbr WQ wq
