@@ -12,6 +12,7 @@ cp $HOME/.config/cmus/rc $HOME/.dot-files/cmus/rc
 
 # mpv
 cp $HOME/.config/mpv/*.conf $HOME/.dot-files/mpv/
+cp -r $HOME/.config/mpv/scripts $HOME/.dot-files/mpv/scripts
 
 # tmux
 cp $HOME/.tmux.conf $HOME/.dot-files/.tmux.conf
