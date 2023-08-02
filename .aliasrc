@@ -19,6 +19,9 @@ alias t="todo-txt -p"
 
 alias venva="source venv/bin/activate"
 
+alias gits="git status"
+alias gitl="git log --oneline"
+
 bind -x '"\C-n": clear && ls'
 bind -x '"\C-y": clear && t ls'
 
