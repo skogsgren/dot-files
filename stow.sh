@@ -3,18 +3,15 @@
 cd ~/.dot-files
 
 mkdir -p $HOME/.vim
-mkdir -p $HOME/.config/cmus
 mkdir -p $HOME/.config/ncspot
 mkdir -p $HOME/.config/mpv
 
 cp -r .vim $HOME/
 cp -r .vimrc $HOME/
 cp -r .gvimrc $HOME/
-cp cmus/rc $HOME/.config/cmus/rc
 cp -r mpv $HOME/.config
 cp .tmux.conf $HOME/.tmux.conf
 cp .latexmkrc $HOME/.latexmkrc
-cp .Xresources $HOME/.Xresources
 
 # source external files in bashrc
 filename="$HOME/.bashrc"
