@@ -22,16 +22,3 @@ cp $HOME/.latexmkrc $HOME/.dot-files/.latexmkrc
 
 # Xresources
 cp $HOME/.Xresources .Xresources
-
-# check git status
-gs="$(git status | grep -i "modified")"
-# echo "${gs}"
-
-# if there is a new change
-if [[ $gs == *"modified"* ]]; then
-  echo "push"
-fi
-
-git add -u;
-git commit -m "`date +'%Y-%m-%d %H:%M:%S'`";
-git push origin main
