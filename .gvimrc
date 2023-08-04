@@ -1,3 +1,3 @@
 set guioptions-=m
-set guifont=Go\ Mono\ 9
-set lines=37 columns=93
+set guifont=DejaVu\ Sans\ Mono\ 10
+set lines=28 columns=87

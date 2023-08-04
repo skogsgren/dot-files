@@ -28,8 +28,8 @@ set nocompatible
 set splitbelow splitright
 set number relativenumber  " relative line numbers
 " enable undo for all files
-set undodir=~/.vim/undodir
-set undofile
+    set undodir=~/.vim/undodir
+    set undofile
 set clipboard=unnamedplus  " unite clipboards
 set laststatus=2  " statusline
 set backspace=indent,eol,start  " proper backspace behavior
@@ -47,7 +47,7 @@ set noerrorbells visualbell t_vb=
 nnoremap Ö :
 nnoremap ½ ~
 
-" Indentation
+" indentation
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -59,7 +59,6 @@ set tags=tags;
 
 " clear search highlighting shortcut
 nnoremap <CR> :noh<CR><CR>
-
 
 " remap Q to fit current paragraph with gq
 nnoremap Q movipgq`o
@@ -75,14 +74,14 @@ for [i, fileType] in items(s:ft)
 endfor
 
 " special exceptions
-au FileType javascript,html,css setlocal shiftwidth=2 tabstop=2
-au FileType html,css setlocal tw=9000
+au FileType html,css setlocal tw=0
 au FileType plain,txt,markdown,tex setlocal tw=79 colorcolumn=81
 
 " maintain sessions for certain filetypes
 autocmd BufWinLeave *.tex,*.md :mkview
 autocmd BufWinEnter *.tex,*.md :loadview
 
+Plug 'tpope/vim-surround' " surrounding pair aid
 Plug 'tpope/vim-sleuth'  " identify tabstop & shiftwidth
 Plug 'tpope/vim-sensible'  " sensible defaults
 Plug 'tpope/vim-commentary'  " commentary aid
@@ -119,31 +118,30 @@ Plug 'ap/vim-css-color'
 
 " LSP via COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    set updatetime=200
-    set signcolumn=yes
+    set updatetime=200 " lower updatetime
+    set signcolumn=yes " always show gutter
     " automatically highlight variable occurences
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+        autocmd CursorHold * silent call CocActionAsync('highlight')
     " custom keymaps
 	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 	                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-    nmap <leader>rn <Plug>(coc-rename)
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
+        nmap <leader>rn <Plug>(coc-rename)
+        nmap <silent> [g <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]g <Plug>(coc-diagnostic-next)
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
     " disable coc for filetypes not in list
-    function! s:disable_coc_for_type()
-    	if index(s:ft, &filetype) == -1
-    	        let b:coc_enabled = 0
-    	endif
-    endfunction 
-    augroup CocGroup
-    	autocmd!
-    	autocmd BufNew,BufEnter * call s:disable_coc_for_type()
-    augroup end
-
+        function! s:disable_coc_for_type()
+        	if index(s:ft, &filetype) == -1
+        	        let b:coc_enabled = 0
+        	endif
+        endfunction
+        augroup CocGroup
+        	autocmd!
+        	autocmd BufNew,BufEnter * call s:disable_coc_for_type()
+        augroup end
 
 " ============
 " MISC PLUGINS
@@ -168,9 +166,6 @@ Plug 'lervag/vimtex'
         au User VimtexEventQuit call vimtex#compiler#clean(0)
     augroup END
 
-" minimal syntax colorscheme
-Plug 'dim13/gocode.vim'
-
 call plug#end()
 
 " =========================
@@ -191,6 +186,7 @@ au FileType markdown inoremap <C-b> ****<ESC>hi
 au FileType markdown inoremap <C-t> **<ESC>i
 au FileType markdown nnoremap <F5> :!pandoc -V mainfont="Times New Roman" -V colorlinks=true -V linkcolor=blue --pdf-engine=xelatex -i % -o %<.pdf && open %<.pdf<CR><CR>
 au FileType markdown nnoremap <C-g> :!wc %<CR>
+au FileType markdown inoremap <C-c> <!-- --><ESC>bi <ESC>i
 
 " =========================
 
@@ -208,17 +204,9 @@ au FileType tex nnoremap <C-g> :!texcount %<CR>
 au FileType tex nnoremap <F5> :VimtexCompile<CR>
 au FileType tex nnoremap <F6> :VimtexView<CR>
 
-" ===============
-" CUSTOM COMMANDS
-" ===============
-
-command! Texo set VimtexCompileOutput
-
-function! s:readTemplate(file)
-	execute 'r ~/.vim/templates/' . a:file
-endfunction
-
-command! HtmlTemplate call s:readTemplate('boilerplate.html')
+" ====
+" MISC
+" ====
 
 " spell checker with keybinding <C-l>
 function! s:spellHelper(lang)
@@ -230,23 +218,11 @@ command! Svspell call s:spellHelper("sv")
 command! Enspell call s:spellHelper("en_us")
 
 " highlight two spaces at the end of markdown files
-function! s:mdHiLineEnd()
-    au FileType markdown syntax match Error "\s\{2}$"
-    au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
-    au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
-endfunction
+au FileType markdown syntax match Error "\s\{2}$"
+au FileType markdown highlight MarkdownTrailingSpaces ctermbg=248
+au FileType markdown syntax match MarkdownTrailingSpaces "\s\{2}$"
 
-" change colorcolumn color to gray
-function! s:grayCC()
-    hi ColorColumn guibg=gray
-endfunction
-
-autocmd! ColorScheme gocode call s:mdHiLineEnd()
-autocmd! ColorScheme gocode call s:grayCC()
-
-colorscheme gocode
-
-" ignore common errors
+" ignore common errors (need to come last)
 cabbr W w
 cabbr Q q
 cabbr Wq wq
