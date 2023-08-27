@@ -25,15 +25,21 @@ do
     fi
 done
 
-# disable bell
+# inputrc
 inprc="$HOME/.inputrc"
 bell="set bell-style none"
-
+arr=("set bell-style none"
+     "set show-all-if-unmodified on"
+     "set show-all-if-ambiguous on")
 if [ ! -f "$inprc" ]; then
-    echo "$bell" > "$inprc"
-else
-    echo "$bell" >> $filename
+    touch $inprc
 fi
+for i in ${arr[@]};
+do
+    if ! grep -q -F "source $i" "$inprc"; then
+        echo "source "$i >> $inprc
+    fi
+done
 
 # NOCOLOR environment variable
 nocolor="export NO_COLOR='true'"
