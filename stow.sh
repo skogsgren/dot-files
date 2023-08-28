@@ -37,7 +37,7 @@ fi
 for i in ${arr[@]};
 do
     if ! grep -q -F "source $i" "$inprc"; then
-        echo "source "$i >> $inprc
+        echo $i >> $inprc
     fi
 done
 
