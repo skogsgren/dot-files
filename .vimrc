@@ -102,6 +102,8 @@ Plug 'junegunn/fzf.vim'
     nnoremap <leader>f :Files ../<CR>
     nnoremap <leader>g :GFiles<CR>
 
+Plug 'mcchrish/nnn.vim'
+
 " shows trailing spaces
 Plug 'csexton/trailertrash.vim'
     let g:trailertrash_blacklist = ['markdown']
