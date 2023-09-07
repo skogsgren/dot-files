@@ -230,3 +230,5 @@ cabbr W w
 cabbr Q q
 cabbr Wq wq
 cabbr WQ wq
+
+au FileType plain,txt,markdown,tex setlocal tw=79 colorcolumn=81
