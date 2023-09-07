@@ -160,6 +160,7 @@ Plug 'lervag/vimtex'
         \   '-xelatex',
         \   '-file-line-error',
         \   '-synctex=0',
+        \   '-shell-escape',
         \   '-interaction=nonstopmode',
         \ ],
         \}
