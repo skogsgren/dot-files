@@ -1,6 +1,6 @@
 " text width
 setlocal tw=79
-setlocal colorcolumn 81
+setlocal colorcolumn=81
 
 " keymappings
 inoremap [ []<ESC>i
