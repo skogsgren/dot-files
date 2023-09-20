@@ -40,6 +40,10 @@ set pastetoggle=<Insert>  " sane pastetoggle keyboard shortcut
 set hls  " highlight search matches
 set hidden  " allows switching buffers without saving
 
+" maintain sessions for certain filetypes
+autocmd BufWinLeave *.tex,*.md :mkview
+autocmd BufWinEnter *.tex,*.md :loadview
+
 " the bells, oh the bells!
 set noerrorbells visualbell t_vb=
 
