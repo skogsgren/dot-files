@@ -47,7 +47,7 @@ set noerrorbells visualbell t_vb=
 nnoremap Ö :
 nnoremap ½ ~
 
-" indentation
+" default indentation
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -84,5 +84,3 @@ cabbr W w
 cabbr Q q
 cabbr Wq wq
 cabbr WQ wq
-
-au FileType plain,txt,markdown,tex setlocal tw=79 colorcolumn=81

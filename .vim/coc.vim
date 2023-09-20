@@ -1,3 +1,5 @@
+let s:ft = ['c', 'sh', 'python', 'javascript', 'html', 'css', 'go', 'php']
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     set updatetime=200 " lower updatetime
     set signcolumn=yes " always show gutter
