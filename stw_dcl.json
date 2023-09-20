@@ -5,6 +5,7 @@
 		"cfg": [
 			"source $HOME/.dot-files/.aliasrc",
 			"source $HOME/.dot-files/tmux-autocomplete.sh",
+			"source $HOME/.dot-files/nnn.bash",
 			"tmux has-session 2>/dev/null && tmux ls",
 			"export GOPATH=$HOME/.go",
 			"export PATH=$PATH:$GOROOT/bin:$GOPATH/bin"
