@@ -26,39 +26,39 @@ def stow(c: str, act: dict):
     if c == "all":
         for a in act:
             stow(c=a, act=act)
-    match act[c]["type"]:
-        case "files":
-            for f in act[c]["files"]:
-                f = Path(f)
-                if f.is_dir():
-                    cptree(str(f.absolute()), f"{act[c]['dest']}/{f.name}")
-                else:
-                    copy(f.absolute(), f"{act[c]['dest']}/{f.name}")
-        case "text":
-            with open(os.path.expandvars(act[c]["dest"]), "r") as f:
-                lines = [x.rstrip() for x in f]
-            with open(os.path.expandvars(act[c]["dest"]), "a") as f:
-                for l in act[c]["cfg"]:
-                    if l not in lines:
-                        f.write(l + "\n")
-        case "vim":
-            if act[c]["full"]:
-                with open(".vimrc", "r") as f:
-                    lines = [x for x in f]
-                with open(os.path.expandvars("$HOME/.vimrc"), "w") as f:
-                    for l in lines:
-                        if l == "call plug#begin()\n":
-                            f.write(l)
-                            for x in act[c]["extras"]:
-                                f.write(f"source $HOME/.vim/{x}\n")
-                        else:
-                            f.write(l)
-            for f in act[c]["files"]:
-                f = Path(f)
-                if f.is_dir():
-                    cptree(str(f.absolute()), os.path.expandvars(f"$HOME/{f}"))
-                else:
-                    copy(f.absolute(), os.path.expandvars(f"$HOME/{f}"))
+    tp = act[c]["type"]
+    if tp == "files":
+        for f in act[c]["files"]:
+            f = Path(f)
+            if f.is_dir():
+                cptree(str(f.absolute()), f"{act[c]['dest']}/{f.name}")
+            else:
+                copy(f.absolute(), f"{act[c]['dest']}/{f.name}")
+    elif tp == "text":
+        with open(os.path.expandvars(act[c]["dest"]), "r") as f:
+            lines = [x.rstrip() for x in f]
+        with open(os.path.expandvars(act[c]["dest"]), "a") as f:
+            for l in act[c]["cfg"]:
+                if l not in lines:
+                    f.write(l + "\n")
+    elif tp == "vim":
+        if act[c]["full"]:
+            with open(".vimrc", "r") as f:
+                lines = [x for x in f]
+            with open(os.path.expandvars("$HOME/.vimrc"), "w") as f:
+                for l in lines:
+                    if l == "call plug#begin()\n":
+                        f.write(l)
+                        for x in act[c]["extras"]:
+                            f.write(f"source $HOME/.vim/{x}\n")
+                    else:
+                        f.write(l)
+        for f in act[c]["files"]:
+            f = Path(f)
+            if f.is_dir():
+                cptree(str(f.absolute()), os.path.expandvars(f"$HOME/{f}"))
+            else:
+                copy(f.absolute(), os.path.expandvars(f"$HOME/{f}"))
 
 
 if __name__ == "__main__":
