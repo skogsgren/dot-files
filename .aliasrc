@@ -30,3 +30,5 @@ if [[ $- == *i* ]]; then
   stty susp undef
   bind '"\C-z":" fg\015"'
 fi
+
+alias scratch="vim /tmp/scratchpad"
