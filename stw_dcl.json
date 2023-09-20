@@ -1,0 +1,67 @@
+{
+	"bash": {
+		"type": "text",
+		"dest": "$HOME/.bashrc",
+		"cfg": [
+			"source $HOME/.dot-files/.aliasrc",
+			"source $HOME/.dot-files/tmux-autocomplete.sh",
+			"tmux has-session 2>/dev/null && tmux ls",
+			"export GOPATH=$HOME/.go",
+			"export PATH=$PATH:$GOROOT/bin:$GOPATH/bin"
+		]
+	},
+
+	"inputrc": {
+		"type": "text",
+		"dest": "$HOME/.inputrc",
+		"cfg": [
+			"set bell-style none",
+     			"set show-all-if-unmodified on",
+     			"set show-all-if-ambiguous on"
+		]
+	},
+
+	"vim-minimal": {
+		"type": "vim",
+		"full": false,
+		"files": [".vim", ".vimrc"]
+	},
+
+	"vim-base": {
+		"type": "vim",
+		"full": true,
+		"files": [".vim"],
+		"extras": ["prgrm.vim"]
+	},
+
+	"vim-full": {
+		"type": "vim",
+		"full": true,
+		"files": [".vim", ".gvimrc"],
+		"extras": ["prgrm.vim", "coc.vim", "vimtex.vim"]
+	},
+
+	"mpv": {
+		"type": "files",
+		"files": ["mpv"],
+		"dest": "$HOME/.config"
+	},
+
+	"ncspot": {
+		"type": "files",
+		"files": ["ncspot"],
+		"dest": "$HOME/.config"
+	},
+
+	"tmux": {
+		"type": "files",
+		"files": [".tmux.conf"],
+		"dest": "$HOME"
+	},
+
+	"latexmkrc": {
+		"type": "files",
+		"files": [".latexmkrc"],
+		"dest": "$HOME"
+	}
+}
