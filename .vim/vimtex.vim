@@ -32,4 +32,4 @@ au FileType tex nnoremap <F5> :VimtexCompile<CR>
 au FileType tex nnoremap <F6> :VimtexView<CR>
 
 setlocal tw=79
-setlocal colorcolumn 81
+setlocal colorcolumn=81
