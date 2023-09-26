@@ -64,5 +64,11 @@
 		"type": "files",
 		"files": [".latexmkrc"],
 		"dest": "$HOME"
+	},
+
+	"xterm": {
+		"type": "files",
+		"files": [".Xresources"],
+		"dest": "$HOME"
 	}
 }

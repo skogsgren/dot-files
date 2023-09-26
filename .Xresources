@@ -1,0 +1,19 @@
+xterm*metaSendsEscape: true
+xterm*VT100.geometry: 87x28+0+23
+xterm.VT100.locale: false
+xterm.VT100.utf8: true
+
+xterm*faceName: DejaVu Sans Mono:style=Book
+Xft.dpi: 125
+xterm*faceSize: 10
+xterm*renderFont: true
+
+xterm*forceBoxChars: true
+xterm*.Translations: #override \
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+    Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+    Shift Alt <Key>V: insert-selection(PRIMARY) \n\
+    Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
+    Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)

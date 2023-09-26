@@ -47,10 +47,10 @@ def stow(c: str, act: dict):
                 lines = [x for x in f]
             with open(os.path.expandvars("$HOME/.vimrc"), "w") as f:
                 for l in lines:
-                    if l == "call plug#begin()\n":
-                        f.write(l)
+                    if l == "call plug#end()\n":
                         for x in act[c]["extras"]:
                             f.write(f"source $HOME/.vim/{x}\n")
+                        f.write(l)
                     else:
                         f.write(l)
         for f in act[c]["files"]:
