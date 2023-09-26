@@ -31,5 +31,5 @@ au FileType tex nnoremap <C-g> :!texcount %<CR>
 au FileType tex nnoremap <F5> :VimtexCompile<CR>
 au FileType tex nnoremap <F6> :VimtexView<CR>
 
-setlocal tw=79
-setlocal colorcolumn=81
+au FileType tex setlocal tw=79
+au FileType tex setlocal colorcolumn=81
