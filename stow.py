@@ -59,6 +59,8 @@ def stow(c: str, act: dict):
                 cptree(str(f.absolute()), os.path.expandvars(f"$HOME/{f}"))
             else:
                 copy(f.absolute(), os.path.expandvars(f"$HOME/{f}"))
+        if not os.path.exists(os.path.expandvars("$HOME/.vim/undodir")):
+            os.makedirs(os.path.expandvars("$HOME/.vim/undodir"))
 
 
 if __name__ == "__main__":
