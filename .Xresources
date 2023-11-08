@@ -1,9 +1,9 @@
 xterm*metaSendsEscape: true
-xterm*VT100.geometry: 87x28+0+23
-xterm.VT100.locale: false
-xterm.VT100.utf8: true
+xterm*VT100.geometry: 80x24+0+23
+xterm*VT100.locale: false
+xterm*VT100.utf8: true
 
-xterm*faceName: DejaVu Sans Mono:style=Book
+xterm*faceName: Monego
 Xft.dpi: 125
 xterm*faceSize: 10
 xterm*renderFont: true
