@@ -1,0 +1,43 @@
+{
+	"vim-minimal": {
+		"files": [".vimrc", ".vim/ftplugin", ".vim/after"],
+		"src": "$HOME"
+	},
+
+	"vim-base": {
+		"inherits": ["vim-minimal"],
+		"files": [".vim/prgrm.vim"],
+		"src": "$HOME"
+	},
+
+	"vim-full": {
+		"inherits": ["vim-minimal", "vim-base"],
+		"files": [".gvimrc", ".vim/coc.vim", ".vim/coc-settings.json"],
+		"src": "$HOME"
+	},
+
+	"mpv": {
+		"files": ["mpv/mpv.conf", "mpv/input.conf"],
+		"src": "$HOME/.config/"
+	},
+
+	"ncspot": {
+		"files": ["ncspot/config.toml"],
+		"src": "$HOME/.config"
+	},
+
+	"tmux": {
+		"files": [".tmux.conf"],
+		"src": "$HOME"
+	},
+
+	"latexmkrc": {
+		"files": [".latexmkrc"],
+		"src": "$HOME"
+	},
+
+	"xterm": {
+		"files": [".Xresources"],
+		"src": "$HOME"
+	}
+}
