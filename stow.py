@@ -2,7 +2,7 @@ import argparse
 import json
 import os
 import sys
-from shutil import copy, copytree
+from shutil import copy2, copytree, rmtree
 from pathlib import Path
 
 
@@ -29,10 +29,15 @@ def stow(c: str, act: dict):
     if tp == "files":
         for f in act[c]["files"]:
             f = Path(f)
+            srcdir = Path(f)
+            destdir = Path(os.path.expandvars(f"$HOME/{f}"))
             if f.is_dir():
-                copytree(str(f.absolute()), f"{act[c]['dest']}/{f.name}")
+                if srcdir.is_dir():
+                    if destdir.exists():
+                        rmtree(destdir.absolute())
+                    copytree(srcdir, destdir)
             else:
-                copy(f.absolute(), f"{act[c]['dest']}/{f.name}")
+                copy2(srcdir, destdir)
     elif tp == "text":
         with open(os.path.expandvars(act[c]["dest"]), "r") as f:
             lines = [x.rstrip() for x in f]
@@ -53,11 +58,14 @@ def stow(c: str, act: dict):
                     else:
                         f.write(l)
         for f in act[c]["files"]:
-            f = Path(f)
-            if f.is_dir():
-                copytree(str(f.absolute()), os.path.expandvars(f"$HOME/{f}"))
+            srcdir = Path(f)
+            destdir = Path(os.path.expandvars(f"$HOME/{f}"))
+            if srcdir.is_dir():
+                if destdir.exists():
+                    rmtree(destdir.absolute())
+                copytree(srcdir, destdir)
             else:
-                copy(f.absolute(), os.path.expandvars(f"$HOME/{f}"))
+                copy2(srcdir, destdir)
         if not os.path.exists(os.path.expandvars("$HOME/.vim/undodir")):
             os.makedirs(os.path.expandvars("$HOME/.vim/undodir"))
 
