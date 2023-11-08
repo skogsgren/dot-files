@@ -11,3 +11,11 @@ nnn ()
         rm -f "$NNN_TMPFILE" > /dev/null
     }
 }
+
+# enables trash-cli
+export NNN_TRASH=1
+
+# nnn alias
+alias "nnn"="nnn -de"
+alias "n"="nnn"
+alias "nn"="nnn"
