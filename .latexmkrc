@@ -12,3 +12,4 @@ push @generated_exts, "nls";
 push @generated_exts, "xdv";
 push @generated_exts, "synctex.gz";
 push @generated_exts, "run.xml";
+$pdflatex = 'xelatex --shell-escape %O %S';
