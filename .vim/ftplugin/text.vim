@@ -1,2 +1,4 @@
 setlocal tw=79
-setlocal colorcolumn=81
+setlocal norelativenumber
+setlocal nonumber
+set signcolumn=no

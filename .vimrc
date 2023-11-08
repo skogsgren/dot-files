@@ -28,8 +28,8 @@ set nocompatible
 set splitbelow splitright
 set number relativenumber  " relative line numbers
 " enable undo for all files
-    set undodir=~/.vim/undodir
-    set undofile
+set undodir=~/.vim/undodir
+set undofile
 set clipboard=unnamedplus  " unite clipboards
 set laststatus=2  " statusline
 set backspace=indent,eol,start  " proper backspace behavior
@@ -39,10 +39,6 @@ endif
 set pastetoggle=<Insert>  " sane pastetoggle keyboard shortcut
 set hls  " highlight search matches
 set hidden  " allows switching buffers without saving
-
-" maintain sessions for certain filetypes
-autocmd BufWinLeave *.tex,*.md :mkview
-autocmd BufWinEnter *.tex,*.md :loadview
 
 " the bells, oh the bells!
 set noerrorbells visualbell t_vb=
@@ -69,8 +65,10 @@ nnoremap Q movipgq`o
 
 Plug 'tpope/vim-commentary'  " commentary aid
     autocmd FileType php setlocal commentstring=//\ %s
+    autocmd FileType c setlocal commentstring=//\ %s
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
+
 
 call plug#end()
 
