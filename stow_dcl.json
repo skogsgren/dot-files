@@ -39,7 +39,7 @@
 		"type": "vim",
 		"full": true,
 		"files": [".vim", ".gvimrc"],
-		"extras": ["prgrm.vim", "coc.vim", "vimtex.vim"]
+		"extras": ["prgrm.vim", "coc.vim"]
 	},
 
 	"mpv": {
