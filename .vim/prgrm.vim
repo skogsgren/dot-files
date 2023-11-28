@@ -1,10 +1,14 @@
 Plug 'tpope/vim-surround' " surrounding pair aid
 Plug 'tpope/vim-sleuth'  " identify tabstop & shiftwidth
 Plug 'tpope/vim-sensible'  " sensible defaults
+Plug 'airblade/vim-gitgutter' " show git changes
+Plug 'mcchrish/nnn.vim' " n³ file manager
+Plug 'preservim/vim-indent-guides' " indentation guides
+Plug 'ap/vim-css-color' " css color code preview
 
-" git helpers
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+" show trailing spaces
+Plug 'csexton/trailertrash.vim'
+    let g:trailertrash_blacklist = ['markdown', 'md']
 
 " fuzzy stuff
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -14,19 +18,3 @@ Plug 'junegunn/fzf.vim'
     nnoremap <leader>s :Ag ../<CR>
     nnoremap <leader>f :Files ../<CR>
     nnoremap <leader>g :GFiles<CR>
-
-Plug 'mcchrish/nnn.vim'
-
-" shows trailing spaces
-Plug 'csexton/trailertrash.vim'
-    let g:trailertrash_blacklist = ['markdown']
-
-" indentation guides
-Plug 'Yggdroot/indentLine'
-    let g:markdown_syntax_conceal=0
-    let g:vim_json_conceal=0
-    let g:indentLine_bufTypeExclude = ['help', 'terminal']
-    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" css color code preview
-Plug 'ap/vim-css-color'
