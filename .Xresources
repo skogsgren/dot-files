@@ -1,9 +1,14 @@
+xterm.termName: xterm-256-color
+xterm*saveLines: 10000
+xterm*highlightSelection: true
+xterm*trimSelection: true
+
 xterm*metaSendsEscape: true
 xterm*VT100.geometry: 80x24+0+23
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: Monego
+xterm*faceName: Go Mono
 Xft.dpi: 125
 xterm*faceSize: 10
 xterm*renderFont: true
