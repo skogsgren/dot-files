@@ -17,3 +17,5 @@ nnoremap <F7> :!latexmk -c<CR>
 setlocal tw=79
 setlocal colorcolumn=81
 setlocal norelativenumber nonumber signcolumn=no
+
+autocmd VimLeave *.tex :!latexmk -c %
