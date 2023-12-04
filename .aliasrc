@@ -1,4 +1,6 @@
 alias lofi-radio="mpv --no-video --no-resume-playback https://www.youtube.com/watch?v=jfKfPfyJRdk"
+alias indie-rock="mpv --no-video --no-resume-playback https://somafm.com/indiepop130.pls"
+
 alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"
 alias temp="sensors | egrep '(Package id 0)|(fan1)'"
 
@@ -15,7 +17,7 @@ alias rcp="rsync -rua --progress"
 
 alias list-bitmap-fonts="xlsfonts"
 
-alias t="todo-txt -p"
+alias t="todo-txt"
 
 alias venva="source venv/bin/activate"
 
@@ -32,3 +34,5 @@ if [[ $- == *i* ]]; then
 fi
 
 alias scratch="vim /tmp/scratchpad"
+
+alias calsync="vdirsyncer discover && vdirsyncer sync"
