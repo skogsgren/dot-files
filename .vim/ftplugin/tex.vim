@@ -13,6 +13,7 @@ nnoremap <C-g> :!texcount %<CR>
 nnoremap <F5> :!latexmk -xelatex %<CR>
 nnoremap <F6> :!open %<.pdf<CR>
 nnoremap <F7> :!latexmk -c<CR>
+nnoremap <F8> :!ctags -R bibliography.bib<CR>
 
 setlocal tw=79
 setlocal colorcolumn=81
