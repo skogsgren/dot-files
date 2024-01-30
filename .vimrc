@@ -86,3 +86,5 @@ cabbr W w
 cabbr Q q
 cabbr Wq wq
 cabbr WQ wq
+
+let g:tex_flavor = 'latex'
