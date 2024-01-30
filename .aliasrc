@@ -7,7 +7,7 @@ alias temp="sensors | egrep '(Package id 0)|(fan1)'"
 alias tmuxs="tmux new-session -s"
 alias tmuxa="tmux attach-session -t"
 
-alias ls="ls -aF --color --group-directories-first"
+alias dls="du -sh"
 alias less="less -Q"
 alias egrep="egrep --color"
 
