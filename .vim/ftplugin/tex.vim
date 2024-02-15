@@ -15,8 +15,10 @@ nnoremap <F6> :!open %<.pdf<CR>
 nnoremap <F7> :!latexmk -c<CR>
 nnoremap <F8> :!ctags -R bibliography.bib<CR>
 
+setlocal noexpandtab
+setlocal tabstop=2
 setlocal tw=79
 setlocal colorcolumn=81
 setlocal norelativenumber nonumber signcolumn=no
 
-autocmd VimLeave *.tex :!latexmk -c %
+autocmd VimLeave *.tex :!latexmk -c *.tex
