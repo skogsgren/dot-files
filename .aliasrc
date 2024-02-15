@@ -36,3 +36,12 @@ fi
 alias scratch="vim /tmp/scratchpad"
 
 alias calsync="vdirsyncer discover && vdirsyncer sync"
+
+function venva() {
+  local selected_env
+  selected_env=$(ls ~/.venv/ | fzf)
+  if [ -n "$selected_env" ]; then
+    source "$HOME/.venv/$selected_env/bin/activate"
+  fi
+}
+alias events="watch --color -n 60 'unbuffer khal list today 14d'"
