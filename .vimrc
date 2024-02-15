@@ -69,7 +69,6 @@ Plug 'tpope/vim-commentary'  " commentary aid
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
-
 call plug#end()
 
 " spell checker with keybinding <C-l>
@@ -80,6 +79,7 @@ function! s:spellHelper(lang)
 endfunction
 command! Svspell call s:spellHelper("sv")
 command! Enspell call s:spellHelper("en_us")
+command! Gbspell call s:spellHelper("en_gb")
 
 " ignore common errors (need to come last)
 cabbr W w
