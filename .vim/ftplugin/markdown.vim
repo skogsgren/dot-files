@@ -10,10 +10,19 @@ inoremap ( ()<ESC>i
 inoremap <C-b> ****<ESC>hi
 inoremap <C-t> **<ESC>i
 nnoremap <F5> :!pandoc --pdf-engine=xelatex -i % -o %<.pdf<CR>
-nnoremap <F6> :!open %<.pdf<CR><CR>
+nnoremap <F6> :!open %<.pdf<CR>
 nnoremap <C-g> :!wc %<CR>
 inoremap <C-c> <!-- --><ESC>bi <ESC>i
 inoremap <C-f> []<ESC>A{.underline}<ESC>0a
+" so that undo points are set to punctuation marks
+inoremap ! !<C-g>u
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap : :<C-g>u
+inoremap ; ;<C-g>u
+inoremap ? ?<C-g>u
+inoremap ( <C-g>u(
+inoremap ) )<C-g>u
 
 " don't need gutter in markdown files
 set signcolumn=no
