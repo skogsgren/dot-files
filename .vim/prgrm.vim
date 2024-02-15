@@ -1,5 +1,4 @@
 Plug 'tpope/vim-surround' " surrounding pair aid
-Plug 'tpope/vim-sleuth'  " identify tabstop & shiftwidth
 Plug 'tpope/vim-sensible'  " sensible defaults
 Plug 'airblade/vim-gitgutter' " show git changes
 Plug 'mcchrish/nnn.vim' " n³ file manager
