@@ -25,3 +25,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
         autocmd!
         autocmd BufNew,BufEnter * call s:disable_coc_for_type()
     augroup end
+
+    nnoremap <leader>t :call <SID>show_documentation()<CR>
+    function! s:show_documentation()
+        if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+        endif
+    endfunction
