@@ -1,5 +1,5 @@
 setlocal cc=90
-setlocal tw=89
+setlocal tw=0
 
 nnoremap <F5> :!python3 %<CR>
 function! PydocQuery()
