@@ -19,8 +19,6 @@ alias list-bitmap-fonts="xlsfonts"
 
 alias t="todo-txt"
 
-alias venva="source venv/bin/activate"
-
 alias gits="git status"
 alias gitl="git log --oneline"
 
