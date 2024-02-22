@@ -19,3 +19,6 @@ export NNN_TRASH=1
 alias "nnn"="nnn -de"
 alias "n"="nnn"
 alias "nn"="nnn"
+
+# small plugin bindings for p:less; j:jq; m:headless mpv
+export NNN_PLUG='p:-!less -inR "$nnn"*;j:-!cat "$nnn"* | jq . | less -inR;m:-!mpv --no-video "$nnn"*'
