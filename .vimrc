@@ -81,10 +81,15 @@ command! Svspell call s:spellHelper("sv")
 command! Enspell call s:spellHelper("en_us")
 command! Gbspell call s:spellHelper("en_gb")
 
+" easy switch from light to dark background
+nnoremap <expr><leader>d &background == 'light' ? ':set bg=dark<cr>' : ':set bg=light<cr>'
+
 " ignore common errors (need to come last)
 cabbr W w
 cabbr Q q
 cabbr Wq wq
 cabbr WQ wq
 
-let g:tex_flavor = 'latex'
+" more subtle colors
+hi Todo guibg=#e9ad0c
+hi Error guibg=darkred
