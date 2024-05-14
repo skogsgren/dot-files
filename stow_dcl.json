@@ -38,7 +38,7 @@
 	"vim-full": {
 		"type": "vim",
 		"full": true,
-		"files": [".vim", ".gvimrc"],
+		"files": [".vim", ".gvimrc", ".pylintrc"],
 		"extras": ["prgrm.vim", "lsp.vim"]
 	},
 
@@ -70,5 +70,11 @@
 		"type": "files",
 		"files": [".Xresources"],
 		"dest": "$HOME"
-	}
+	},
+
+    "black": {
+        "type": "files",
+        "files": ["black"],
+        "dest": "$HOME/.config"
+    }
 }
