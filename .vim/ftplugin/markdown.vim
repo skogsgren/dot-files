@@ -1,7 +1,9 @@
+set mouse=a
 " text width
 setlocal tw=79
 setlocal norelativenumber
 setlocal nonumber
+set autoindent
 
 " keymappings
 nnoremap G Gzz
@@ -23,6 +25,10 @@ inoremap ; ;<C-g>u
 inoremap ? ?<C-g>u
 inoremap ( <C-g>u(
 inoremap ) )<C-g>u
+
+nnoremap <C-c> :VenterToggle<CR>
+cabbr q qa
+cabbr wq wqa
 
 " don't need gutter in markdown files
 set signcolumn=no
