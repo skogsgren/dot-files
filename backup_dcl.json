@@ -12,7 +12,7 @@
 
 	"vim-full": {
 		"inherits": ["vim-minimal", "vim-base"],
-		"files": [".gvimrc", ".vim/lsp.vim"],
+		"files": [".gvimrc", ".vim/lsp.vim", ".vim/coc-settings.json"],
 		"src": "$HOME"
 	},
 
