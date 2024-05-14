@@ -1,1 +1,1 @@
-set lines=25 columns=87
+set guifont=Liberation\ Mono\ 10
