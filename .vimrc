@@ -26,6 +26,18 @@ syntax on
 set encoding=utf-8
 set nocompatible
 set splitbelow splitright
+
+set mouse=a
+
+" more comfortable scrolling
+set scrolloff=8
+nnoremap G Gzz
+nnoremap * *zz
+
+" buffer navigation
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+
 set number relativenumber  " relative line numbers
 " enable undo for all files
 set undodir=~/.vim/undodir
@@ -63,11 +75,13 @@ nnoremap <CR> :noh<CR><CR>
 " remap Q to fit current paragraph with gq
 nnoremap Q movipgq`o
 
+Plug 'tpope/vim-vinegar' " improvements to netrw
 Plug 'tpope/vim-commentary'  " commentary aid
     autocmd FileType php setlocal commentstring=//\ %s
     autocmd FileType c setlocal commentstring=//\ %s
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
+
 
 call plug#end()
 
@@ -90,6 +104,6 @@ cabbr Q q
 cabbr Wq wq
 cabbr WQ wq
 
-" more subtle colors
+" small color changes
 hi Todo guibg=#e9ad0c
 hi Error guibg=darkred
