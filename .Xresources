@@ -8,12 +8,12 @@ xterm*VT100.geometry: 80x24+0+23
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: Go Mono
+xterm*faceName: Liberation Mono
 Xft.dpi: 125
 xterm*faceSize: 10
 xterm*renderFont: true
-
 xterm*forceBoxChars: true
+
 xterm*.Translations: #override \
     Ctrl <Key> minus: smaller-vt-font() \n\
     Ctrl <Key> plus: larger-vt-font() \n\
@@ -22,3 +22,10 @@ xterm*.Translations: #override \
     Shift Alt <Key>V: insert-selection(PRIMARY) \n\
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
     Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
+
+! make yellow legible again; copied from GNOME default
+*color3:    #a2734c
+*color11:   #e9ad0c
+! same for green; though from vim default
+*color2:    #419566
+*color10:   #247751
