@@ -1,7 +1,7 @@
 {
     "python.formatting.provider": "black",
-    "pyright.inlayHints.functionReturnTypes": false,
-    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.functionReturnTypes": true,
+    "pyright.inlayHints.variableTypes": true,
     "coc.preferences.formatOnSaveFiletypes": ["css", "javascript", "html", "python"],
-    "inlayHint.enable": false
+    "inlayHint.enable": true
 }
