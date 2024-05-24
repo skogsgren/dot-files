@@ -22,7 +22,7 @@ alias t="todo-txt"
 alias gits="git status"
 alias gitl="git log --oneline"
 
-bind -x '"\C-n": clear && ls'
+bind -x '"\C-n": clear && ls --group-directories-first'
 bind -x '"\C-y": clear && t ls'
 
 # ctrl-z as toggle between suspend and resume
