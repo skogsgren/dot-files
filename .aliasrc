@@ -7,23 +7,19 @@ alias temp="sensors | egrep '(Package id 0)|(fan1)'"
 alias tmuxs="tmux new-session -s"
 alias tmuxa="tmux attach-session -t"
 
-alias dls="du -sh"
-alias less="less -Q"
-alias egrep="egrep --color"
-
 DATE=$(date '+%Y-%m-%d')
 
 alias rcp="rsync -rua --progress"
-
-alias list-bitmap-fonts="xlsfonts"
 
 alias t="todo-txt"
 
 alias gits="git status"
 alias gitl="git log --oneline"
 
-bind -x '"\C-n": clear && ls --group-directories-first'
+bind -x '"\C-e": clear && ls --group-directories-first'
 bind -x '"\C-y": clear && t ls'
+bind '"\C-n": menu-complete'
+bind '"\C-p": menu-complete-backward'
 
 # ctrl-z as toggle between suspend and resume
 if [[ $- == *i* ]]; then
@@ -32,14 +28,9 @@ if [[ $- == *i* ]]; then
 fi
 
 alias scratch="vim /tmp/scratchpad"
-
 alias calsync="vdirsyncer discover && vdirsyncer sync"
 
-function venva() {
-  local selected_env
-  selected_env=$(ls ~/.venv/ | fzf)
-  if [ -n "$selected_env" ]; then
-    source "$HOME/.venv/$selected_env/bin/activate"
-  fi
+alias events="watch --color -n 60 'unbuffer khal list --format \"{tab}{bold}{title}{reset}{nl}{tab}: {start-time}-{end-time}{nl}{tab}{location}\" today 14d'"
 }
-alias events="watch --color -n 60 'unbuffer khal list today 14d'"
+
+source "$HOME/.dot-files/fzf.bash"
