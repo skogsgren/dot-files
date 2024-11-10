@@ -1,0 +1,9 @@
+#!/bin/bash
+dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-up "['<Super>Page_Up', '<Control><Alt>Up']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-down "['<Super>Page_Down', '<Control><Alt>Down']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Alt>Left', '<Control><Alt>Left']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-right "['<Super><Alt>Right', '<Control><Alt>Right']"
+dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-up "['<Super><Shift>Page_Up', '<Control><Shift><Alt>Up']"
+dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-down "['<Super><Shift>Page_Down', '<Control><Shift><Alt>Down']"
+dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-left "['<Super><Shift><Alt>Left', '<Control><Shift><Alt>Left']"
+dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-right "['<Super><Shift><Alt>Right', '<Control><Shift><Alt>Right']"
