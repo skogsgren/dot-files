@@ -18,7 +18,7 @@ def is_ignored(file: Path) -> bool:
     for pattern in IGNORES:
         if fnmatch.fnmatch(str(file), pattern):
             return True
-    if file.name in ["movein.py", ".git", ".gitignore"]:
+    if file.name in ["movein", ".git", ".gitignore"]:
         return True
     if file.is_dir() and file.name in IGNORED_DIRS:
         return True
@@ -31,13 +31,12 @@ def symlink_files_in_directory(dot_file_dir: Path, tgt_root: Path = HOME):
             continue
         # we don't want to symlink dirs directly, bc of dirs like .vim/undodir
         if dot_file.is_dir():
-            # (tgt_root / dot_file.name).mkdir(parents=True, exist_ok=True)
+            (tgt_root / dot_file.name).mkdir(parents=True, exist_ok=True)
             symlink_files_in_directory(
                 dot_file_dir=dot_file,
                 tgt_root=tgt_root / dot_file.name,
             )
             continue
-        dot_file.absolute()
         tgt: Path = tgt_root / dot_file.name
         tgt.unlink(missing_ok=True)
         tgt.symlink_to(dot_file.absolute())
