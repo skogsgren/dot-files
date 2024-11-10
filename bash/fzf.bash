@@ -1,3 +1,4 @@
+# activate venv in $HOME/.venv directory using fzf
 function venva() {
     local selected_env
     selected_env=$(ls ~/.venv/ | fzf)
@@ -6,6 +7,7 @@ function venva() {
     fi
 }
 
+# mount gvfs mount using ssh config & fzf
 function gvfsm() {
     local sel
     GVFSDIR="$HOME/gvfs"
@@ -18,6 +20,7 @@ function gvfsm() {
     fi
 }
 
+# unmount gvfs mount using ssh config & fzf
 function gvfsum() {
     local sel
     sel=$(awk '/^HostName / {host=$2} /^User / {user=$2; print user"@"host}' ~/.ssh/config | fzf)
@@ -26,14 +29,7 @@ function gvfsum() {
     fi
 }
 
-function cn {
-    local folder
-    folder=$(fdfind --exact-depth 1 --type d | fzf)
-    if [ -n "$folder" ]; then
-        cd "$folder" || return
-    fi
-}
-
+# play internet radio from declaration json
 function radio {
     local STATION
     local URL

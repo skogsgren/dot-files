@@ -1,4 +1,6 @@
 #!/bin/python3
+__doc__ = """automatically sorts xdg download folder in to subfolders"""
+
 from pathlib import Path
 from datetime import datetime
 from dataclasses import dataclass

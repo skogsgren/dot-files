@@ -1,3 +1,6 @@
+# /bin/python3
+__doc__ = """sets xdg-default for specified filetypes:"""
+
 import subprocess
 
 if __name__ == "__main__":

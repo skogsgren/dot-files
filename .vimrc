@@ -85,6 +85,8 @@ Plug 'tpope/vim-commentary'  " commentary aid
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
+source $HOME/.vim/prgrm.vim
+source $HOME/.vim/lsp.vim
 call plug#end()
 
 " spell checker with keybinding <C-l>

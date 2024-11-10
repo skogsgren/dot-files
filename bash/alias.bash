@@ -1,21 +1,13 @@
+DATE=$(date '+%Y-%m-%d')
+
 alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"
 alias temp="sensors | egrep '(Package id 0)|(fan1)'"
 
-alias tmuxs="tmux new-session -s"
-alias tmuxa="tmux attach-session -t"
-
-DATE=$(date '+%Y-%m-%d')
-
 alias rcp="rsync -rua --progress"
 
-alias t="todo-txt"
-
-alias gits="git status"
-alias gitl="git log --oneline"
-
-bind -x '"\C-e": clear && ls --group-directories-first'
-bind '"\C-n": menu-complete'
-bind '"\C-p": menu-complete-backward'
+# bind tab to complete like vim
+bind "TAB:menu-complete"
+bind '"\e[Z":menu-complete-backward'
 
 # ctrl-z as toggle between suspend and resume
 if [[ $- == *i* ]]; then
@@ -23,9 +15,4 @@ if [[ $- == *i* ]]; then
   bind '"\C-z":" fg\015"'
 fi
 
-alias scratch="vim /tmp/scratchpad"
-alias calsync="vdirsyncer discover && vdirsyncer sync"
-
 alias events="watch --color 'unbuffer khal list --format \"{tab}{bold}{title}{reset}{nl}{tab}: {start-time}-{end-time}{nl}{tab}{location}\" today 14d'"
-
-source "$HOME/.dot-files/fzf.bash"

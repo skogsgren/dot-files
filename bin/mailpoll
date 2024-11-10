@@ -1,4 +1,5 @@
 #!/bin/bash
+# DOC=syncs email, for use in e.g. systemd timers
 # full path to be overly verbose
 chronic /usr/bin/mbsync -a
 chronic /usr/local/bin/msmtp-queue -r
