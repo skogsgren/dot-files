@@ -10,6 +10,9 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
+if exists("$TMUX")
+    let &t_RB = "\ePtmux;\e\e]11;?\007\e\\"
+endif
 
 call plug#begin()
 
@@ -82,7 +85,6 @@ Plug 'tpope/vim-commentary'  " commentary aid
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
-
 call plug#end()
 
 " spell checker with keybinding <C-l>
@@ -98,6 +100,9 @@ command! Gbspell call s:spellHelper("en_gb")
 " easy switch from light to dark background
 nnoremap <expr><leader>d &background == 'light' ? ':set bg=dark<cr>' : ':set bg=light<cr>'
 
+" insert date command
+command! Date call put =strftime('%x')
+
 " ignore common errors (need to come last)
 cabbr W w
 cabbr Q q
@@ -107,3 +112,26 @@ cabbr WQ wq
 " small color changes
 hi Todo guibg=#e9ad0c
 hi Error guibg=darkred
+hi ColorColumn guibg=gray
+
+" custom highlighting for vim plaintext note file
+augroup diary
+    autocmd!
+    autocmd ColorScheme,BufRead,BufNewFile *.txt
+        \  syntax match DiaryDate "\v\d\d\d\d-\d\d-\d\d"
+        \| highlight DiaryDate guibg=#247751 guifg=white term=bold cterm=bold gui=bold
+        \| syntax match EmailNote "\v\@email"
+        \| highlight EmailNote guibg=#e9ad0c term=bold cterm=bold gui=bold
+        \| syntax match PhoneNote "\v\@call"
+        \| highlight PhoneNote guibg=red term=bold cterm=bold gui=bold
+augroup END
+
+augroup plaintext
+    autocmd!
+    autocmd ColorScheme,BufRead,BufNewFile *.txt
+        \  syntax match Header "\v\=+.+\=+"
+        \| highlight Header term=bold cterm=bold gui=bold
+augroup END
+
+
+set bg=dark
