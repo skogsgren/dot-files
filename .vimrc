@@ -134,6 +134,3 @@ augroup plaintext
         \  syntax match Header "\v\=+.+\=+"
         \| highlight Header term=bold cterm=bold gui=bold
 augroup END
-
-
-set bg=dark
