@@ -21,11 +21,6 @@
 		"src": "$HOME/.config/"
 	},
 
-	"ncspot": {
-		"files": ["ncspot/config.toml"],
-		"src": "$HOME/.config"
-	},
-
 	"tmux": {
 		"files": [".tmux.conf"],
 		"src": "$HOME"

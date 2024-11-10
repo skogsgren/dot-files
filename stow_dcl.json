@@ -50,12 +50,6 @@
 		"dest": "$HOME/.config"
 	},
 
-	"ncspot": {
-		"type": "files",
-		"files": ["ncspot"],
-		"dest": "$HOME/.config"
-	},
-
 	"tmux": {
 		"type": "files",
 		"files": [".tmux.conf"],
