@@ -33,3 +33,14 @@ function cn {
         cd "$folder" || return
     fi
 }
+
+function radio {
+    local STATION
+    local URL
+    STATION=$(jq -r "keys[]" "$HOME"/.dot-files/radio-stations.json | fzf)
+    URL=$(jq -r .\""$STATION"\" "$HOME"/.dot-files/radio-stations.json)
+    if [[ $URL == "null" ]]; then
+        return 1
+    fi
+    mpv --no-video --no-resume-playback "$URL"
+}
