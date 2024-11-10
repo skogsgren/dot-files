@@ -1,10 +1,29 @@
 # we want debian defaults
 source /etc/skel/.bashrc
 
-BASH_DIR=$HOME/.dot-files/bash/
-source $BASH_DIR/exports.bash
-source $BASH_DIR/nnn.bash
-source $BASH_DIR/fzf.bash
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.dot-files/bin"
+export DATE=$(date '+%Y-%m-%d')
+
+if [ -x "$(command -v fzf)" ]; then
+    # assuming debian location
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+    export FZF_DEFAULT_COMMAND='fdfind --type f'
+    export FZF_ALT_C_COMMAND='fdfind --exclude={calibre,dl,R} --type d'
+    source "$HOME/.dot-files/bash/fzf.bash"
+fi
+
+if [ -x "$(command -v nnn)" ]; then
+    source "$HOME/.dot-files/bash/nnn.bash"
+fi
+
+if [ -x "$(command -v tmux)" ]; then
+    source "$HOME"/.dot-files/bash/tmux-autocomplete.bash
+    tmux has-session 2>/dev/null && tmux ls
+fi
+
 if [ -e $BASH_DIR/secrets.bash ]; then
     source $BASH_DIR/secrets.bash
 fi
@@ -13,8 +32,4 @@ fi
 if [[ $- == *i* ]]; then
   stty susp undef
   bind '"\C-z":" fg\015"'
-fi
-
-if [ -x "$(command -v tmux)" ]; then
-    tmux has-session 2>/dev/null && tmux ls
 fi
