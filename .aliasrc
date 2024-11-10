@@ -1,5 +1,11 @@
 alias lofi-radio="mpv --no-video --no-resume-playback https://www.youtube.com/watch?v=jfKfPfyJRdk"
+alias lofi247="mpv --no-resume-playback --no-video http://usa9.fastcast4u.com/proxy/jamz?mp=/1"
 alias indie-rock="mpv --no-video --no-resume-playback https://somafm.com/indiepop130.pls"
+alias boot-liquor="mpv --no-video --no-resume-playback https://somafm.com/bootliquor130.pls"
+alias npr="mpv --no-video --no-resume-playback https://npr-ice.streamguys1.com/live.mp3"
+alias oldtimeradio="mpv --no-video --no-resume-playback https://icecast.walmradio.com:8443/otr"
+alias kexp="mpv --no-video --no-resume-playback https://kexp.streamguys1.com/kexp160.aac"
+alias fip="mpv --no-video --no-resume-playback https://icecast.radiofrance.fr/fip-hifi.aac?id=radiofrance"
 
 alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"
 alias temp="sensors | egrep '(Package id 0)|(fan1)'"
@@ -17,7 +23,6 @@ alias gits="git status"
 alias gitl="git log --oneline"
 
 bind -x '"\C-e": clear && ls --group-directories-first'
-bind -x '"\C-y": clear && t ls'
 bind '"\C-n": menu-complete'
 bind '"\C-p": menu-complete-backward'
 
@@ -30,7 +35,6 @@ fi
 alias scratch="vim /tmp/scratchpad"
 alias calsync="vdirsyncer discover && vdirsyncer sync"
 
-alias events="watch --color -n 60 'unbuffer khal list --format \"{tab}{bold}{title}{reset}{nl}{tab}: {start-time}-{end-time}{nl}{tab}{location}\" today 14d'"
-}
+alias events="watch --color 'unbuffer khal list --format \"{tab}{bold}{title}{reset}{nl}{tab}: {start-time}-{end-time}{nl}{tab}{location}\" today 14d'"
 
 source "$HOME/.dot-files/fzf.bash"
