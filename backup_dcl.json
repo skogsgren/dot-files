@@ -34,5 +34,10 @@
 	"xterm": {
 		"files": [".Xresources"],
 		"src": "$HOME"
-	}
+	},
+
+    "bin": {
+        "files": ["mailpoll.sh", "sortdl"],
+        "src": "$HOME/.local/bin/"
+    }
 }

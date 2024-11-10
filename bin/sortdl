@@ -1,0 +1,70 @@
+#!/bin/python3
+from pathlib import Path
+from datetime import datetime
+from dataclasses import dataclass
+from shutil import move
+import subprocess
+import argparse
+
+
+@dataclass
+class Ext:
+    out: str
+    exts: list[str]
+
+
+DATE: str = datetime.now().strftime("%Y%m%d")
+EXTS: list[Ext] = [
+    Ext("videos", [".mp4", ".avi", ".mkv", ".mov", ".webm"]),
+    Ext("pictures", [".png", ".jpg", ".jpeg", ".webp"]),
+    Ext("music", [".mp3", ".opus", ".m4a", ".ogg"]),
+    Ext("documents", [".pdf", ".doc", ".docx", ".epub", ".azw3", ".txt"]),
+    Ext("archives", [".zip", ".rar", ".tar", ".xz", ".gz"]),
+]
+
+
+def get_xdg_default(spec: str) -> str:
+    return subprocess.run(
+        f"xdg-user-dir {spec}".split(),
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
+
+def match(file: Path, suffixes: list[str]):
+    for suffix in suffixes:
+        if file.suffix == suffix:
+            return True
+    return False
+
+
+def get_ext_match(file: Path):
+    for ext in EXTS:
+        if match(file, ext.exts):
+            return ext
+    return None
+
+
+def sort_files(folder: Path):
+    """sort files into subfolders, prefixing date to filenames"""
+    for file in folder.iterdir():
+        ext: None | Ext = get_ext_match(file)
+        if not ext:
+            continue
+        out: Path = folder / ext.out
+        out.mkdir(exist_ok=True)
+        move(file, out / (DATE + "-" + file.name))
+
+
+if __name__ == "__main__":
+    parser: argparse.ArgumentParser = argparse.ArgumentParser()
+    parser.add_argument(
+        "folder",
+        nargs="?",
+        help="folder to be sorted",
+        default=get_xdg_default("DOWNLOAD"),
+    )
+    args: argparse.Namespace = parser.parse_args()
+    folder: Path = Path(args.folder)
+    assert folder.is_dir()
+    sort_files(folder)
