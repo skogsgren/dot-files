@@ -1,5 +1,6 @@
-xterm.termName: xterm-256-color
-xterm*saveLines: 10000
+UXTerm*termName: xterm-256color
+XTerm*termName: xterm-256color
+xterm*saveLines: 50000
 xterm*highlightSelection: true
 xterm*trimSelection: true
 
@@ -8,11 +9,14 @@ xterm*VT100.geometry: 80x24+0+23
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: Liberation Mono
-Xft.dpi: 125
-xterm*faceSize: 10
+# https://laemeur.sdf.org/fonts/
+# such a great font
+xterm*faceName: Less Perfect DOS VGA
+xterm*faceSize: 12
 xterm*renderFont: true
 xterm*forceBoxChars: true
+
+XTerm*disallowedWindowOps: 20,21,SetXprop
 
 xterm*.Translations: #override \
     Ctrl <Key> minus: smaller-vt-font() \n\
@@ -23,9 +27,5 @@ xterm*.Translations: #override \
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
     Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
 
-! make yellow legible again; copied from GNOME default
-*color3:    #a2734c
-*color11:   #e9ad0c
-! same for green; though from vim default
-*color2:    #419566
-*color10:   #247751
+*foreground: #FFFFFF
+*background: #000000
