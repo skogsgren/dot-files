@@ -1,6 +1,7 @@
 # essential coding packages | debian bookworm:
 # sed 's/#.*//' apt.list | xargs sudo apt install
 fzf
+fdfind
 silversearcher-ag
 vim
 vim-nox
