@@ -6,8 +6,9 @@ from shutil import copy2, copytree, rmtree
 import subprocess
 from pathlib import Path
 
+
 def stow_files(choice: str, actions: dict) -> None:
-    """ copies files according to specification """
+    """copies files according to specification"""
     for f in actions[choice]["files"]:
         f = Path(f)
         srcdir = Path(f)
@@ -20,8 +21,9 @@ def stow_files(choice: str, actions: dict) -> None:
         else:
             copy2(srcdir, destdir)
 
+
 def stow_text(choice: str, actions: dict) -> None:
-    """ appends lines to an already existing file """
+    """appends lines to an already existing file"""
     with open(os.path.expandvars(actions[choice]["dest"]), "r") as f:
         lines = [x.rstrip() for x in f]
     with open(os.path.expandvars(actions[choice]["dest"]), "a") as f:
@@ -29,8 +31,9 @@ def stow_text(choice: str, actions: dict) -> None:
             if l not in lines:
                 f.write(l + "\n")
 
+
 def stow_vim(choice: str, actions: dict) -> None:
-    """ installs selected set of vimrc(full/minimal/base) """
+    """installs selected set of vimrc(full/minimal/base)"""
     if actions[choice]["full"]:
         with open(".vimrc", "r") as f:
             lines = [x for x in f]
@@ -53,8 +56,9 @@ def stow_vim(choice: str, actions: dict) -> None:
     if not os.path.exists(os.path.expandvars("$HOME/.vim/undodir")):
         os.makedirs(os.path.expandvars("$HOME/.vim/undodir"))
 
+
 def stow(choice: str, actions: dict):
-    """ wrapper for stowing dot files with recursive functionality """
+    """wrapper for stowing dot files with recursive functionality"""
     if choice == "all":
         for a in actions:
             stow(choice=a, actions=actions)
@@ -65,6 +69,7 @@ def stow(choice: str, actions: dict):
         stow_text(choice, actions)
     elif action_type == "vim":
         stow_vim(choice, actions)
+
 
 def main():
     if os.getcwd() != os.path.dirname(os.path.abspath(__file__)):
@@ -79,6 +84,7 @@ def main():
         parser.print_help()
     else:
         stow(args.cfg, actions)
+
 
 if __name__ == "__main__":
     main()

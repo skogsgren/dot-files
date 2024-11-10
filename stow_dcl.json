@@ -3,6 +3,8 @@
 		"type": "text",
 		"dest": "$HOME/.bashrc",
 		"cfg": [
+            "export FZF_DEFAULT_COMMAND='fdfind --type f'",
+            "export FZF_ALT_C_COMMAND='fdfind --exclude={calibre,dl,R} --type d'",
 			"source $HOME/.dot-files/.aliasrc",
 			"source $HOME/.dot-files/tmux-autocomplete.sh",
 			"source $HOME/.dot-files/nnn.bash",
