@@ -72,5 +72,11 @@
         "type": "files",
         "files": ["black"],
         "dest": "$HOME/.config"
+    },
+
+    "bin": {
+        "type": "files",
+        "files": ["sortdl", "mailpoll.sh"],
+        "dest": "$HOME/.local/bin"
     }
 }
