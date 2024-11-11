@@ -24,8 +24,8 @@ if [ -x "$(command -v tmux)" ]; then
     tmux has-session 2>/dev/null && tmux ls
 fi
 
-if [ -e $BASH_DIR/secrets.bash ]; then
-    source $BASH_DIR/secrets.bash
+if [ -e "$HOME"/.dot-files/bash/secrets.bash ]; then
+    source "$HOME"/.dot-files/bash/secrets.bash
 fi
 
 # ctrl-z as toggle between suspend and resume
