@@ -1,0 +1,35 @@
+#!/bin/bash
+# daily backup script
+# BACKUP_DIR set in systemd service declaration
+if [ -z "$BACKUP_DIR" ]; then
+    echo "ERR: \$BACKUP_DIR must be defined."
+    exit 1
+fi
+
+tar -cf "$BACKUP_DIR"/aerc.tar \
+    "$HOME"/.config/aerc/ \
+    "$HOME"/.config/systemd/user/mailpoll.service \
+    "$HOME"/.config/systemd/user/mailpoll.timer \
+    "$HOME"/.mbsyncrc \
+    "$HOME"/.msmtprc
+
+tar -cf "$BACKUP_DIR"/firefox.tar "$HOME"/.mozilla
+
+tar -cf "$BACKUP_DIR"/gnome.tar \
+    "$HOME"/.config/dconf/user \
+    "$HOME"/.config/gtk-3.0 \
+    "$HOME"/.config/gtk-4.0 \
+    "$HOME"/.local/share/gnome-shell \
+    "$HOME"/.local/share/gnome-control-center \
+    "$HOME"/.local/share/gnome-background-properties
+
+tar -cvf "$BACKUP_DIR"/khal.tar "$HOME"/.config/khal
+
+tar -cvf "$BACKUP_DIR"/vdirsyncer.tar "$HOME"/.vdirsyncer
+
+tar -cvf "$BACKUP_DIR"/systemd_user_timers.tar "$HOME"/.config/systemd
+
+tar -cvf "$BACKUP_DIR"/ssh.tar "$HOME"/.ssh
+
+rsync -rua "$HOME"/.local/share/fonts/ "$BACKUP_DIR"/fonts
+
