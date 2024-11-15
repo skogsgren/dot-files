@@ -1,6 +1,7 @@
 set mouse=a
 " text width
-setlocal tw=79
+setlocal tw=72
+setlocal cc=73
 setlocal norelativenumber
 setlocal nonumber
 set autoindent
@@ -11,7 +12,7 @@ inoremap [ []<ESC>i
 inoremap ( ()<ESC>i
 inoremap <C-b> ****<ESC>hi
 inoremap <C-t> **<ESC>i
-nnoremap <F5> :!pandoc --pdf-engine=xelatex -i % -o %<.pdf<CR>
+nnoremap <F5> :!pandoc -i % -o %<.pdf<CR>
 nnoremap <F6> :!open %<.pdf<CR>
 nnoremap <C-g> :!wc %<CR>
 inoremap <C-c> <!-- --><ESC>bi <ESC>i
