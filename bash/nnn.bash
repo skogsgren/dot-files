@@ -27,5 +27,5 @@ alias "nn"="nnn"
 #   j:jq
 #   m:headless mpv
 #   c:copy filename to clipboard
-export NNN_PLUG='p:-!less -inR "$nnn"*;j:-!cat "$nnn"* | jq . | less -inR*;m:-!mpv --no-video "$nnn"*;v:-!&mpv --no-resume-playback "$nnn"*;c:-!echo "$nnn"* | xclip -i -selection clipboard *;'
+export NNN_PLUG='p:-!less -inR "$nnn"*;j:-!cat "$nnn"* | jq . | less -inR*;m:-!mpv --no-video "$nnn"*;v:-!&mpv --no-resume-playback "$nnn"*;c:-!echo "$nnn"* | xclip -i -selection clipboard *;i:-!tiv "$nnn"*'
 
