@@ -22,6 +22,8 @@ export NNN_FCOLORS='c1e21428006027f7c6d6abc4'
 alias "n"="nnn"
 alias "nn"="nnn"
 
+export NNN_SSHFS='sshfs -o reconnect'
+
 # small plugin bindings for
 #   p:less
 #   j:jq
