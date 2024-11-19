@@ -11,7 +11,7 @@ if [ -x "$(command -v fzf)" ]; then
     # assuming debian location
     source /usr/share/doc/fzf/examples/key-bindings.bash
     export FZF_DEFAULT_COMMAND='fdfind --type f'
-    export FZF_ALT_C_COMMAND='fdfind --exclude={calibre,dl,R} --type d'
+    export FZF_ALT_C_COMMAND='fdfind --exclude={calibre,dl,R,mail} --type d'
     source "$HOME/.dot-files/bash/fzf.bash"
 fi
 
@@ -21,7 +21,7 @@ fi
 
 if [ -x "$(command -v tmux)" ]; then
     source "$HOME"/.dot-files/bash/tmux-autocomplete.bash
-    tmux has-session 2>/dev/null && tmux ls
+    tmux has-session 2>/dev/null && tmux "ls"
 fi
 
 if [ -e "$HOME"/.dot-files/bash/secrets.bash ]; then
