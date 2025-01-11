@@ -1,10 +1,20 @@
 set mouse=a
-" text width
-setlocal tw=72
-setlocal cc=73
+
+" soft wrap (to make it easier to work with other tools)
 setlocal norelativenumber
 setlocal nonumber
 set autoindent
+set linebreak
+" ugly, I know, but who is looking? why are you here?
+setlocal tw=99999999999999999999999999999999999999999
+nnoremap j gj
+vnoremap j gj
+onoremap j gj
+nnoremap k gk
+vnoremap k gk
+onoremap k gk
+nnoremap 0 g0
+nnoremap $ g$
 
 " keymappings
 nnoremap G Gzz

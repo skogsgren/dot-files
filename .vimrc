@@ -78,8 +78,8 @@ nnoremap <CR> :noh<CR><CR>
 " remap Q to fit current paragraph with gq
 nnoremap Q movipgq`o
 
-Plug 'tpope/vim-vinegar' " improvements to netrw
 Plug 'tpope/vim-commentary'  " commentary aid
+Plug 'JMcKiern/vim-venter' " center buffer
     autocmd FileType php setlocal commentstring=//\ %s
     autocmd FileType c setlocal commentstring=//\ %s
     nnoremap <C-c> :Commentary<CR>

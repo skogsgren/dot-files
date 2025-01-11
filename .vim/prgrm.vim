@@ -1,7 +1,6 @@
 Plug 'tpope/vim-sensible'  " sensible defaults
 Plug 'airblade/vim-gitgutter' " show git changes
 Plug 'ap/vim-css-color' " css color code preview
-Plug 'madox2/vim-ai' "openai code assistant
 Plug 'LunarWatcher/auto-pairs' "auto pair parentheses etc
 Plug 'Vimjas/vim-python-pep8-indent' " correct indentation for python
 
