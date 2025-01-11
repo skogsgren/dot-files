@@ -9,16 +9,14 @@ xterm*VT100.geometry: 80x24+0+23
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-/* https://laemeur.sdf.org/fonts/ */
-/* such a great font */
-xterm*faceName: Less Perfect DOS VGA
+xterm*faceName: Fixedsys 62
 xterm*faceSize: 12
 xterm*renderFont: true
 xterm*forceBoxChars: true
 
 xterm*.Translations: #override \
     Ctrl <Key> minus: smaller-vt-font() \n\
-    Ctrl <Key> plus: larger-vt-font() \n\
+    Ctrl <Key> equal: larger-vt-font() \n\
     Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
     Shift Alt <Key>V: insert-selection(PRIMARY) \n\
