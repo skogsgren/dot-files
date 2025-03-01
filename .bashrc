@@ -7,6 +7,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.dot-files/bin"
 export DATE=$(date '+%Y-%m-%d')
 
+
 if [ -x "$(command -v fzf)" ]; then
     # assuming debian location
     source /usr/share/doc/fzf/examples/key-bindings.bash

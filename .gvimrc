@@ -1,1 +1,1 @@
-set guifont=Fixedsys\ 62\ 12
+set guifont=Liberation\ Mono\ Bold\ 10

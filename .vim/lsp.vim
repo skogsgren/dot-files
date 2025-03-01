@@ -13,6 +13,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <leader>o :CocCommand ruff.executeOrganizeImports<CR>
+
 " disable coc for filetypes not in list
 function! s:disable_coc_for_type()
     if index(s:ft, &filetype) == -1
@@ -24,7 +26,7 @@ augroup CocGroup
     autocmd BufNew,BufEnter * call s:disable_coc_for_type()
 augroup end
 
-" Use K to show documentation in preview window
+" use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
@@ -35,12 +37,8 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor
+" highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming
+" symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
