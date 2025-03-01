@@ -5,15 +5,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" true color in TMUX
-if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-if exists("$TMUX")
-    let &t_RB = "\ePtmux;\e\e]11;?\007\e\\"
-endif
-
 call plug#begin()
 
 " ===========
@@ -30,7 +21,7 @@ set encoding=utf-8
 set nocompatible
 set splitbelow splitright
 
-set mouse=a
+set mouse=a " yes, I know
 
 " more comfortable scrolling
 set scrolloff=8
@@ -87,6 +78,7 @@ Plug 'JMcKiern/vim-venter' " center buffer
 
 source $HOME/.vim/prgrm.vim
 source $HOME/.vim/lsp.vim
+
 call plug#end()
 
 " spell checker with keybinding <C-l>
@@ -102,35 +94,24 @@ command! Gbspell call s:spellHelper("en_gb")
 " easy switch from light to dark background
 nnoremap <expr><leader>d &background == 'light' ? ':set bg=dark<cr>' : ':set bg=light<cr>'
 
-" insert date command
-command! Date call put =strftime('%x')
-
 " ignore common errors (need to come last)
 cabbr W w
 cabbr Q q
 cabbr Wq wq
 cabbr WQ wq
 
-" small color changes
-hi Todo guibg=#e9ad0c
-hi Error guibg=darkred
-hi ColorColumn guibg=gray
-
 " custom highlighting for vim plaintext note file
 augroup diary
     autocmd!
     autocmd ColorScheme,BufRead,BufNewFile *.txt
         \  syntax match DiaryDate "\v\d\d\d\d-\d\d-\d\d"
-        \| highlight DiaryDate guibg=#247751 guifg=white term=bold cterm=bold gui=bold
+        \| highlight link DiaryDate StatusLineTerm
         \| syntax match EmailNote "\v\@email"
-        \| highlight EmailNote guibg=#e9ad0c term=bold cterm=bold gui=bold
+        \| highlight link EmailNote Todo
+        \| syntax match MsgNote "\v\@msg"
+        \| highlight link MsgNote EmailNote
         \| syntax match PhoneNote "\v\@call"
-        \| highlight PhoneNote guibg=red term=bold cterm=bold gui=bold
+        \| highlight link PhoneNote ErrorMsg
 augroup END
 
-augroup plaintext
-    autocmd!
-    autocmd ColorScheme,BufRead,BufNewFile *.txt
-        \  syntax match Header "\v\=+.+\=+"
-        \| highlight Header term=bold cterm=bold gui=bold
-augroup END
+set bg=dark
