@@ -3,10 +3,12 @@
     "LoFi Girl": "https://www.youtube.com/watch?v=jfKfPfyJRdk",
     "SomaFM Boot Liquor": "https://somafm.com/bootliquor130.pls",
     "SomaFM Digitalis": "https://somafm.com/digitalis130.pls",
+    "SomaFM Groove Salad": "https://somafm.com/groovesalad130.pls",
     "SomaFM Indie Pop Rocks": "https://somafm.com/indiepop130.pls",
     "NPR": "https://npr-ice.streamguys1.com/live.mp3",
     "Old Time Radio": "https://icecast.walmradio.com:8443/otr",
     "KEXP": "https://kexp.streamguys1.com/kexp160.aac",
     "Rainy Day": "http://rainyday.radio.mynoise.net",
-    "WALM VinylClassic": "https://icecast.walmradio.com:8443/classic"
+    "WALM VinylClassic": "https://icecast.walmradio.com:8443/classic",
+    "HearMe.fm - 00s Rock": "https://radio.strictly.house:8130/stream"
 }
