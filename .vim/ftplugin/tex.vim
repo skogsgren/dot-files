@@ -1,9 +1,9 @@
 inoremap <C-]> <C-x><C-]>
-inoremap ` `'<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap $ $$<ESC>i
+" inoremap ` `'<ESC>i
+" inoremap ( ()<ESC>i
+" inoremap [ []<ESC>i
+" inoremap { {}<ESC>i
+" inoremap $ $$<ESC>i
 inoremap <C-b> \textbf{}<ESC>i
 inoremap <C-t> \textit{}<ESC>i
 inoremap <C-s> \sc{}<ESC>i
@@ -15,10 +15,26 @@ nnoremap <F6> :!open %<.pdf<CR>
 nnoremap <F7> :!latexmk -c<CR>
 nnoremap <F8> :!ctags -R bibliography.bib<CR>
 
-setlocal noexpandtab
-setlocal tabstop=2
-setlocal tw=79
-setlocal colorcolumn=81
-setlocal norelativenumber nonumber signcolumn=no
+filetype plugin indent off
+set noautoindent
+set smartindent
+set nocindent
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+setlocal signcolumn=no
+set linebreak
+" ugly, I know, but who is looking? why are you here?
+setlocal tw=99999999999999999999999999999999999999999
+nnoremap j gj
+vnoremap j gj
+onoremap j gj
+nnoremap k gk
+vnoremap k gk
+onoremap k gk
+nnoremap 0 g0
+nnoremap $ g$
 
 autocmd VimLeave *.tex :!latexmk -c *.tex
