@@ -8,22 +8,16 @@ xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: Liberation Mono:style=bold
-xterm*faceSize: 9
+xterm*font: -Misc-Tamzen-Medium-R-Normal--14-101-100-100-C-70-ISO8859-1
+
+xterm*faceName: DejaVu Sans Mono
+xterm*faceSize: 10
 xterm*renderFont: false
 xterm*forceBoxChars: true
 
 xterm*.Translations: #override \
-    Ctrl <Key> minus: smaller-vt-font() \n\
-    Ctrl <Key> equal: larger-vt-font() \n\
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
 
 *background: #000000
 *foreground: #FFFFFF
-! make yellow legible again; copied from GNOME default
-! *color3: #a2734c
-! *color11: #e9ad0c
-! same for green; though from vim default
-! *color2: #419566
-! *color10: #247751
