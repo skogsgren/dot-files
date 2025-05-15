@@ -1,0 +1,12 @@
+#!/bin/bash
+CONN=$(busctl \
+    get-property org.freedesktop.NetworkManager /org/freedesktop/NetworkManager \
+    org.freedesktop.NetworkManager Metered -j \
+    | jq ".data")
+# NM_METERED_UNKNOWN 	0	The metered status is unknown
+# NM_METERED_YES		1	Metered, the value was explicitly configured
+# NM_METERED_NO			2	Not metered, the value was explicitly configured
+# NM_METERED_GUESS_YES	3	Metered, the value was guessed
+# NM_METERED_GUESS_NO	4	Not metered, the value was guessed
+[ "$CONN" = "0" ] || [ "$CONN" = "1" ] || [ "$CONN" = "3" ] && exit 1
+exit 0
