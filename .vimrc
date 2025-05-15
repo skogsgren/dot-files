@@ -23,6 +23,10 @@ set splitbelow splitright
 
 set mouse=a " yes, I know
 
+" finding files
+set path+=**
+set wildmenu
+
 " more comfortable scrolling
 set scrolloff=8
 nnoremap G Gzz
@@ -31,6 +35,7 @@ nnoremap * *zz
 " buffer navigation
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
+nnoremap <C-b> :ls<CR>:b<Space>
 
 set number relativenumber  " relative line numbers
 " enable undo for all files
@@ -42,7 +47,6 @@ set backspace=indent,eol,start  " proper backspace behavior
 if has("termguicolors")
     set termguicolors
 endif
-set pastetoggle=<Insert>  " sane pastetoggle keyboard shortcut
 set hls  " highlight search matches
 set hidden  " allows switching buffers without saving
 
@@ -78,7 +82,6 @@ Plug 'JMcKiern/vim-venter' " center buffer
 
 source $HOME/.vim/prgrm.vim
 source $HOME/.vim/lsp.vim
-
 call plug#end()
 
 " spell checker with keybinding <C-l>
