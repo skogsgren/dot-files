@@ -8,16 +8,14 @@ xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*font: -Misc-Tamzen-Medium-R-Normal--14-101-100-100-C-70-ISO8859-1
-
-xterm*faceName: DejaVu Sans Mono
-xterm*faceSize: 10
-xterm*renderFont: false
+xterm*faceName: SF Mono:style=Medium
+xterm*faceSize: 9
+xterm*renderFont: true
 xterm*forceBoxChars: true
 
 xterm*.Translations: #override \
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
 
-*background: #000000
-*foreground: #FFFFFF
+*foreground: #000000
+*background: #FFFFFF
