@@ -1,17 +1,4 @@
-" init plug
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin()
-
-" ===========
-" BASIC STUFF
-" ===========
-
-" leader key
 let mapleader=" "
 let maplocalleader=" "
 set timeoutlen=500
@@ -26,6 +13,7 @@ set mouse=a " yes, I know
 " finding files
 set path+=**
 set wildmenu
+set wildmode=longest,list,full
 
 " more comfortable scrolling
 set scrolloff=8
@@ -44,6 +32,7 @@ set undofile
 set clipboard=unnamedplus  " unite clipboards
 set laststatus=2  " statusline
 set backspace=indent,eol,start  " proper backspace behavior
+
 if has("termguicolors")
     set termguicolors
 endif
@@ -63,25 +52,45 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" ctags optimization
-set autochdir
-set tags=tags;
-
 " clear search highlighting shortcut
 nnoremap <CR> :noh<CR><CR>
-
 " remap Q to fit current paragraph with gq
 nnoremap Q movipgq`o
 
-Plug 'tpope/vim-commentary'  " commentary aid
-Plug 'JMcKiern/vim-venter' " center buffer
+Plug 'tpope/vim-sensible'  " sensible defaults
+Plug 'airblade/vim-gitgutter' " show git changes
+Plug 'ap/vim-css-color' " css color code preview
+Plug 'Vimjas/vim-python-pep8-indent' " correct indentation for python
+Plug 'csexton/trailertrash.vim' " trailing spaces removal/highlight
+Plug 'mileszs/ack.vim' " some fuzzy search stuff
+
+" commentary aid
+Plug 'tpope/vim-commentary'
     autocmd FileType php setlocal commentstring=//\ %s
     autocmd FileType c setlocal commentstring=//\ %s
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
-source $HOME/.vim/prgrm.vim
-source $HOME/.vim/lsp.vim
+" enable editor specific configuration (e.g. for indents)
+Plug 'editorconfig/editorconfig-vim'
+    set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+    set list
+
+" trying out ctags since they're very minimal
+Plug 'ludovicchabant/vim-gutentags'
+    let g:gutentags_ctags_exclude = ['*.json', '*.toml', '*.log']
+    let g:gutentags_cache_dir="~/.vim/gutentags"
+
+" just for linting, no lsp now you know
+Plug 'dense-analysis/ale'
+    let g:ale_linters = {
+      \ 'python': ['ruff'],
+    \}
+    let g:ale_fixers = {
+      \ 'python': ['ruff', 'ruff_format'],
+    \}
+    let g:ale_fix_on_save = 1
+
 call plug#end()
 
 " spell checker with keybinding <C-l>
@@ -94,9 +103,6 @@ command! Svspell call s:spellHelper("sv")
 command! Enspell call s:spellHelper("en_us")
 command! Gbspell call s:spellHelper("en_gb")
 
-" easy switch from light to dark background
-nnoremap <expr><leader>d &background == 'light' ? ':set bg=dark<cr>' : ':set bg=light<cr>'
-
 " ignore common errors (need to come last)
 cabbr W w
 cabbr Q q
@@ -108,13 +114,13 @@ augroup diary
     autocmd!
     autocmd ColorScheme,BufRead,BufNewFile *.txt
         \  syntax match DiaryDate "\v\d\d\d\d-\d\d-\d\d"
-        \| highlight link DiaryDate StatusLineTerm
+        \| highlight link DiaryDate StatusLine
         \| syntax match EmailNote "\v\@email"
-        \| highlight link EmailNote Todo
+        \| highlight link EmailNote Keyword
         \| syntax match MsgNote "\v\@msg"
-        \| highlight link MsgNote EmailNote
+        \| highlight link MsgNote Keyword
         \| syntax match PhoneNote "\v\@call"
-        \| highlight link PhoneNote ErrorMsg
+        \| highlight link PhoneNote Keyword
 augroup END
 
-set bg=dark
+colorscheme infimum
