@@ -34,3 +34,5 @@ if [[ $- == *i* ]]; then
   stty susp undef
   bind '"\C-z":" fg\015"'
 fi
+
+PS1='\[\e[1m\]\u@\h\[\e[0m\]:\w\$ '
