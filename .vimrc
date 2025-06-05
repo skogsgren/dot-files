@@ -58,7 +58,7 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap Q movipgq`o
 
 Plug 'tpope/vim-sensible'  " sensible defaults
-Plug 'airblade/vim-gitgutter' " show git changes
+Plug 'tpope/vim-fugitive'  " git good
 Plug 'ap/vim-css-color' " css color code preview
 Plug 'Vimjas/vim-python-pep8-indent' " correct indentation for python
 Plug 'csexton/trailertrash.vim' " trailing spaces removal/highlight
