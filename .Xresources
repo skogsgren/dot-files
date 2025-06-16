@@ -8,14 +8,14 @@ xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: SF Mono:style=Medium
+xterm*faceName: Noto Mono
 xterm*faceSize: 9
-xterm*renderFont: true
+xterm*renderFont: false
 xterm*forceBoxChars: true
 
 xterm*.Translations: #override \
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
 
-*foreground: #000000
-*background: #FFFFFF
+*background: #000000
+*foreground: #FFFFFF

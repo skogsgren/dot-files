@@ -123,4 +123,4 @@ augroup diary
         \| highlight link PhoneNote Keyword
 augroup END
 
-colorscheme infimum
+set bg=dark

@@ -15,9 +15,6 @@ nnn ()
 # enables trash-cli
 export NNN_TRASH=1
 
-# increase contrast for directories/symlinks (light mode)
-export NNN_FCOLORS='c1e21428006027f7c6d6abc4'
-
 # nnn alias
 alias "n"="nnn"
 alias "nn"="nnn"
