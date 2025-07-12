@@ -22,7 +22,7 @@ if __name__ == "__main__":
             "application/x-mobipocket-ebook",
         ],
         "org.gnome.eog.desktop": ["image/webp"],
-        "pcmanfm.desktop": ["inode/directory"],
+        "nnn.desktop": ["inode/directory"],
     }
 
     for desktop_file, filetypes in file_declarations.items():
