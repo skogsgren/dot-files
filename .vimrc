@@ -62,7 +62,6 @@ Plug 'tpope/vim-fugitive'  " git good
 Plug 'ap/vim-css-color' " css color code preview
 Plug 'Vimjas/vim-python-pep8-indent' " correct indentation for python
 Plug 'csexton/trailertrash.vim' " trailing spaces removal/highlight
-Plug 'mileszs/ack.vim' " some fuzzy search stuff
 
 " commentary aid
 Plug 'tpope/vim-commentary'
@@ -90,6 +89,10 @@ Plug 'dense-analysis/ale'
       \ 'python': ['ruff', 'ruff_format'],
     \}
     let g:ale_fix_on_save = 1
+
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+    nnoremap <C-f> :Ag<CR>
 
 call plug#end()
 
