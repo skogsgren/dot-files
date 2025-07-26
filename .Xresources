@@ -9,6 +9,7 @@ xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
 xterm*font: -ypn-envypn-medium-r-*-*-13-*-*-*-*-*-*-1
+xterm*font4: -ypn-envypn-medium-r-normal--15-150-75-75-C-90-ISO8859-1
 xterm*faceName: Noto Mono
 xterm*faceSize: 9
 xterm*renderFont: false
