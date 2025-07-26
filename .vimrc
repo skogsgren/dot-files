@@ -62,6 +62,7 @@ Plug 'tpope/vim-fugitive'  " git good
 Plug 'ap/vim-css-color' " css color code preview
 Plug 'Vimjas/vim-python-pep8-indent' " correct indentation for python
 Plug 'csexton/trailertrash.vim' " trailing spaces removal/highlight
+    let g:trailertrash_blacklist = ['__doc__']
 
 " commentary aid
 Plug 'tpope/vim-commentary'
@@ -93,6 +94,9 @@ Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
     nnoremap <C-f> :Ag<CR>
+
+Plug 'fs111/pydoc.vim'
+let g:pydoc_cmd = '/usr/bin/pydoc3'
 
 call plug#end()
 

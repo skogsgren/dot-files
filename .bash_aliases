@@ -8,6 +8,7 @@ alias spotdl-album='spotdl --output "({year}) {album}/{track-number} - {title}.{
 
 alias ipython='ipython3'
 alias python='python3'
+alias pydoc='pydoc3'
 alias pytest="python3 -m pytest -v"
 
 alias tsv-table="column -ts$'\t'"
