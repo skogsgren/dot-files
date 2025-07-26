@@ -1,4 +1,46 @@
 #!/bin/bash
-gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
-gsettings set org.gnome.desktop.wm.keybindings.move-to-center ["<Super>c"]
-gsettings set org.gnome.desktop.input-sources.xkb-options ["caps:escape", "lv3:ralt_switch"]
+gsettings set "org.gnome.desktop.background" "picture-options" "'zoom'"
+gsettings set "org.gnome.desktop.background" "picture-uri" "'file:///usr/share/desktop-base/futureprototype-theme/wallpaper/gnome-background.xml'"
+gsettings set "org.gnome.desktop.background" "picture-uri-dark" "'file:///usr/share/desktop-base/futureprototype-theme/wallpaper/gnome-background.xml'"
+gsettings set "org.gnome.desktop.screensaver" "picture-options" "'zoom'"
+gsettings set "org.gnome.desktop.screensaver" "picture-uri" "'file:///usr/share/desktop-base/futureprototype-theme/wallpaper/gnome-background.xml'"
+
+gsettings set "org.gnome.desktop.input-sources" "xkb-options" "['caps:escape']"
+gsettings set "org.gnome.desktop.interface" "gtk-key-theme" "'Emacs'"
+
+gsettings set "org.gnome.desktop.search-providers" "disabled" "['org.gnome.seahorse.Application.desktop', 'org.gnome.Settings.desktop']"
+gsettings set "org.gnome.system.location" "enabled" "false"
+
+gsettings set "org.gnome.desktop.session" "idle-delay" "uint32 600"
+gsettings set "org.gnome.settings-daemon.plugins.power" "sleep-inactive-ac-type" "'nothing'"
+gsettings set "org.gnome.settings-daemon.plugins.power" "sleep-inactive-battery-timeout" "1800"
+
+gsettings set "org.gnome.desktop.sound" "allow-volume-above-100-percent" "true"
+
+gsettings set "org.gnome.desktop.wm.keybindings" "close" "['<Super>q']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-center" "['<Super>c']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-1" "['<Shift><Super>1']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-2" "['<Shift><Super>2']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-3" "['<Shift><Super>3']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-4" "['<Shift><Super>4']"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-applications" "@as []"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-applications-backward" "@as []"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-1" "['<Super>1']"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-2" "['<Super>2']"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-3" "['<Super>3']"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-4" "['<Super>4']"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-windows" "['<Alt>Tab']"
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-windows-backward" "['<Shift><Alt>Tab']"
+gsettings set "org.gnome.desktop.wm.keybindings" "toggle-maximized" "['<Super>f']"
+gsettings set "org.gnome.settings-daemon.plugins.media-keys" "home" "['<Super>e']"
+gsettings set "org.gnome.settings-daemon.plugins.media-keys" "www" "['<Super>w']"
+gsettings set "org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.custom0" "binding" "'<Super>Return'"
+gsettings set "org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.custom0" "command" "'uxterm +fbx'"
+gsettings set "org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.custom0" "name" "'xterm'"
+gsettings set "org.gnome.shell.keybindings" "switch-to-application-1" "@as []"
+gsettings set "org.gnome.shell.keybindings" "switch-to-application-2" "@as []"
+gsettings set "org.gnome.shell.keybindings" "switch-to-application-3" "@as []"
+gsettings set "org.gnome.shell.keybindings" "switch-to-application-4" "@as []"
+
+gsettings set "org.gnome.desktop.wm.preferences" "resize-with-right-button" "true"
+gsettings set "org.gnome.mutter" "center-new-windows" "true"
