@@ -22,7 +22,6 @@ fi
 
 if [ -x "$(command -v tmux)" ]; then
     source "$HOME"/.dot-files/bash/tmux-autocomplete.bash
-    tmux has-session 2>/dev/null && tmux "ls"
 fi
 
 if [ -e "$HOME"/.dot-files/bash/secrets.bash ]; then
