@@ -1,0 +1,8 @@
+#!/bin/bash
+# starts autossh session, where tmux is reconnected everytime
+# DEPENDENCIES:
+#   autossh
+#   tmux (server)
+# USAGE:
+#   reconn-tmux SERVER TMUX_SESSION_NAME
+autossh -M 0 $1 -t "tmux attach -t $2 || tmux new -s $2"
