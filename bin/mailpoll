@@ -1,5 +1,12 @@
 #!/bin/bash
-# DOC=syncs email, for use in e.g. systemd timers
+# syncs email, for use in e.g. systemd timers
+# DEPENDENCIES:
+#   isync
+#   msmtp
+#   msmtpq (/usr/libexec/msmtp/msmtpq
+#   msmtp-queue
+# USAGE:
+#   mailpoll
 # full path to be overly verbose
 chronic /usr/bin/mbsync -a
 chronic /usr/local/bin/msmtp-queue -r
