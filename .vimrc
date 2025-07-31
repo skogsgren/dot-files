@@ -1,7 +1,8 @@
 call plug#begin()
 let mapleader=" "
 let maplocalleader=" "
-set timeoutlen=500
+set timeoutlen=100
+set ttimeoutlen=10
 
 syntax on
 set encoding=utf-8
