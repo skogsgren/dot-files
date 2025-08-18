@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# nb2py: convert .ipynb to .py, print to stdout
+# Usage: nb2py notebook.ipynb
+
+set -euo pipefail
+
+[[ $# -eq 1 ]] || { echo "usage: nb2py file.ipynb" >&2; exit 1; }
+[[ -f "$1" ]] || { echo "file not found: $1" >&2; exit 1; }
+
+jq -r '
+  .cells[] |
+    if .cell_type == "markdown" then
+      "# %% [markdown]\n" +
+      (
+        .source
+        | if type=="array" then join("") else . end
+        | split("\n")
+        | map(if . == "" then "#" else "# " + . end)
+        | join("\n")
+      )
+      + "\n"
+    elif .cell_type == "code" then
+      "# %%\n" +
+      (
+        .source
+        | if type=="array" then join("") else . end
+      )
+      + "\n"
+    else
+      empty
+    end
+' "$1"
