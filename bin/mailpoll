@@ -9,4 +9,4 @@
 #   mailpoll
 # full path to be overly verbose
 chronic /usr/bin/mbsync -a
-chronic /usr/local/bin/msmtp-queue -r
+MSMTPQ_LOG=/dev/null chronic /usr/local/bin/msmtp-queue -r
