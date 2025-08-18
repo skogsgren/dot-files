@@ -2,6 +2,7 @@ set tw=99999
 set fo=cq
 set wm=0
 set linebreak
+set autoindent
 nnoremap j gj
 vnoremap j gj
 onoremap j gj
