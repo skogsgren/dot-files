@@ -1,5 +1,8 @@
 set mouse=a
 
+inoremap <S-CR> <Space><Space><CR>
+
+
 " soft wrap (to make it easier to work with other tools)
 setlocal norelativenumber
 setlocal nonumber
@@ -43,8 +46,3 @@ cabbr wq wqa
 
 " don't need gutter in markdown files
 set signcolumn=no
-
-" highlight two spaces at the end of a line
-syntax match Error "\s\{2}$"
-highlight MarkdownTrailingSpaces ctermbg=248
-syntax match MarkdownTrailingSpaces "\s\{2}$"
