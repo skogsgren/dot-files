@@ -89,6 +89,9 @@ Plug 'dense-analysis/ale'
     \}
     let g:ale_fixers = {
       \ 'python': ['ruff', 'ruff_format'],
+      \ 'html': ['prettier'],
+      \ 'javascript': ['prettier'],
+      \ 'css': ['prettier'],
     \}
     let g:ale_fix_on_save = 1
 
