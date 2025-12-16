@@ -23,11 +23,12 @@ export NNN_TRASH=1
 alias "n"="nnn"
 alias "nn"="nnn"
 
-export NNN_SSHFS='sshfs -o reconnect'
+export NNN_SSHFS='sshfs -o reconnect,follow_symlinks'
 
 NNN_BMS="m:$HOME/.config/nnn/mounts;"
 NNN_BMS+="k:$HOME/.config/nnn/mounts/ko/;"
 NNN_BMS+="n:$HOME/.config/nnn/mounts/nas/;"
+NNN_BMS+="a:$HOME/.config/nnn/mounts/alvis/;"
 NNN_BMS+="t:/tmp/"
 export NNN_BMS
 

@@ -7,28 +7,6 @@ function venva() {
     fi
 }
 
-# mount gvfs mount using ssh config & fzf
-function gvfsm() {
-    local sel
-    GVFSDIR="$HOME/gvfs"
-    sel=$(awk '/^HostName / {host=$2} /^User / {user=$2; print user"@"host}' ~/.ssh/config | fzf)
-    if [ -n "$sel" ]; then
-        gio mount "sftp://$sel"
-        USER=$(echo "$sel" | cut -f 1 -d "@")
-        HOST=$(echo "$sel" | cut -f 2 -d "@")
-        cd "$GVFSDIR/sftp:host=$HOST,user=$USER" || return
-    fi
-}
-
-# unmount gvfs mount using ssh config & fzf
-function gvfsum() {
-    local sel
-    sel=$(awk '/^HostName / {host=$2} /^User / {user=$2; print user"@"host}' ~/.ssh/config | fzf)
-    if [ -n "$sel" ]; then
-        gio mount -uf "sftp://$sel"
-    fi
-}
-
 # play internet radio from declaration json
 function radio {
     local STATION
@@ -39,4 +17,15 @@ function radio {
         return 1
     fi
     mpv --no-video --no-resume-playback "$URL"
+}
+
+function fzf_resume_job {
+  local job job_id
+  job=$(jobs -l | fzf --prompt="Job to resume: " --height=10 --reverse) || return
+  job_id=$(echo "$job" | awk '{print $1}' | tr -d '[]')
+  if [[ -n "$job_id" ]]; then
+    fg "%$job_id"
+  else
+    echo "No job selected."
+  fi
 }
