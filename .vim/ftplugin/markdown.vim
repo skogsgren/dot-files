@@ -1,15 +1,13 @@
-set mouse=a
-
 inoremap <S-CR> <Space><Space><CR>
 
-
-" soft wrap (to make it easier to work with other tools)
+" soft wrap (to make it easier to work with other tools, and git)
 setlocal norelativenumber
 setlocal nonumber
 set autoindent
 set linebreak
-" ugly, I know, but who is looking? why are you here?
-setlocal tw=99999999999999999999999999999999999999999
+setlocal textwidth=0
+setlocal wrap
+setlocal linebreak
 nnoremap j gj
 vnoremap j gj
 onoremap j gj
@@ -25,11 +23,9 @@ inoremap [ []<ESC>i
 inoremap ( ()<ESC>i
 inoremap <C-b> ****<ESC>hi
 inoremap <C-t> **<ESC>i
-nnoremap <F5> :!pandoc -i % -o %<.pdf<CR>
-nnoremap <F6> :!open %<.pdf<CR>
 nnoremap <C-g> :!wc %<CR>
 inoremap <C-c> <!-- --><ESC>bi <ESC>i
-inoremap <C-f> []<ESC>A{.underline}<ESC>0a
+
 " so that undo points are set to punctuation marks
 inoremap ! !<C-g>u
 inoremap , ,<C-g>u
@@ -40,9 +36,11 @@ inoremap ? ?<C-g>u
 inoremap ( <C-g>u(
 inoremap ) )<C-g>u
 
-nnoremap <C-c> :VenterToggle<CR>
+nnoremap Q :%s/\v([^\r\n])\n([^\r\n])/\1 \2/g<CR>
 cabbr q qa
 cabbr wq wqa
 
 " don't need gutter in markdown files
 set signcolumn=no
+
+Enspell
