@@ -7,6 +7,11 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.dot-files/bin"
 export DATE=$(date '+%Y-%m-%d')
 
+export HISTFILE="$HOME/.bash_history"
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+shopt -s histappend
+PROMPT_COMMAND='history -a'
 
 if [ -x "$(command -v fzf)" ]; then
     # assuming debian location
