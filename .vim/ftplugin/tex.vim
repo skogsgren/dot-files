@@ -7,6 +7,7 @@ nnoremap <C-g> :!texcount %<CR>
 
 nnoremap <F5> :!tectonic %<CR>
 nnoremap <F6> :!open %<.pdf<CR>
+nnoremap <F8> :!ctags -R bibliography.bib<CR>
 
 filetype plugin indent off
 set noautoindent
