@@ -97,7 +97,7 @@ Plug 'dense-analysis/ale'
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-    nnoremap <C-f> :Ag<CR>
+    nnoremap <C-f> :Rg<CR>
     nnoremap <C-/> :BLines<CR>
 
 Plug 'fs111/pydoc.vim'
@@ -136,5 +136,3 @@ augroup diary
         \| syntax match PhoneNote "\v\@call"
         \| highlight link PhoneNote Keyword
 augroup END
-
-set bg=dark
