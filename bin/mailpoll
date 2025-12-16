@@ -7,6 +7,8 @@
 #   msmtp-queue
 # USAGE:
 #   mailpoll
-# full path to be overly verbose
-chronic /usr/bin/mbsync -a
-MSMTPQ_LOG=/dev/null chronic /usr/local/bin/msmtp-queue -r
+
+MBSYNCPATH=$(which mbsync)
+MSMTPQPATH=$(which msmtp-queue)
+chronic "$MBSYNCPATH" -a
+MSMTPQ_LOG=/dev/null chronic "$MSMTPQPATH" -r
