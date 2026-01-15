@@ -13,7 +13,7 @@ filetype plugin indent off
 set noautoindent
 set smartindent
 set nocindent
-set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -30,3 +30,21 @@ vnoremap k gk
 onoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
+nnoremap Q :%s/\v([^\r\n])\n([^\r\n])/\1 \2/g<CR>
+
+if exists('b:did_bibtags')
+  finish
+endif
+let b:did_bibtags = 1
+
+augroup BibTagsTex
+  autocmd! * <buffer>
+  autocmd BufWritePost <buffer> call s:update_bib_tags()
+augroup END
+
+function! s:update_bib_tags() abort
+  let l:files = globpath(expand('%:p:h'), '*.bib', 0, 1)
+  if !empty(l:files)
+    silent! execute '!ctags -R ' . join(l:files) . ' &'
+  endif
+endfunction
