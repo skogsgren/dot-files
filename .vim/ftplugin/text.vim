@@ -11,7 +11,5 @@ vnoremap k gk
 onoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
-
-nnoremap <C-c> :VenterToggle<CR>
 cabbr q qa
 cabbr wq wqa
