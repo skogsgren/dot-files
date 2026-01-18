@@ -1,6 +1,6 @@
 UXTerm*termName: xterm-256color
 XTerm*termName: xterm-256color
-xterm*saveLines: 50000
+xterm*saveLines: 100000
 xterm*highlightSelection: true
 xterm*trimSelection: true
 
@@ -8,8 +8,8 @@ xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: Liberation Mono:style=Bold
-xterm*faceSize: 10
+xterm*faceName: Liberation Mono
+xterm*faceSize: 9
 xterm*renderFont: false
 xterm*forceBoxChars: true
 
@@ -17,5 +17,5 @@ xterm*.Translations: #override \
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
 
-*background: #000000
-*foreground: #FFFFFF
+*foreground: #000000
+*background: #FFFFFF
