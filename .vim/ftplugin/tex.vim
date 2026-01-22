@@ -7,7 +7,6 @@ nnoremap <C-g> :!texcount %<CR>
 
 nnoremap <F5> :!tectonic %<CR>
 nnoremap <F6> :!open %<.pdf<CR>
-nnoremap <F8> :!ctags -R bibliography.bib<CR>
 
 filetype plugin indent off
 set noautoindent
@@ -20,6 +19,7 @@ set softtabstop=4
 
 setlocal signcolumn=no
 set linebreak
+
 " ugly, I know, but who is looking? why are you here?
 setlocal tw=99999999999999999999999999999999999999999
 nnoremap j gj
@@ -31,20 +31,3 @@ onoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
 nnoremap Q :%s/\v([^\r\n])\n([^\r\n])/\1 \2/g<CR>
-
-if exists('b:did_bibtags')
-  finish
-endif
-let b:did_bibtags = 1
-
-augroup BibTagsTex
-  autocmd! * <buffer>
-  autocmd BufWritePost <buffer> call s:update_bib_tags()
-augroup END
-
-function! s:update_bib_tags() abort
-  let l:files = globpath(expand('%:p:h'), '*.bib', 0, 1)
-  if !empty(l:files)
-    silent! execute '!ctags -R ' . join(l:files) . ' &'
-  endif
-endfunction
