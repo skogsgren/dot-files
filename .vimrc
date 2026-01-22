@@ -30,7 +30,7 @@ set number relativenumber  " relative line numbers
 " enable undo for all files
 set undodir=~/.vim/undodir
 set undofile
-set clipboard=unnamedplus  " unite clipboards
+" set clipboard=unnamedplus  " unite clipboards
 set laststatus=2  " statusline
 set backspace=indent,eol,start  " proper backspace behavior
 
@@ -101,7 +101,10 @@ Plug 'junegunn/fzf.vim'
     nnoremap <C-/> :BLines<CR>
 
 Plug 'fs111/pydoc.vim'
-let g:pydoc_cmd = '/usr/bin/pydoc3'
+    let g:pydoc_cmd = '/usr/bin/pydoc3'
+
+Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+    vmap <C-y> <Plug>OSCYankVisual
 
 call plug#end()
 
@@ -136,3 +139,4 @@ augroup diary
         \| syntax match PhoneNote "\v\@call"
         \| highlight link PhoneNote Keyword
 augroup END
+

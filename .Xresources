@@ -3,12 +3,21 @@ XTerm*termName: xterm-256color
 xterm*saveLines: 100000
 xterm*highlightSelection: true
 xterm*trimSelection: true
+xterm*allowWindowOps: true
 
 xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: Liberation Mono
+xterm*font: -*-terminus-*-r-*-*-14-*-*-*-*-*-iso10646-1
+xterm*font2: -*-terminus-*-r-*-*-12-*-*-*-*-*-iso10646-1
+xterm*font3: -*-terminus-*-r-*-*-16-*-*-*-*-*-iso10646-1
+xterm*font4: -*-terminus-*-r-*-*-18-*-*-*-*-*-iso10646-1
+xterm*font5: -*-terminus-*-r-*-*-20-*-*-*-*-*-iso10646-1
+xterm*font6: -*-terminus-*-r-*-*-22-*-*-*-*-*-iso10646-1
+xterm*font7: -*-terminus-*-r-*-*-28-*-*-*-*-*-iso10646-1
+
+xterm*faceName: DejaVu Sans Mono
 xterm*faceSize: 9
 xterm*renderFont: false
 xterm*forceBoxChars: true
