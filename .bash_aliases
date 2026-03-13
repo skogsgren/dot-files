@@ -18,3 +18,5 @@ alias gg="lazygit"
 
 alias ls="ls --group-directories-first --color=auto"
 alias fd="fdfind"
+
+alias ncspot="flatpak run io.github.hrkfdn.ncspot"
