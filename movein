@@ -59,4 +59,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--headless", action="store_true")
     if parser.parse_args().headless:
-        Path("./.tmux.conf.headless").symlink_to(HOME / ".tmux.conf")
+        tmux_conf = HOME / ".tmux.conf"
+        tmux_conf.unlink(missing_ok=True)
+        headless_conf = Path("./.tmux.conf.headless")
+        tmux_conf.symlink_to(headless_conf.absolute())
+        print(f"{tmux_conf.absolute()} -> {headless_conf.absolute()}")
