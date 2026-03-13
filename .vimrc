@@ -72,16 +72,6 @@ Plug 'tpope/vim-commentary'
     nnoremap <C-c> :Commentary<CR>
     vnoremap <C-c> :Commentary<CR>
 
-" enable editor specific configuration (e.g. for indents)
-Plug 'editorconfig/editorconfig-vim'
-    set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-    set list
-
-" trying out ctags since they're very minimal
-Plug 'ludovicchabant/vim-gutentags'
-    let g:gutentags_ctags_exclude = ['*.json', '*.toml', '*.log']
-    let g:gutentags_cache_dir="~/.vim/gutentags"
-
 " just for linting, no lsp now you know
 Plug 'dense-analysis/ale'
     let g:ale_linters = {
@@ -99,6 +89,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
     nnoremap <C-f> :Rg<CR>
     nnoremap <C-/> :BLines<CR>
+    nnoremap <C-t> :Files<CR>
 
 Plug 'fs111/pydoc.vim'
     let g:pydoc_cmd = '/usr/bin/pydoc3'
@@ -125,18 +116,3 @@ cabbr Wq wq
 cabbr WQ wq
 
 nnoremap gf :e <cfile><CR>
-
-" custom highlighting for vim plaintext note file
-augroup diary
-    autocmd!
-    autocmd ColorScheme,BufRead,BufNewFile *.txt
-        \  syntax match DiaryDate "\v\d\d\d\d-\d\d-\d\d"
-        \| highlight link DiaryDate StatusLine
-        \| syntax match EmailNote "\v\@email"
-        \| highlight link EmailNote Keyword
-        \| syntax match MsgNote "\v\@msg"
-        \| highlight link MsgNote Keyword
-        \| syntax match PhoneNote "\v\@call"
-        \| highlight link PhoneNote Keyword
-augroup END
-
