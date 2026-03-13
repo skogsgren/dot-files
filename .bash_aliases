@@ -16,6 +16,8 @@ alias tsv-table="column -ts$'\t'"
 
 alias gg="lazygit"
 
+alias vi="vim"
+
 alias ls="ls --group-directories-first --color=auto"
 alias fd="fdfind"
 
