@@ -17,11 +17,6 @@ if __name__ == "__main__":
             "text/x-javascript",
             "application/x-shellscript",
         ],
-        "com.calibre_ebook.calibre.ebook-viewer.desktop": [
-            "application/epub+zip",
-            "application/x-mobipocket-ebook",
-        ],
-        "org.gnome.eog.desktop": ["image/webp"],
         "nnn.desktop": ["inode/directory"],
     }
 
