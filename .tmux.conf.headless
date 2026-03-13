@@ -1,0 +1,12 @@
+set-option -g status off
+unbind -a
+set -g prefix C-b
+bind-key C-b send-prefix
+bind-key d detach
+bind -n M-PageUp copy-mode \; send-keys PageUp
+bind -n M-PageDown if-shell -F "#{pane_in_mode}" "send-keys PageDown" ""
+set -g mouse off
+set -g status-keys emacs
+set -g default-terminal "tmux-256color"
+set -s set-clipboard on
+set -g allow-passthrough on

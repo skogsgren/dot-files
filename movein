@@ -1,5 +1,6 @@
 #!/bin/python3
 __doc__ = """move in dot files to new machine. WARNING: removes existing files"""
+import argparse
 from pathlib import Path
 import fnmatch
 import os
@@ -11,6 +12,12 @@ with open(".gitignore") as f:
     IGNORES = [x.strip() for x in f]
     assert IGNORES
 IGNORED_DIRS = ["setup", "bin", "bash"]
+IGNORED_TRACKED_FILES = [
+    "movein",
+    ".git",
+    ".gitignore",
+    ".tmux.conf.headless",
+]
 
 
 def is_ignored(file: Path) -> bool:
@@ -18,7 +25,7 @@ def is_ignored(file: Path) -> bool:
     for pattern in IGNORES:
         if fnmatch.fnmatch(str(file), pattern):
             return True
-    if file.name in ["movein", ".git", ".gitignore"]:
+    if file.name in IGNORED_TRACKED_FILES:
         return True
     if file.is_dir() and file.name in IGNORED_DIRS:
         return True
@@ -48,3 +55,8 @@ if __name__ == "__main__":
         print("ERROR: must be run within the same directory as script")
         exit(1)
     symlink_files_in_directory(Path("./"))
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--headless", action="store_true")
+    if parser.parse_args().headless:
+        Path("./.tmux.conf.headless").symlink_to(HOME / ".tmux.conf")
