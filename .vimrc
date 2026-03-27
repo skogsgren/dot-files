@@ -97,6 +97,8 @@ Plug 'fs111/pydoc.vim'
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
     vmap <C-y> <Plug>OSCYankVisual
 
+Plug 'overvale/vacme'
+
 call plug#end()
 
 " spell checker with keybinding <C-l>
@@ -116,3 +118,5 @@ cabbr Wq wq
 cabbr WQ wq
 
 nnoremap gf :e <cfile><CR>
+
+colorscheme vacme
