@@ -9,9 +9,9 @@ xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*faceName: Liberation Mono:style=SemiBold
+xterm*faceName: Liberation Mono
 xterm*faceSize: 10
-xterm*renderFont: True
+xterm*renderFont: False
 xterm*forceBoxChars: true
 
 xterm*.Translations: #override \
