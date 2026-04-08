@@ -117,3 +117,5 @@ cabbr Wq wq
 cabbr WQ wq
 
 nnoremap gf :e <cfile><CR>
+
+colorscheme blue
