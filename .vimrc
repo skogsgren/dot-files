@@ -119,3 +119,4 @@ cabbr WQ wq
 nnoremap gf :e <cfile><CR>
 
 colorscheme blue
+highlight MatchParen cterm=bold ctermbg=NONE ctermfg=fg
