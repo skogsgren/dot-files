@@ -9,6 +9,11 @@ xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
+xterm*font: -uw-ttyp0-medium-r-*-*-16-*-*-*-*-*-*-*
+xterm*font2: -uw-ttyp0-medium-r-*-*-12-*-*-*-*-*-*-*
+xterm*font3: -uw-ttyp0-medium-r-*-*-14-*-*-*-*-*-*-*
+xterm*font4: -uw-ttyp0-medium-r-*-*-18-*-*-*-*-*-*-*
+xterm*font5: -uw-ttyp0-medium-r-*-*-22-*-*-*-*-*-*-*
 xterm*faceName: Liberation Mono
 xterm*faceSize: 10
 xterm*renderFont: False
@@ -18,5 +23,23 @@ xterm*.Translations: #override \
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
 
-*foreground: #000000
-*background: #FFFFFF
+*.background:            #000087
+*.foreground:            #fdd50e
+
+*.color0:   #000000
+*.color1:   #d70000
+*.color2:   #00f625
+*.color3:   #ffa500
+*.color4:   #8383d0
+*.color5:   #c47acb
+*.color6:   #52dfe7
+*.color7:   #8282a1
+
+*.color8:   #555555
+*.color9:   #ff5555
+*.color10:  #55ff55
+*.color11:  #ffff55
+*.color12:  #5555ff
+*.color13:  #ff55ff
+*.color14:  #55ffff
+*.color15:  #ffffff
