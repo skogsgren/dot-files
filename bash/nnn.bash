@@ -22,13 +22,8 @@ export NNN_TRASH=1
 # nnn alias
 alias "n"="nnn"
 alias "nn"="nnn"
-
-export NNN_SSHFS='sshfs -o reconnect,follow_symlinks'
-
-NNN_BMS="m:$HOME/.config/nnn/mounts;"
-NNN_BMS+="k:$HOME/.config/nnn/mounts/ko/;"
-NNN_BMS+="n:$HOME/.config/nnn/mounts/nas/;"
-NNN_BMS+="a:$HOME/.config/nnn/mounts/alvis/;"
+NNN_BMS+="k:/run/user/1000/gvfs/sftp:host=ko/"
+NNN_BMS+="n:/run/user/1000/gvfs/sftp:host=nas/"
 export NNN_BMS
 
 # small plugin bindings for
