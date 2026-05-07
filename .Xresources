@@ -14,6 +14,8 @@ xterm*font2: -uw-ttyp0-medium-r-*-*-12-*-*-*-*-*-*-*
 xterm*font3: -uw-ttyp0-medium-r-*-*-14-*-*-*-*-*-*-*
 xterm*font4: -uw-ttyp0-medium-r-*-*-18-*-*-*-*-*-*-*
 xterm*font5: -uw-ttyp0-medium-r-*-*-22-*-*-*-*-*-*-*
+xterm*font6: -uw-ttyp0-medium-r-*-*-30-*-*-*-*-*-*-*
+xterm*font7: -uw-ttyp0-medium-r-*-*-40-*-*-*-*-*-*-*
 xterm*faceName: Liberation Mono
 xterm*faceSize: 10
 xterm*renderFont: False
