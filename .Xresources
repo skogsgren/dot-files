@@ -9,9 +9,9 @@ xterm*metaSendsEscape: true
 xterm*VT100.locale: false
 xterm*VT100.utf8: true
 
-xterm*font: -uw-ttyp0-medium-r-*-*-16-*-*-*-*-*-*-*
+xterm*font: -uw-ttyp0-medium-r-*-*-14-*-*-*-*-*-*-*
 xterm*font2: -uw-ttyp0-medium-r-*-*-12-*-*-*-*-*-*-*
-xterm*font3: -uw-ttyp0-medium-r-*-*-14-*-*-*-*-*-*-*
+xterm*font3: -uw-ttyp0-medium-r-*-*-16-*-*-*-*-*-*-*
 xterm*font4: -uw-ttyp0-medium-r-*-*-18-*-*-*-*-*-*-*
 xterm*font5: -uw-ttyp0-medium-r-*-*-22-*-*-*-*-*-*-*
 xterm*font6: -uw-ttyp0-medium-r-*-*-30-*-*-*-*-*-*-*
