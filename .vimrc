@@ -27,9 +27,11 @@ nnoremap <C-p> :bp<CR>
 nnoremap <C-b> :ls<CR>:b<Space>
 
 set number relativenumber  " relative line numbers
-" enable undo for all files
+
+set directory=~/.vim/swap
 set undodir=~/.vim/undodir
 set undofile
+
 " set clipboard=unnamedplus  " unite clipboards
 set laststatus=2  " statusline
 set backspace=indent,eol,start  " proper backspace behavior
