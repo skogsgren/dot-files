@@ -29,7 +29,7 @@ nnoremap <C-b> :ls<CR>:b<Space>
 set number relativenumber  " relative line numbers
 
 set directory=~/.vim/swap
-set undodir=~/.vim/undodir
+set undodir=~/.vim/undo
 set undofile
 
 " set clipboard=unnamedplus  " unite clipboards

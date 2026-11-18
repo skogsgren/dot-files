@@ -18,6 +18,7 @@ IGNORED_TRACKED_FILES = [
     ".gitignore",
     ".tmux.conf.headless",
 ]
+REQUIRED_DIRS = [HOME / ".vim" / "undo", HOME / ".vim" / "swap"]
 
 
 def is_ignored(file: Path) -> bool:
@@ -36,7 +37,6 @@ def symlink_files_in_directory(dot_file_dir: Path, tgt_root: Path = HOME):
     for dot_file in dot_file_dir.iterdir():
         if is_ignored(dot_file):
             continue
-        # we don't want to symlink dirs directly, bc of dirs like .vim/undodir
         if dot_file.is_dir():
             (tgt_root / dot_file.name).mkdir(parents=True, exist_ok=True)
             symlink_files_in_directory(
@@ -64,3 +64,6 @@ if __name__ == "__main__":
         headless_conf = Path("./.tmux.conf.headless")
         tmux_conf.symlink_to(headless_conf.absolute())
         print(f"{tmux_conf.absolute()} -> {headless_conf.absolute()}")
+
+    for directory in REQUIRED_DIRS:
+        directory.mkdir(parents=True, exist_ok=True)
