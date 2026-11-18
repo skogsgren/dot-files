@@ -83,7 +83,23 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+less    resize shrink width 10 px or 10 ppt
 bindsym $mod+Shift+greater resize grow   width 10 px or 10 ppt
 
+client.focused          #0000af #0000af #ffffff #fdd50e #0000af
+client.focused_inactive #00005f #00005f #9090b8 #484891 #00005f
+client.unfocused        #00005f #00005f #9090b8 #484891 #00005f
+client.urgent           #d70000 #d70000 #ffffff #ffffff #d70000
+
 bar {
         status_command i3status
         position top
+        colors {
+            background #000087
+            statusline #ffffff
+            separator  #008787
+
+            focused_workspace  #fdd50e #fdd50e #000087
+            active_workspace   #0000af #0000af #ffffff
+            inactive_workspace #000087 #000087 #9090b8
+            urgent_workspace   #d70000 #d70000 #ffffff
+            binding_mode       #0000af #0000af #ffff55
+        }
 }

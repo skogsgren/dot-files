@@ -1,5 +1,5 @@
 general {
-        colors = false
+        colors = true
         interval = 5
 }
 
@@ -11,6 +11,14 @@ order += "tztime local"
 order += "path_exists VPN"
 order += "wireless _first_"
 order += "ethernet enp3s0"
+
+general {
+        colors = true
+        color_good     = "#ffffff"
+        color_degraded = "#ffff55"
+        color_bad      = "#ff5555"
+        interval       = 5
+}
 
 battery 0 {
         format = "%status %percentage"
