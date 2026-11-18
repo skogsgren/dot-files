@@ -1,0 +1,102 @@
+* {
+    bg:            #000087;   /* Normal guibg            */
+    bgDark:        #00005f;   /* StatusLineNC / NonText  */
+    bgLight:       #0000af;   /* selectedBg              */
+    fg:            #fdd50e;
+    white:         #ffffff;
+    blue:          #9c9cff;   /* ~ Vim Comment #80a0ff   */
+    cyan:          #52dfe7;
+    orange:        #ffa500;
+    magenta:       #c47acb;
+    gray:          #ababd6;
+    brightBlack:   #9090b8;
+    brightRed:     #ff5555;
+    brightYellow:  #ffff55;
+    brightCyan:    #55ffff;
+
+    /* Vim blue.vim originals, ready to swap in:
+       Comment #80a0ff   Statement #ffff60   Type #60ff60
+       PreProc #ff80ff   Constant #ffa0a0    Identifier #40ffff */
+
+    background-color: @bg;
+    text-color:       @white;
+    border-color:     @blue;
+    font:             "Liberation Mono 9";
+    spacing:          0;
+    margin:            0;
+    padding:           0;
+}
+
+window {
+    background-color: @bg;
+    border:           1px;
+    border-color:     @blue;
+    border-radius:    0;
+    padding:          8px;
+    width:            40%;
+}
+
+mainbox {
+    background-color: @bg;
+    spacing:          6px;
+}
+
+/* the query line gets the darker band, like a status line */
+inputbar {
+    background-color: @bgDark;
+    padding:          4px;
+    spacing:          6px;
+    border:           0;
+}
+
+prompt {
+    text-color:       @blue;
+}
+
+entry {
+    background-color:  @bgDark;
+    text-color:        @fg;
+    placeholder:       "filter";
+    placeholder-color: @brightBlack;
+}
+
+listview {
+    background-color: @bg;
+    lines:            10;
+    spacing:          0;
+    border:           0;
+    scrollbar:        false;
+}
+
+element {
+    background-color: @bg;
+    text-color:       @white;
+    padding:          2px;
+}
+
+element selected {
+    background-color: @bgLight;
+    text-color:       @fg;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    highlight:        bold;
+}
+
+element-icon {
+    size:             16px;
+    background-color: inherit;
+}
+
+scrollbar {
+    background-color: @bgDark;
+    handle-color:     @blue;
+    border:           0;
+    width:            4px;
+}
+
+error-message {
+    text-color:       @brightRed;
+}

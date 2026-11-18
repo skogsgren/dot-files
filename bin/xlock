@@ -1,0 +1,27 @@
+#!/bin/sh
+export XSECURELOCK_FONT='-uw-ttyp0-medium-r-*-*-16-*-*-*-*-*-*-*'
+export XSECURELOCK_SAVER=saver_blank
+export XSECURELOCK_BACKGROUND_COLOR=black
+export XSECURELOCK_AUTH_BACKGROUND_COLOR=black
+export XSECURELOCK_AUTH_FOREGROUND_COLOR=white
+export XSECURELOCK_AUTH_WARNING_COLOR=red
+export XSECURELOCK_AUTH_SOUNDS=0
+export XSECURELOCK_AUTH_CURSOR_BLINK=0
+export XSECURELOCK_PASSWORD_PROMPT=asterisks
+export XSECURELOCK_BLANK_TIMEOUT=-1
+export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
+
+save="${XDG_RUNTIME_DIR:-/tmp}/brightness.save"
+pidfile="${XDG_RUNTIME_DIR:-/tmp}/idle-daemon.pid"
+
+xsecurelock
+
+if [ -s "$save" ]; then
+        brightnessctl set "$(cat "$save")" >/dev/null 2>&1 && rm -f "$save"
+fi
+
+if [ -r "$pidfile" ]; then
+        kill -USR1 "$(cat "$pidfile")" 2>/dev/null
+fi
+
+exit 0

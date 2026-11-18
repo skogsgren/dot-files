@@ -1,0 +1,18 @@
+#!/bin/sh
+dir="${XDG_RUNTIME_DIR:-/tmp}"
+state="$HOME/.cache/kbd-layout"
+out="$HOME/.cache/i3status-layout"
+mkdir -p "$HOME/.cache"
+opts="${KBD_OPTS:-}"
+
+if [ "$1" = init ]; then
+        next=us
+else
+        cur=$(cat "$state" 2>/dev/null || echo us)
+        [ "$cur" = us ] && next=se || next=us
+fi
+
+setxkbmap -layout "$next" $opts || exit 1
+printf '%s' "$next" > "$state"
+[ "$next" = se ] && printf 'SE' > "$out" || printf 'US' > "$out"
+killall -USR1 i3status 2>/dev/null

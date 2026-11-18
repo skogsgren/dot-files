@@ -1,0 +1,4 @@
+@theme "vim-blue"
+configuration {
+    font: "Liberation Mono 9 Bold";
+}

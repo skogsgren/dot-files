@@ -1,0 +1,130 @@
+#!/bin/sh
+# dim 10s, lock 30s, suspend 5min on battery.
+# wake behaviour: 5s while awake, 0.5s while dimmed, none while locked.
+
+DIM=${DIM:-10}
+LOCK=${LOCK:-30}
+SUSPEND=${SUSPEND:-300}
+TICK_IDLE=${TICK_IDLE:-5}
+TICK_DIM=${TICK_DIM:-0.5}
+DIM_PCT=${DIM_PCT:-10}
+
+dir="${XDG_RUNTIME_DIR:-/tmp}"
+save="$dir/brightness.save"
+log="$HOME/.cache/idle-daemon.log"
+mkdir -p "$HOME/.cache"
+
+log_line() { printf '%s %s\n' "$(date +%H:%M:%S)" "$*" >>"$log"; }
+
+for c in xprintidle brightnessctl loginctl xprop; do
+        command -v "$c" >/dev/null 2>&1 || { log_line "MISSING: $c"; exit 1; }
+done
+
+pidfile="$dir/idle-daemon.pid"
+printf '%s\n' "$$" >"$pidfile"
+trap 'rm -f "$pidfile"' EXIT
+
+unlocked=0
+trap 'unlocked=1' USR1
+
+on_battery() {
+        for f in /sys/class/power_supply/A*/online; do
+                [ -r "$f" ] && [ "$(cat "$f")" = 0 ] && return 0
+        done
+        return 1
+}
+
+undim() {
+        [ -s "$save" ] || return 0
+        brightnessctl set "$(cat "$save")" >>"$log" 2>&1 && rm -f "$save"
+        log_line "undim"
+}
+
+fullscreen_active() {
+        id=$(xprop -root _NET_ACTIVE_WINDOW 2>/dev/null | awk '{print $NF}')
+        case "$id" in '' | 0x0) return 1 ;; esac
+        xprop -id "$id" _NET_WM_STATE 2>/dev/null | grep -q _NET_WM_STATE_FULLSCREEN
+}
+
+locked_wait() {
+        unlocked=0
+        while :; do
+                sleep 300 &
+                spid=$!
+                wait "$spid"
+                if [ "$unlocked" = 1 ]; then
+                        kill "$spid" 2>/dev/null
+                        unlocked=0
+                        return 0
+                fi
+        done
+}
+
+dimmed=0
+locked=0
+log_line "started dim=${DIM}s lock=${LOCK}s"
+while :; do
+        ms=$(xprintidle 2>/dev/null) || { log_line "xprintidle failed"; sleep "$TICK_IDLE"; continue; }
+        idle=$((ms / 1000))
+
+        if [ "$dimmed" = 1 ] && [ "$locked" = 0 ]; then
+                if [ "$idle" -lt "$DIM" ]; then
+                        undim
+                        dimmed=0
+                        locked=0
+                        sleep "$TICK_IDLE"
+                        continue
+                fi
+                if [ "$idle" -lt "$LOCK" ]; then
+                        sleep "$TICK_DIM"
+                        continue
+                fi
+        fi
+
+        # fullscreen inhibit everything
+        if fullscreen_active; then
+                [ "$dimmed" = 1 ] && { undim; dimmed=0; }
+                locked=0
+                sleep "$TICK_IDLE"
+                continue
+        fi
+
+        if [ "$idle" -lt "$DIM" ]; then
+                [ "$dimmed" = 1 ] && { undim; dimmed=0; }
+                locked=0
+        elif [ "$idle" -lt "$LOCK" ]; then
+                if [ "$dimmed" != 1 ]; then
+                        brightnessctl get >"$save" 2>/dev/null
+                        brightnessctl set "${DIM_PCT}%" >>"$log" 2>&1
+                        dimmed=1
+                        log_line "dim"
+                fi
+        else
+                dimmed=1
+                if [ "$locked" = 0 ]; then
+                        loginctl lock-session >>"$log" 2>&1
+                        locked=1
+                        log_line "lock"
+                        locked_wait
+                        locked=0
+                        if [ -s "$save" ]; then
+                            undim
+                        fi
+                        dimmed=0
+                        log_line "unlocked"
+                        sleep "$TICK_IDLE"
+                        continue
+                fi
+                if [ "$idle" -ge "$SUSPEND" ] && on_battery; then
+                        log_line "suspend"
+                        systemctl suspend >>"$log" 2>&1
+                        sleep 30
+                fi
+        fi
+
+        if [ "$dimmed" = 1 ]; then
+                sleep "$TICK_DIM"
+        else
+                sleep "$TICK_IDLE"
+        fi
+done
