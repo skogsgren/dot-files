@@ -22,3 +22,6 @@ alias ls="ls --group-directories-first --color=auto"
 alias fd="fdfind"
 
 alias ncspot="flatpak run io.github.hrkfdn.ncspot"
+
+alias sardine="docker exec -it sardine bash"
+alias pi="docker exec -it sardine pi"
