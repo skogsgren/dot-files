@@ -37,6 +37,19 @@ if [ -e "$HOME"/.dot-files/bash/secrets.bash ]; then
     source "$HOME"/.dot-files/bash/secrets.bash
 fi
 
+if [ -x "$(command -v lazygit)" ]; then
+    gg() {
+      local f d
+      f=$(mktemp "${TMPDIR:-/tmp}/lazygit-newdir.XXXXXX") || return 1
+      LAZYGIT_NEW_DIR_FILE=$f lazygit "$@"
+      if [ -s "$f" ]; then
+        d=$(cat "$f")
+        [ -d "$d" ] && cd "$d"
+      fi
+      rm -f "$f"
+    }
+fi
+
 # ctrl-z as toggle between suspend and resume
 if [[ $- == *i* ]]; then
   stty susp undef
