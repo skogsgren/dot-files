@@ -11,6 +11,7 @@ i3status
 lxpolkit
 network-manager
 nm-connection-editor
+maim
 pavucontrol
 pinentry-gnome3
 pipx

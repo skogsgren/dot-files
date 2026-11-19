@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+
+mode="${1:-region}"
+if [ $# -gt 0 ]; then shift; fi
+
+dir="$HOME/dl"
+mkdir -p "$dir"
+file="$dir/$(date +%Y%m%d-%H%M%S).png"
+
+case "$mode" in
+	full)   ;;
+	region) set -- -s "$@" ;;
+	window) set -- -i "$(xdotool getactivewindow)" "$@" ;;
+	*) echo "usage: shot [full|region|window] [maim flags...]" >&2; exit 2 ;;
+esac
+
+if ! maim "$@" -f png "$file"; then
+	rm -f "$file"
+	exit 0
+fi
+
+command -v xclip >/dev/null 2>&1 && xclip -selection clipboard -t image/png -i "$file"
+
+notify-send -a screenshot -u low -i "$file" \
+	-h "string:x-dunst-stack-tag:screenshot" \
+	"screenshot saved" "$(basename "$file")"

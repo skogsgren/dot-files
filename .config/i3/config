@@ -4,6 +4,7 @@ font -uw-ttyp0-medium-r-*-*-12-*-*-*-*-*-*-*
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id lxpolkit
+exec --no-startup-id dunst
 exec --no-startup-id xss-lock --transfer-sleep-lock -- xlock --nofork
 exec --no-startup-id idle-daemon
 
@@ -12,6 +13,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym --release $mod+Print exec --no-startup-id shot region
+bindsym --release $mod+Shift+Print exec --no-startup-id shot full
+bindsym --release $mod+ctrl+Print exec --no-startup-id shot window
 
 floating_modifier $mod
 bindsym $mod+Shift+space floating toggle
