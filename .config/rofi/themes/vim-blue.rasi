@@ -21,7 +21,6 @@
     background-color: @bg;
     text-color:       @white;
     border-color:     @blue;
-    font:             "Liberation Mono 9";
     spacing:          0;
     margin:            0;
     padding:           0;
