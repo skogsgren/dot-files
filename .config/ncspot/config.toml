@@ -1,0 +1,7 @@
+[keybindings]
+"b" = "next"
+"c" = "playpause"
+"r" = "repeat"
+"s" = "shuffle"
+"g" = "move top"
+"G" = "move bottom"
