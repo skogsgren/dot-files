@@ -20,14 +20,18 @@ bindsym --release $mod+ctrl+Print exec --no-startup-id shot window
 
 floating_modifier $mod
 bindsym $mod+Shift+space floating toggle
-for_window [class="(?i)^feh$"] floating enable, move position center
 for_window [class="(?i)^thunar$"] floating enable, resize set 55 ppt 70 ppt, move position center
+for_window [class="^Nsxiv$"] floating enable, resize set 55 ppt 70 ppt, move position center
+for_window [class="^mpv$"] floating enable, resize set 55 ppt 70 ppt, move position center
+for_window [class="(?i)^xarchiver$"] floating enable, resize set 55 ppt 70 ppt, move position center
+for_window [class="(?i)^zathura$"] floating enable, resize set 55 ppt 70 ppt, move position center
 
 tiling_drag modifier titlebar
 
 bindsym $mod+Return exec uxterm +fbx
 
 bindsym $mod+w exec firefox-esr
+bindsym $mod+e exec thunar
 
 bindsym $mod+Escape exec --no-startup-id loginctl lock-session
 
