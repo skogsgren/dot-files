@@ -6,6 +6,7 @@ general {
 order += "read_file layout"
 order += "battery 0"
 order += "volume master"
+order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
 order += "path_exists VPN"
@@ -41,7 +42,7 @@ volume master {
 }
 
 memory {
-        format = "RAM %used/%total avail %available"
+        format = "RAM %used/%total"
         unit = "Gi"
         decimals = 1
         memory_used_method = "memavailable"
@@ -68,4 +69,11 @@ wireless _first_ {
 ethernet enp3s0 {
         format_up = "ETH"
         format_down = ""
+}
+
+cpu_temperature 0 {
+        format = "CPU %degrees °C"
+        path = "/sys/class/thermal/thermal_zone0/temp"
+        max_threshold = 80
+        format_above_threshold = "CPU HOT %degrees °C"
 }
