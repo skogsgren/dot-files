@@ -13,7 +13,6 @@ export XDG_CURRENT_DESKTOP=i3
 
 [ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
 
-xsetroot -solid '#00005f'
 kbd-toggle-init
 xset -dpms s off
 exec i3
