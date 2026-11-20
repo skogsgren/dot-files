@@ -1,0 +1,18 @@
+[user]
+	email = 6107181+skogsgren@users.noreply.github.com
+	name = Gustaf Gren
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+
+[merge]
+    conflictStyle = zdiff3
+
+[init]
+	defaultBranch = main
